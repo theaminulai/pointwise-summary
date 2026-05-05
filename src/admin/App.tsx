@@ -10,6 +10,7 @@ import { SocialSharing } from './components/social-sharing';
 import { useGetQuery } from './hooks/useGetQuery';
 import DashboardLayout from './pages/Dashboard';
 import { Toaster } from 'sonner';
+// import { PerPostSettings } from './components/PerPostSettings';
 
 /**
  * Main Application Component.
@@ -43,7 +44,7 @@ const App: React.FC = (): JSX.Element => {
 						<Route path="advanced" element={ <AdvancedSettings /> }/>
 						<Route path="analytics" element={ <Analytics /> } />
 
-						{ /*<Route path="per-post" element={ <PerPostSettings /> } /> */ }
+						{/* <Route path="per-post" element={ <PerPostSettings	 /> } /> */}
 						<Route path="help" element={ <Help /> } />
 					</Route>
 				</Routes>
