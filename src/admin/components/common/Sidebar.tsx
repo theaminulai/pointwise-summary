@@ -3,6 +3,7 @@ import {
 	BarChart3,
 	ChevronRight,
 	Eye,
+	FileEdit,
 	HelpCircle,
 	LayoutDashboard,
 	NotepadText,
@@ -35,7 +36,7 @@ const Sidebar: React.FC = () => {
 		{ path: '/social', label: __( 'Social Sharing', 'pointwise-summary' ), icon: Share2 },
 		{ path: '/advanced', label: __( 'Advanced', 'pointwise-summary' ), icon: Settings },
 		{ path: '/analytics', label: __( 'Analytics', 'pointwise-summary' ), icon: BarChart3 },
-		// { path: '/per-post', label: 'Per-Post Settings', icon: FileEdit },
+		// { path: '/per-post', label: __( 'Per-Post Settings', 'pointwise-summary' ), icon: FileEdit },
 		{ path: '/help', label: __( 'Help & Support', 'pointwise-summary' ), icon: HelpCircle },
 	];
 

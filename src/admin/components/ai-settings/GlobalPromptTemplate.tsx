@@ -166,14 +166,9 @@ export const GlobalPromptTemplate: React.FC = () => {
 						<div className="text-xs">
 							<div className="flex flex-wrap gap-2 mt-2">
 								{ [
-									'{title}',
-									'{url}',
 									'{content}',
-									'{excerpt}',
 									'{site_name}',
 									'{language}',
-									'{length}',
-									'{headings}',
 								].map( ( item ) => (
 									<button
 										key={ item }
