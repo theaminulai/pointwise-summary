@@ -230,13 +230,6 @@ This plugin is licensed under the GPL-2.0-or-later license. See the [LICENSE](LI
 - All contributors who help improve this plugin
 - The WordPress community for continued support
 
-## 📊 Stats & Badges
-
-![GitHub stars](https://img.shields.io/github/stars/theaminulai/pointwise-summary?style=social)
-![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/pointwise-summary?style=flat-square)
-![WordPress Plugin Active Installations](https://img.shields.io/wordpress/plugin/installs/pointwise-summary?style=flat-square)
-![WordPress Plugin Rating](https://img.shields.io/wordpress/plugin/rating/pointwise-summary?style=flat-square)
-
 ## 📝 Changelog
 
 ### [0.1.0] - 2024-06-15
