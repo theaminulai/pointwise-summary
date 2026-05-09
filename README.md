@@ -1,20 +1,20 @@
-# AI Summarizer - AI-Powered TL;DR & Content Summary Buttons
+#  AI Summarizer - AI-Powered TL;DR & Content Summary & Social Sharing
 
-[![WordPress Plugin Version](https://img.shields.io/badge/version-0.4.0-blue.svg)](https://github.com/theaminuli/ai-summarizer/releases)
+[![WordPress Plugin Version](https://img.shields.io/badge/version-0.5.0-blue.svg)](https://github.com/theaminulai/pointwise-summary/releases)
 [![WordPress Compatibility](https://img.shields.io/badge/wordpress-6.1%2B-brightgreen.svg)](https://wordpress.org/)
-[![License](https://img.shields.io/badge/license-GPL--2.0--or--later-orange.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-GPL--3.0--or--later-orange.svg)](LICENSE)
 [![PHP Version](https://img.shields.io/badge/php-7.4%2B-purple.svg)](https://www.php.net/)
-[![AI Models](https://img.shields.io/badge/AI_Models-6-brightgreen.svg)](https://github.com/theaminuli/ai-summarizer)
+[![AI Models](https://img.shields.io/badge/AI_Models-6-brightgreen.svg)](https://github.com/theaminulai/ai-summarizer)
 
 > **The Ultimate AI Summarization Plugin for WordPress** - Generate TL;DR summaries with ChatGPT, Claude, Gemini, Grok, Perplexity & Google AI Model. Fully customizable buttons you can place anywhere with automatic insertion capabilities.
 
 **Complete Solution:** AI Summarization + Smart Display + Complete Customization
 
-![AI Summarizer Demo](https://via.placeholder.com/800x400.png?text=AI+Summarizer+Demo)
+![Pointwise Summary Demo](https://via.placeholder.com/800x400.png?text=Pointwise+Summary+Demo)
 
 ---
 
-## 🎯 What is AI Summarizer?
+## 🎯 What is Pointwise Summary?
 
 The most comprehensive AI summarization plugin for WordPress. This summarizing tool harnesses the power of 6 leading AI models (ChatGPT, Claude, Gemini, Grok, Perplexity, Google AI) with beautiful, customizable Gutenberg blocks and intelligent display options - all in one lightweight plugin.
 
@@ -80,7 +80,7 @@ Based on Chrome's Summarizer API and industry standards, the plugin supports:
 - **Best For**: Quick summaries, convenience
 - **Strengths**: Automatic launch, fast processing
 
-### Chrome Built-in AI (Gemini Nano)
+### 🔒 Upcoming: Chrome Built-in AI (Gemini Nano)
 - **Features**: On-device AI summarization (privacy-friendly)
 - **Best For**: Summarization without API keys
 - **Strengths**: Offline capability, no API costs, data stays on your device
@@ -132,10 +132,10 @@ Set it once, buttons appear everywhere automatically!
 
 **Manual Shortcode:**
 ```php
-[ai_summarizer]
-[ai_summarizer buttons="chatgpt,claude,gemini"]
-[ai_summarizer style="minimal" show_title="false"]
-[ai_summarizer style="icons-only" icon_style="circular"]
+[pointwise_summary]
+[pointwise_summary buttons="chatgpt,claude,gemini"]
+[pointwise_summary style="minimal" show_title="false"]
+[pointwise_summary style="icons-only" icon_style="circular"]
 ```
 
 ### 🎨 Visual Styles
@@ -154,19 +154,11 @@ Set it once, buttons appear everywhere automatically!
 - Language preferences
 - Output format (paragraph, bullets, markdown)
 
-**Per-Post Overrides:**
+**Per-Post Overrides: (Upcoming)**
 - Custom prompts for individual posts
 - Display position customization
 - Button selection control
 - Style overrides
-
-**Typography & Styling:**
-- Font family, size, weight, style
-- Line height and letter spacing
-- Text transform and decoration
-- Custom colors and gradients
-- Border radius, shadows
-- Hover effects and transitions
 
 **SEO Options:**
 - `<a>` links with rel="nofollow noopener"
@@ -189,11 +181,11 @@ Set it once, buttons appear everywhere automatically!
 
 ## 📊 Feature Comparison
 
-### AI Summarizer vs Competitors
+### Pointwise Summary vs Competitors
 
 Compare this WordPress summarizing tool with other popular text summarizers:
 
-| Feature | **AI Summarizer** | Grammarly | QuillBot | TLDR This | DeCopy.ai |
+| Feature | **Pointwise Summary** | Grammarly | QuillBot | TLDR This | DeCopy.ai |
 |---------|-------------------|-----------|----------|-----------|-----------|
 | **AI Models** | ✅ 6 (ChatGPT, Claude, Gemini, Grok, Perplexity, Google AI) | ❌ 1 | ❌ 1 | ❌ 1 | ❌ 1-2 |
 | **Pricing** | ✅ **Open Source** | ⚠️ Limited | ⚠️ Limited | ⚠️ Limited | ⚠️ Limited |
@@ -212,7 +204,7 @@ Compare this WordPress summarizing tool with other popular text summarizers:
 | **API Costs** | ✅ Optional (or use Gemini Nano) | 💰 Subscription | 💰 Subscription | ⚠️ Limited tier | 💰 Pay per use |
 | **Data Privacy** | ✅ On-device option available | ⚠️ Cloud-based | ⚠️ Cloud-based | ⚠️ Cloud-based | ⚠️ Cloud-based |
 
-### Unique Features - Only in AI Summarizer
+### Unique Features - Only in Pointwise Summary
 
 ✨ **What Makes This the Best Summarizing Tool:**
 1. **Most AI Models** - 6 leading AI platforms + Chrome's Gemini Nano in one plugin
@@ -231,24 +223,24 @@ Compare this WordPress summarizing tool with other popular text summarizers:
 ### From WordPress.org (Recommended)
 
 1. Go to **Plugins > Add New** in your WordPress admin
-2. Search for "AI Summarizer"
+2. Search for "Pointwise Summary"
 3. Click **Install Now** and then **Activate**
 4. The block will appear in the Design category in the block editor
 
 ### Manual Installation
 
-1. Download the plugin from the [releases page](https://github.com/theaminuli/ai-summarizer/releases)
-2. Upload the `ai-summarizer` folder to `/wp-content/plugins/`
+1. Download the plugin from the [releases page](https://github.com/theaminulai/pointwise-summary/releases)
+2. Upload the `pointwise-summary` folder to `/wp-content/plugins/`
 3. Activate the plugin through the Plugins menu in WordPress
 
 ### From Source
 
 ```bash
 # Clone the repository
-git clone https://github.com/theaminuli/ai-summarizer.git
+git clone https://github.com/theaminulai/pointwise-summary.git
 
 # Navigate to the plugin directory
-cd ai-summarizer
+cd pointwise-summary
 
 # Install dependencies
 npm install
@@ -257,116 +249,7 @@ npm install
 npm run build
 ```
 
-## 📖 Usage
-
-### Basic Setup
-
-1. **Add the Block**
-   - Edit any post or page in the Gutenberg editor
-   - Click the "+" button to add a new block
-   - Search for "Summarize Button"
-   - The block will be inserted with default buttons
-
-2. **Customize Buttons**
-   - Click on any button to edit its text
-   - Change text to "TL;DR", "Quick Summary", "Key Points", etc.
-   - Add links to summary sections or external pages
-   - Use the toolbar and sidebar to customize styling
-
-3. **Adjust Layout**
-   - Select the block
-   - In the sidebar, find "Layout Options"
-   - Switch between horizontal and vertical orientations
-   - Adjust spacing and alignment
-
-### Creating Summary Sections
-
-**Step 1:** Create a summary section in your content:
-```markdown
-## Summary (TL;DR)
-
-Here's a quick summary of this 3,000-word article:
-- Key point 1
-- Key point 2
-- Key point 3
-```
-
-**Step 2:** Add HTML anchor to the heading:
-- Select your "Summary" heading block
-- In sidebar, go to Advanced → HTML Anchor
-- Enter: `summary`
-
-**Step 3:** Link your button:
-- Select your summary button
-- Click the link icon
-- Enter: `#summary`
-- Visitors will jump directly to your summary!
-
-### Pro Tips
-
-**For Maximum Engagement:**
-- Place summary buttons at the top of long articles
-- Use action-oriented text: "Summarize This Article"
-- Add urgency: "Busy? Get the 30-Second Summary"
-- Include emoji: "⚡ Quick Read" or "📝 Full Article"
-
-**For Better UX:**
-- Create vertical button stacks in sidebars
-- Use contrasting colors to highlight summary options
-- Test different button positions to optimize clicks
-- Combine with table of contents for long content
-
-**For Accessibility:**
-- Ensure good color contrast (4.5:1 minimum)
-- Add descriptive button text (not just "Click Here")
-- Test keyboard navigation (Tab, Enter, Escape)
-- Use ARIA labels for icon-only buttons
-
-## 🎨 Customization Options
-
-### Visual Styling
-
-**Colors & Backgrounds:**
-- Solid colors
-- Gradient backgrounds
-- Hover state colors
-- Text color customization
-
-**Typography:**
-- Font family selection
-- Font size, weight, and style
-- Line height and letter spacing
-- Text transform and decoration
-
-**Spacing & Layout:**
-- Padding (all sides independently)
-- Margin control (top/bottom)
-- Gap between buttons (block gap)
-- Border radius and shadows
-
-**Borders:**
-- Border width, style, and color
-- Individual side controls
-- Border radius per corner
-- Hover border effects
-
-### Layout Options
-
-**Orientation:**
-- Horizontal (default) - buttons in a row
-- Vertical - stacked buttons
-
-**Alignment:**
-- Wide width
-- Full width
-- Default content width
-
-**Justification:**
-- Left, center, right alignment
-- Space between
-- Space around
-
-## 💻 Development
+##  Development
 
 ### Requirements
 
@@ -399,28 +282,45 @@ npm run plugin-zip
 ### Project Structure
 
 ```
-ai-summarizer/
-├── src/                        # Source files (uncompiled)
-│   ├── admin/                  # Admin settings (placeholder)
-│   └── blocks/                 # Block source files
-│       └── summarize-button/   # Main block
-│           ├── block.json      # Block metadata & config
-│           ├── index.js        # Block registration
-│           ├── edit.js         # Editor component (React)
-│           ├── save.js         # Frontend save function
-│           ├── view.js         # Frontend interactivity (JS)
-│           ├── transforms.js   # Block transformations
-│           ├── deprecated.js   # Legacy versions
-│           ├── style.scss      # Frontend & editor styles
-│           └── editor.scss     # Editor-only styles
-├── build/                      # Compiled assets (generated)
-│   └── blocks/
-│       └── summarize-button/
-├── ai-summarizer.php           # Main plugin file
-├── readme.txt                  # WordPress.org readme
-├── README.md                   # This file
-├── package.json                # Node dependencies
-└── webpack.config.js           # Custom webpack config
+pointwise-summary/
+├── pointwise-summary.php                 # Main plugin file (entry point)
+├── includes/                              # Core plugin classes
+│   ├── plugin.php                        # Bootstrap and initialization
+│   ├── class-pointwise-summary-*.php     # Admin UI classes
+│   ├── api/                              # REST API endpoints (6 endpoints)
+│   │   ├── class-pointwise-summary-ai-settings-api.php
+│   │   ├── class-pointwise-summary-display-settings-api.php
+│   │   ├── class-pointwise-summary-social-sharing-api.php
+│   │   ├── class-pointwise-summary-advanced-settings-api.php
+│   │   ├── class-pointwise-summary-shortcode-api.php
+│   │   └── class-pointwise-summary-system-info-api.php
+│   ├── frontend/                         # Frontend rendering classes
+│   │   ├── class-pointwise-summary-buttons.php
+│   │   ├── class-pointwise-summary-frontend.php
+│   │   ├── class-pointwise-summary-inline.php
+│   │   ├── class-pointwise-summary-fab.php
+│   │   └── ... (other frontend helpers)
+│   └── helpers/                          # Utility classes and traits
+├── src/                                  # React admin UI source (uncompiled)
+│   ├── admin/                            # Admin React application
+│   │   ├── store/                        # Redux state management
+│   │   ├── components/                   # React settings components
+│   │   ├── hooks/                        # Custom React hooks
+│   │   ├── services/                     # REST API client
+│   │   └── index.tsx                     # App entry point
+│   └── frontend/                         # Frontend React (if any)
+├── build/                                # Compiled assets (generated)
+│   ├── admin.js                          # Compiled admin UI
+│   ├── admin.css                         # Admin styles
+│   └── ...
+├── package.json                          # Node.js dependencies
+├── webpack.config.js                     # Webpack configuration
+├── README.md                             # This file
+├── ARCHITECTURE.md                       # Detailed architecture docs
+├── AGENTS.md                             # AI agent guidelines
+└── .github/
+    ├── PULL_REQUEST_TEMPLATE.md
+    └── copilot-instructions.md
 ```
 
 ## 🔮 Comprehensive Roadmap
@@ -434,60 +334,59 @@ ai-summarizer/
 - [x] WordPress 6.7+ block manifest system
 - [x] Research Chrome Summarizer API (Gemini Nano)
 - [x] Design plugin architecture for AI integration
-- [ ] Implement on-device summarization
-- [ ] Add summary type selection (TL;DR, key-points, headline, teaser)
-- [ ] Length controls (short, medium, long)
-- [ ] Format options (markdown, plain-text, bullets)
+- [x] Implement on-device summarization
+- [x] Add summary type selection (TL;DR, key-points, headline, teaser)
+- [x] Length controls (short, medium, long)
 
 ### 🚀 Phase 2: AI Integration (IN PROGRESS - v0.5.0)
-- [ ] **6 AI Models Integration**
-  - [ ] ChatGPT (GPT-4, GPT-3.5 Turbo)
-  - [ ] Claude (Opus, Sonnet, Haiku)
-  - [ ] Gemini (Pro, Ultra)
-  - [ ] Grok (via xAI API)
-  - [ ] Perplexity (with citations)
-  - [ ] Google AI Mode (direct integration)
-- [ ] **Summary Generation Features**
-  - [ ] One-click automatic summarization
-  - [ ] Custom prompts per AI model
-  - [ ] Summary length controls (short, medium, detailed)
-  - [ ] Multiple summary types (TL;DR, key-points, headlines, teasers)
-  - [ ] Multi-language support (50+ languages)
-  - [ ] Streaming summaries (real-time generation)
-- [ ] **Multiple Summary Styles**
-  - [ ] TL;DR (quick 1-sentence overview)
-  - [ ] Key Points (bullet list of main ideas)
-  - [ ] Headlines (article title suggestions)
-  - [ ] Teasers (engaging preview text)
-- [ ] **Customizable Summary Length**
-  - [ ] Short (1-3 sentences / 3 bullets)
-  - [ ] Medium (3-5 sentences / 5 bullets)
-  - [ ] Long (5+ sentences / 7 bullets)
-- [ ] **Format Control**
-  - [ ] Paragraph format
-  - [ ] Bullet point lists
-  - [ ] Numbered lists
-  - [ ] Markdown output
-- [ ] **Display Options**
-  - [ ] Floating Action Button (FAB) with 6 positions
-  - [ ] Automatic inline insertion (before/after title/content)
-  - [ ] Per-post display customization
-  - [ ] Content type targeting (choose post types)
+- [x] **6 AI Models Integration**
+  - [x] ChatGPT (GPT-4, GPT-3.5 Turbo)
+  - [x] Claude (Opus, Sonnet, Haiku)
+  - [x] Gemini (Pro, Ultra)
+  - [x] Grok (via xAI API)
+  - [x] Perplexity (with citations)
+  - [x] Google AI Mode (direct integration)
+- [x] **Summary Generation Features**
+  - [x] One-click automatic summarization
+  - [x] Custom prompts per AI model
+  - [x] Summary length controls (short, medium, detailed)
+  - [x] Multiple summary types (TL;DR, key-points, headlines, teasers)
+  - [x] Multi-language support (50+ languages)
+  - [x] Streaming summaries (real-time generation)
+- [x] **Multiple Summary Styles**
+  - [x] TL;DR (quick 1-sentence overview)
+  - [x] Key Points (bullet list of main ideas)
+  - [x] Headlines (article title suggestions)
+  - [x] Teasers (engaging preview text)
+- [x] **Customizable Summary Length**
+  - [x] Short (1-3 sentences / 3 bullets)
+  - [x] Medium (3-5 sentences / 5 bullets)
+  - [x] Long (5+ sentences / 7 bullets)
+- [x] **Format Control**
+  - [x] Paragraph format
+  - [x] Bullet point lists
+  - [x] Numbered lists
+  - [x] Markdown output
+- [x] **Display Options**
+  - [x] Floating Action Button (FAB) with 6 positions
+  - [x] Automatic inline insertion (before/after title/content)
+  - [x] Per-post display customization
+  - [x] Content type targeting (choose post types)
 
 ### 🎨 Phase 3: Advanced UI & Styles (v0.6.0)
-- [ ] **Visual Enhancements**
-  - [ ] 5 professional styles (default, brand, minimal, dark, icons-only)
-  - [ ] Icons-only mode (circular & square)
-  - [ ] Custom icon system with SVG support
-  - [ ] Button ordering options (AI models first, random, etc.)
-  - [ ] Button alignment (left, center, right)
-  - [ ] Smart tooltips for icons-only mode
-- [ ] **Admin Dashboard**
-  - [ ] Settings page with visual preview
-  - [ ] Per-model configuration panel
-  - [ ] API key management interface
+- [x] **Visual Enhancements**
+  - [x] 5 professional styles (default, brand, minimal, dark, icons-only)
+  - [x] Icons-only mode (circular & square)
+  - [x] Custom icon system with SVG support
+  - [x] Button ordering options (AI models first, random, etc.)
+  - [x] Button alignment (left, center, right)
+  - [x] Smart tooltips for icons-only mode
+- [] **Admin Dashboard**
+  - [x] Settings page with visual preview
+  - [x] Per-model configuration panel
+  - [x] API key management interface
   - [ ] Usage statistics dashboard
-  - [ ] Style customizer with live preview
+  - [x] Style customizer with live preview
 
 ### 🧠 Phase 4: Smart Features (v0.7.0)
 - [ ] **Chrome Built-in AI**
@@ -573,8 +472,8 @@ Contributions are welcome! Here's how you can help:
 
 ### Ways to Contribute
 
-1. **Report Bugs** - Found a bug? [Open an issue](https://github.com/theaminuli/ai-summarizer/issues)
-2. **Suggest Features** - Have an idea? [Submit a feature request](https://github.com/theaminuli/ai-summarizer/issues)
+1. **Report Bugs** - Found a bug? [Open an issue](https://github.com/theaminulai/pointwise-summary/issues)
+2. **Suggest Features** - Have an idea? [Submit a feature request](https://github.com/theaminulai/pointwise-summary/issues)
 3. **Submit Pull Requests** - Fix bugs or add features
 4. **Improve Documentation** - Help make docs clearer
 5. **Translations** - Translate the plugin to your language
@@ -601,43 +500,33 @@ Contributions are welcome! Here's how you can help:
 
 ## 📄 License
 
-This plugin is licensed under the GPL-2.0-or-later license. See the [LICENSE](LICENSE) file for details.
+This plugin is licensed under the GPL-3.0-or-later license. See the [LICENSE](LICENSE) file for details.
 
 ## 💬 Support & Community
 
 ### Get Help
 
-- **Documentation**: [Full documentation](https://github.com/theaminuli/ai-summarizer/wiki)
-- **WordPress.org Support**: [Plugin support forum](https://wordpress.org/support/plugin/ai-summarizer/)
-- **GitHub Issues**: [Report bugs or request features](https://github.com/theaminuli/ai-summarizer/issues)
-- **Email**: support@theaminul.com
+- **Documentation**: [Full documentation](https://github.com/theaminulai/pointwise-summary/wiki)
+- **WordPress.org Support**: [Plugin support forum](https://wordpress.org/support/plugin/pointwise-summary/)
+- **GitHub Issues**: [Report bugs or request features](https://github.com/theaminulai/pointwise-summary/issues)
+- **Email**: hello@theaminul.com
 
 ### Stay Updated
 
-- **GitHub**: [Star the repo](https://github.com/theaminuli/ai-summarizer) for updates
-- **WordPress.org**: [Follow on WordPress.org](https://wordpress.org/plugins/ai-summarizer/)
+- **GitHub**: [Star the repo](https://github.com/theaminulai/pointwise-summary) for updates
+- **WordPress.org**: [Follow on WordPress.org](https://wordpress.org/plugins/pointwise-summary/)
 - **Blog**: [Read development updates](https://theaminul.com/blog)
 
 ## 🙏 Credits
 
-- Built with ❤️ by [theaminul](https://theaminul.com)
+- Built with ❤️ by [theaminulai](https://theaminul.com)
 - Powered by [@wordpress/scripts](https://www.npmjs.com/package/@wordpress/scripts)
 - Following [WordPress Gutenberg](https://github.com/WordPress/gutenberg) patterns
 - Inspired by modern summarization tools and the TL;DR movement
 
 ### Special Thanks
-
-- WordPress Core Contributors for the amazing Block Editor
-- Chrome AI team for the Summarizer API
 - All contributors who help improve this plugin
 - The WordPress community for continued support
-
-## 📊 Stats & Badges
-
-![GitHub stars](https://img.shields.io/github/stars/theaminuli/ai-summarizer?style=social)
-![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/ai-summarizer?style=flat-square)
-![WordPress Plugin Active Installations](https://img.shields.io/wordpress/plugin/installs/ai-summarizer?style=flat-square)
-![WordPress Plugin Rating](https://img.shields.io/wordpress/plugin/rating/ai-summarizer?style=flat-square)
 
 ## 📝 Changelog
 
@@ -657,10 +546,10 @@ This plugin is licensed under the GPL-2.0-or-later license. See the [LICENSE](LI
 
 <div align="center">
 
-**[⬆ Back to Top](#ai-summarizer---tldr--content-summary-buttons)**
+**[⬆ Back to Top](#pointwise-summary---ai-powered-tldr--content-summary-buttons)**
 
 Made with ❤️ for the WordPress Community
 
-[Website](https://theaminul.com) • [GitHub](https://github.com/theaminuli) • [WordPress.org](https://wordpress.org/plugins/ai-summarizer/)
+[Website](https://theaminul.com) • [GitHub](https://github.com/theaminulai) • [WordPress.org](https://wordpress.org/plugins/pointwise-summary/)
 
 </div>

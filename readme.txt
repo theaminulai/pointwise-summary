@@ -1,20 +1,20 @@
-=== AI Summarizer - TLDR Text Summary & Content Condenser ===
+=== AI Summarizer – AI-Powered TL;DR, Content Summary & Social Sharing ===
 Contributors:      theaminuldev, iqbal1hossain
 Tags:              summarizer, tldr, ai, summary, text-summarizer, article-summary, summarizing-tool, content-summary, summary-generator, quick-summary
 Requires at least: 6.1
 Tested up to:      6.9
 Requires PHP:      7.4
-Stable tag:        0.4.0
-License:           GPL-2.0-or-later
-License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+Stable tag:        0.5.0
+License:           GPL-3.0-or-later
+License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 
-AI-powered summarizing tool with 6 models (ChatGPT, Claude, Gemini, Grok). Generate TL;DR summaries, key points & condensed content. Text summarizer plugin for WordPress with auto-insert buttons!
+AI-powered summarizing tool with ChatGPT, Claude, Gemini, and Grok support. Generate TL;DR summaries, key points, and condensed content with customizable AI summary buttons and auto-insert support.
 
 == Description ==
 
 **Too Long; Didn't Read (TL;DR)?** The most powerful AI summarization plugin for WordPress! This summarizing tool generates instant TL;DR summaries using 6 AI models: ChatGPT, Claude, Gemini, Grok, Perplexity, and Google AI. Add customizable "Summarize" and "Get TL;DR" buttons that can be placed anywhere with automatic insertion capabilities.
 
-**🚀 Boost Your Site's Authority & SEO:** When users engage with your content through TL;DR summaries, it increases time on page, reduces bounce rates, and improves user experience metrics—all signals that AI search engines use to build your site's authority and trustworthiness. Better engagement means higher visibility, making your content more likely to be referenced by AI systems and rank higher in WordPress search results.
+**Boost Your Site's Authority & SEO:** When users engage with your content through TL;DR summaries, it increases time on page, reduces bounce rates, and improves user experience metrics—all signals that AI search engines use to build your site's authority and trustworthiness. Better engagement means higher visibility, making your content more likely to be referenced by AI systems and rank higher in WordPress search results.
 
 **Perfect for:** Bloggers, content creators, news sites, students, researchers, educators, and anyone who wants to make long-form content more accessible with automatic text summarization.
 
@@ -36,7 +36,7 @@ In today's fast-paced digital world, readers scan before committing time to full
 * **Increase Engagement** - Summaries encourage readers to explore full content
 * **Boost SEO** - Better user metrics (lower bounce, higher time-on-page) signal quality to search engines
 
-= What is AI Summarizer? =
+= What is Pointwise Summary? =
 
 AI Summarizer is a WordPress summarizing tool that combines three essential features:
 
@@ -46,22 +46,22 @@ AI Summarizer is a WordPress summarizing tool that combines three essential feat
 
 **Why This Matters:** In the age of information overload, readers scan content before committing time. This article summarizer plugin helps visitors quickly understand if your content is worth their time, improving engagement and reducing bounce rates.
 
-= Why Choose AI Summarizer? =
+= Why Choose Pointwise Summary? =
 
-**🤖 6 AI Models** - ChatGPT, Claude, Gemini, Grok, Perplexity & Google AI Model (plus Chrome's built-in Gemini Nano for on-device summarization)
+**🤖 6 AI Models** - ChatGPT, Claude, Gemini, Grok, Perplexity & Google AI Model (Upcoming: plus Chrome's built-in Gemini Nano for on-device summarization)
 **🎨 Full Customization** - Place buttons anywhere you want, complete design control
 **⚡ Auto-Insertion** - Automatically add buttons before/after title or content
 **📍 Multiple Display Options** - Gutenberg blocks, floating action button, shortcodes, or auto-insert
 **🎯 Flexible Placement** - Total control over where and how buttons appear
 **📚 Reader-Friendly** - Modern web users scan content. Give them quick access to summaries
-**⚙️ Per-Post Control** - Different settings, prompts, and display options for each post
+**⚙️ Per-Post Control (Upcoming)** - Different settings, prompts, and display options for each post
 **💡 5 Visual Styles** - Default, brand colors, minimal, dark, and icons-only
 **🔧 Easy Integration** - Works seamlessly with any WordPress theme
 **🚀 Lightweight & Fast** - Optimized code with minimal impact
 **♿ Accessible** - WCAG 2.1 AA compliant with full keyboard support
 **📉 Reduce Bounce Rate** - Help visitors find relevant content faster, keeping them engaged longer
 **🎯 Better UX** - Provide "TL;DR" sections that respect your readers' time
-**🌟 Chrome AI Ready** - Prepared for integration with Chrome's built-in Summarizer API (Gemini Nano)
+**🌟 Chrome AI Ready (Upcoming)** - Prepared for integration with Chrome's built-in Summarizer API (Gemini Nano)
 
 = 🤖 AI Models Supported =
 
@@ -101,7 +101,7 @@ AI Summarizer is a WordPress summarizing tool that combines three essential feat
 * Available in most countries
 * Fast and convenient
 
-**🔒 Chrome Built-in AI (Gemini Nano)** - On-device privacy-friendly summarization
+**🔒Upcoming: Chrome Built-in AI ( Gemini Nano)** - On-device privacy-friendly summarization
 
 * AI summarization without API keys
 * On-device processing (your data never leaves your browser)
@@ -111,12 +111,12 @@ AI Summarizer is a WordPress summarizing tool that combines three essential feat
 
 = ✨ Core Features =
 
-**Summarization Features:**
+**Pointwise Summary Features:**
 
 ✅ One-click AI summary generation
 ✅ Custom prompts per AI model
 ✅ Adjustable summary lengths (short, medium, detailed)
-✅ Per-post prompt overrides
+✅ Per-post prompt overrides (Upcoming)
 ✅ Multiple summary types (TL;DR, key-points, headlines)
 ✅ Automatic source citation
 ✅ Multi-language support (50+ languages)
@@ -124,11 +124,10 @@ AI Summarizer is a WordPress summarizing tool that combines three essential feat
 **🎨 Complete Customization & Flexible Placement:**
 
 **Place Buttons Anywhere You Want:**
-✅ Drag-and-drop with Gutenberg block editor
 ✅ Automatic insertion before/after title or content
 ✅ Floating action button that follows users
-✅ Manual shortcode placement in templates
-✅ Per-post placement overrides
+✅ Manual shortcode placement in templates (Upcoming: REST API support)
+✅ Per-post placement overrides (Upcoming: per-post type control)
 ✅ Complete design control
 
 **Automatic Button Insertion:**
@@ -138,10 +137,10 @@ Set it once, buttons appear everywhere automatically!
 ✅ Before content - Pre-read summary access
 ✅ After content - Quick recap for reference
 ✅ Per-post type control - Different rules for posts, pages, custom post types
-✅ Individual post overrides - Customize per article
+✅ Individual post overrides (Upcoming) - Customize per article
 
 **Floating Action Button (FAB):**
-✅ Position: bottom-right, bottom-left, top-right, top-left, center-left, center-right
+✅ Position: bottom-right, bottom-left, top-right, top-left
 ✅ Customizable appearance and colors
 ✅ Mobile-responsive
 ✅ Smooth animations
@@ -149,34 +148,26 @@ Set it once, buttons appear everywhere automatically!
 
 **📝 Design & Display Options:**
 
-**Gutenberg Block System:**
-✅ Horizontal or vertical button layouts
-✅ Drag-and-drop interface
-✅ Live preview in editor
-✅ Block transformations (paragraphs → buttons)
-✅ Template system for quick setup
-
 **Automatic Inline Insertion:**
 ✅ Before title
 ✅ After title
 ✅ Before content
 ✅ After content
 ✅ Both positions
-✅ Per-post type control
+✅ Per-post type control (Upcoming: per-post type control)
 
-**Manual Shortcode:**
+**Manual Shortcode (Upcoming):**
 ```php
-[ai_summarizer]
-[ai_summarizer buttons="chatgpt,claude,gemini"]
-[ai_summarizer style="minimal" show_title="false"]
-[ai_summarizer style="icons-only" icon_style="circular"]
+[pointwise_summary]
+[pointwise_summary buttons="chatgpt,claude,gemini"]
+[pointwise_summary style="minimal" show_title="false"]
+[pointwise_summary style="icons-only" icon_style="circular"]
 ```
 
 **Visual Customization:**
 ✅ 5 predefined visual styles (default, brand, minimal, dark, icons-only)
 ✅ Icons-only mode with circular or square shapes
 ✅ Custom colors, gradients, and backgrounds
-✅ Typography controls (font size, weight, line height)
 ✅ Border radius, spacing, and padding options
 ✅ Hover effects and smooth transitions
 ✅ Responsive design for all devices
@@ -208,6 +199,7 @@ Set it once, buttons appear everywhere automatically!
 **🌐 Content-Heavy Websites** - Improve content consumption, user engagement, and reduce bounce rates with this text summarizer
 
 **Who Benefits from This Summarizing Tool:**
+
 * Bloggers who write long-form content
 * News sites with lengthy articles
 * Students needing quick summaries
@@ -222,11 +214,11 @@ Set it once, buttons appear everywhere automatically!
 
 **Quick Setup:**
 
-1. Add the "Summarize Button" block to any post or page
-2. Customize button text ("Summarize", "Get TL;DR", "Quick Summary", etc.)
-3. Link buttons to your summary sections or trigger AI summarization
-4. Style buttons to match your website design
-5. Publish and help readers navigate your content efficiently
+1. Go tool -> AI Summary (TL;DR) -> AI Settings
+2. Customize button text AI Summary (TL;DR) -> Advanced Settings -> ("Summarize", "Get TL;DR", "Quick Summary", etc.)
+4. Style AI Summary (TL;DR) -> Display Settings -> Style -> buttons to match your website design
+5. Choose placement AI Summary (TL;DR) -> Display Settings -> Automatic Insertion -> ("Before Title", "After Title", "Before Content", "After Content")
+6. Save changes and view your posts to see the new summary buttons in action!
 
 
 == Installation ==
@@ -234,16 +226,16 @@ Set it once, buttons appear everywhere automatically!
 = From WordPress Dashboard =
 
 1. Navigate to Plugins > Add New
-2. Search for "AI Summarizer"
+2. Search for "Pointwise Summary"
 3. Click "Install Now" and then "Activate"
 4. The block will be available in the block editor under the Design category
 
 = Manual Installation =
 
 1. Download the plugin zip file
-2. Upload the plugin files to the `/wp-content/plugins/ai-summarizer` directory
+2. Upload the plugin files to the `/wp-content/plugins/pointwise-summary` directory
 3. Activate the plugin through the 'Plugins' screen in WordPress
-4. Start using the AI Summarizer block in your posts and pages
+4. Start using the Pointwise Summary block in your posts and pages
 
 
 == Frequently Asked Questions ==
@@ -255,10 +247,6 @@ TL;DR stands for "Too Long; Didn't Read." It's an internet acronym (added to Oxf
 = How does AI Summarizer work? =
 
 AI Summarizer integrates with 6 AI models for automatic summarization. You can use Chrome's built-in Gemini Nano for on-device summarization, or optionally integrate with AI APIs (ChatGPT, Claude, Gemini, Grok, Perplexity, Google AI) if you want additional features. We're continuously expanding AI integration capabilities.
-
-= How do I add summary buttons to my content? =
-
-Simply edit any post or page in the Gutenberg editor, click the "+" button, and search for "Summarize Button" or find it under the Design category. The block will be inserted with default buttons that you can customize.
 
 = Does this plugin actually summarize content with AI? =
 
@@ -276,14 +264,9 @@ Yes! You can use Chrome's built-in Gemini Nano for on-device AI summarization wi
 
 Absolutely! You have full control over:
 * Button colors, gradients, and backgrounds
-* Text size, font family, and weight
 * Border styles, radius, and shadows
 * Spacing, padding, and margins
 * Hover effects and animations
-
-= How do I create vertical button layouts? =
-
-Select your Summarize Button block, then in the block settings sidebar (right panel), look for Layout Options and change the orientation from "Horizontal" to "Vertical."
 
 = Is this compatible with my WordPress theme? =
 
@@ -292,10 +275,6 @@ Yes! The plugin is built using native WordPress Gutenberg components and follows
 = Does it work on mobile devices? =
 
 Yes, the buttons are fully responsive and automatically adapt to different screen sizes. They look great on phones, tablets, and desktops.
-
-= Can I use multiple summarize button blocks on one page? =
-
-Yes! You can add as many Summarize Button blocks as you need throughout your content. Each block can be styled independently.
 
 = Is it accessible for users with disabilities? =
 
@@ -313,28 +292,15 @@ Yes, all button text is fully customizable and supports WordPress translation fu
 
 TLDR This and DeCopy.ai are external web-based summarizers with usage limits and costs. AI Summarizer is a native WordPress plugin that integrates directly into your site with Gutenberg blocks, offers 6 AI models, automatic insertion, and works offline with Gemini Nano.
 
-== Screenshots ==
-
-1. Summarize Button block in the Gutenberg editor with live preview
-2. Comprehensive styling controls - colors, typography, spacing, borders
-3. Horizontal button layout - perfect for article headers
-4. Vertical button stack - ideal for sidebar widgets
-5. Customized TL;DR buttons with gradients and modern design
-6. Mobile-responsive layout showing buttons on different devices
-7. Block settings panel with layout and alignment options
-8. Button transformations - convert paragraphs to summary buttons
-9. Real-world example - blog post with "Get Summary" button
-10. Accessibility features - keyboard focus and screen reader support
 
 == Usage ==
 
 = Basic Setup =
 
-1. **Add Block**: In the editor, click "+" → Search "Summarize Button" → Insert
-2. **Add Buttons**: Click "+" inside the block to add individual buttons
-3. **Customize Text**: Change default text to "TL;DR", "Quick Summary", "Key Points", etc.
-4. **Link Buttons**: Add URLs or anchor links (#summary) to your summary sections
-5. **Style Buttons**: Use sidebar settings to customize colors, fonts, and spacing
+1. Install and activate the plugin
+2. Go to AI Summary (TL;DR) -> AI Settings to configure your AI models and prompts
+3. Go to AI Summary (TL;DR) -> Display Settings to customize button appearance and placement
+4. Save changes and view your posts to see the new summary buttons in action!
 
 = Pro Tips =
 
@@ -356,15 +322,13 @@ TLDR This and DeCopy.ai are external web-based summarizers with usage limits and
 * Add icons using emoji: "⚡ Quick Read" or "📝 Full Article"
 * Test different button positions to find what works best
 
-= Creating Summary Sections =
-
-1. Add a heading block below your content (e.g., "Summary" or "TL;DR")
-2. Give it an HTML anchor (Advanced → HTML Anchor: "summary")
-3. Link your summary button to #summary
-4. Visitors click the button and jump straight to your summary!
-
 
 == Changelog ==
+
+= 0.5.0 - 2026-01-20 =
+* Fixed: readme.txt short description to improve clarity and conciseness
+* Fixed: Removed 'summarizer' and 'etc' tags from the plugin's readme.txt to streamline tag list
+* Added: Add development section with build instructions
 
 = 0.4.0 - 2025-12-21 =
 * Enhanced: Improved block performance and registration system
@@ -380,8 +344,7 @@ TLDR This and DeCopy.ai are external web-based summarizers with usage limits and
 * Fixed: Button group spacing issues on some themes
 
 = 0.2.0 - 2025-01-09 =
-* Fixed: Renamed plugin to AI Summarizer for clarity and WordPress.org compliance
-* Updated: Text domain changed to ai-summarizer for proper internationalization
+* Updated: Text domain changed to pointwise-summary for proper internationalization
 * Improved: Enhanced documentation with TL;DR explanations
 * Enhanced: Better SEO optimization for plugin directory
 

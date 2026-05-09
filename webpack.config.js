@@ -17,6 +17,11 @@ module.exports = {
 		'admin/admin': path.resolve(
 			process.cwd(),
 			'src/admin',
+			'index.tsx'
+		),
+		'frontend/frontend': path.resolve(
+			process.cwd(),
+			'src/frontend',
 			'index.js'
 		),
 	},
