@@ -1,12 +1,12 @@
 <?php
 /**
  * Plugin Name:       Pointwise Summary
- * Description:       Create instant TL;DR summaries with AI-powered summarization buttons. Add "Summarize" and "Get TL;DR" buttons to help readers quickly grasp article content.
+ * Description:       AI-powered text summarizer with ChatGPT, Claude, Gemini, and Grok support. Generate TL;DR summaries, key points, and condensed content with customizable AI summary buttons and auto-insert support.
  * Version:           0.5.0
  * Requires at least: 6.1
  * Requires PHP:      7.4
- * License:           GPL-2.0-or-later
- * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ * License:           GPL-3.0-or-later
+ * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:       pointwise-summary
  *
  * @package PointwiseSummary
