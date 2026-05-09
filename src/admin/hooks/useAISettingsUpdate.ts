@@ -12,7 +12,7 @@ import type { RootState } from '../store/types';
  * The hook merges optional override values with the current Redux state,
  * saves the result via the API, and rehydrates the store from the API response.
  */
-export function useAISettingsUpdate(){
+export function useAISettingsUpdate() {
 	const dispatch = useDispatch();
 	const aiSettings = useSelector( ( state: RootState ) => state.aiSettings );
 	const [ isSaving, setIsSaving ] = useState( false );
@@ -24,19 +24,24 @@ export function useAISettingsUpdate(){
 	 */
 	const persistSettings = useCallback(
 		async ( overrideSettings?: Partial< RootState[ 'aiSettings' ] > ) => {
-			setIsSaving(true);
+			setIsSaving( true );
 			try {
 				const payload = {
 					...aiSettings,
 					...overrideSettings,
 				};
-				const data = await aiSettingsApi.update(payload);
+				const data = await aiSettingsApi.update( payload );
 
 				if ( data ) {
 					dispatch( setAiSettings( data ) );
 				}
 			} catch ( error ) {
-				toast.error( __('Failed to save settings. Please try again.', 'pointwise-summary') );
+				toast.error(
+					__(
+						'Failed to save settings. Please try again.',
+						'pointwise-summary'
+					)
+				);
 			} finally {
 				setIsSaving( false );
 			}

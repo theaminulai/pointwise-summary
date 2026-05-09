@@ -40,13 +40,17 @@ export const LivePreviewPanel: React.FC = () => {
 					<div className="p-6 pb-4 border-b border-gray-200">
 						<Title
 							title={ __( 'Live Preview', 'pointwise-summary' ) }
-							description={ __( 'See how your button will look', 'pointwise-summary' ) }
+							description={ __(
+								'See how your button will look',
+								'pointwise-summary'
+							) }
 						/>
 					</div>
 					<div className="p-6">
 						<div className="bg-gray-50 rounded-lg p-6 min-h-[400px] relative border-2 border-dashed border-gray-200">
 							<div className="space-y-4">
-								{ inlinePosition === 'before-title' && isInlineMode && (
+								{ inlinePosition === 'before-title' &&
+									isInlineMode && (
 										<PreviewButton
 											style={ buttonStyle }
 											shape={ buttonShape }
@@ -60,7 +64,8 @@ export const LivePreviewPanel: React.FC = () => {
 									<h3 className="font-semibold text-gray-900 text-sm mb-2">
 										{ previewContent.title }
 									</h3>
-									{ inlinePosition === 'after-title' && isInlineMode && (
+									{ inlinePosition === 'after-title' &&
+										isInlineMode && (
 											<div className="mb-3">
 												<PreviewButton
 													style={ buttonStyle }
@@ -76,7 +81,8 @@ export const LivePreviewPanel: React.FC = () => {
 												/>
 											</div>
 										) }
-									{ inlinePosition === 'before-content' && isInlineMode && (
+									{ inlinePosition === 'before-content' &&
+										isInlineMode && (
 											<div className="mb-3">
 												<PreviewButton
 													style={ buttonStyle }
@@ -95,7 +101,8 @@ export const LivePreviewPanel: React.FC = () => {
 									<p className="text-xs text-gray-600 leading-relaxed">
 										{ previewContent.body }
 									</p>
-									{ inlinePosition === 'after-content' && isInlineMode && (
+									{ inlinePosition === 'after-content' &&
+										isInlineMode && (
 											<div className="mt-3">
 												<PreviewButton
 													style={ buttonStyle }
@@ -119,15 +126,12 @@ export const LivePreviewPanel: React.FC = () => {
 									className={ `absolute ${ getFloatingPositionClass(
 										floatingPosition
 									) }` }
-									style={ {
-										opacity: enableScrollTrigger ? 0.7 : 1,
-									} }
 								>
 									<PreviewButton
 										style={ buttonStyle }
 										shape={ buttonShape }
 										iconDisplay={ iconDisplay }
-											displayMode={ displayMode }
+										displayMode={ displayMode }
 										floatingPosition={ floatingPosition }
 										alignment="center"
 										animated={ enableAnimations }
@@ -138,19 +142,22 @@ export const LivePreviewPanel: React.FC = () => {
 						</div>
 
 						{ enableScrollTrigger && isFloatingMode && (
-								<div className="mt-4 p-3 bg-indigo-50 rounded-lg border border-indigo-100">
-									<div className="flex items-start gap-2">
-										<Info className="w-4 h-4 text-indigo-600 mt-0.5 shrink-0" />
+							<div className="mt-4 p-3 bg-indigo-50 rounded-lg border border-indigo-100">
+								<div className="flex items-start gap-2">
+									<Info className="w-4 h-4 text-indigo-600 mt-0.5 shrink-0" />
 									<p className="text-xs text-indigo-900 m-0!">
 										{ sprintf(
 											/* translators: %s is replaced with scroll trigger percentage */
-											__( 'Floating button will appear after %s scroll', 'pointwise-summary' ),
+											__(
+												'Floating button will appear after %s scroll',
+												'pointwise-summary'
+											),
 											`%${ scrollTrigger }`
 										) }
-										</p>
-									</div>
+									</p>
 								</div>
-							) }
+							</div>
+						) }
 					</div>
 				</div>
 				<HelpCard />

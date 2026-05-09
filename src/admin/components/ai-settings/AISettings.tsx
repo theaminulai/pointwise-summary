@@ -12,7 +12,7 @@ import { GlobalSettings } from './GlobalSettings';
 
 /**
  * AISettings Component.
- * 
+ *
  * Main entry point for the AI Settings page.
  * Handles the initial data fetch and global reset functionality.
  *
@@ -30,7 +30,7 @@ export const AISettings: React.FC = () => {
 		setIsLoading( true );
 		try {
 			const data = await aiSettingsApi.reset();
-			if (data) {
+			if ( data ) {
 				dispatch( setAiSettings( data ) );
 			}
 		} finally {
@@ -42,8 +42,11 @@ export const AISettings: React.FC = () => {
 		<div className="space-y-8">
 			{ /* Header */ }
 			<Title
-				title={ __( "AI Settings", 'pointwise-summary' ) }
-				description={ __( "Configure AI platforms and customize prompts for summary generation", 'pointwise-summary' ) }
+				title={ __( 'AI Settings', 'pointwise-summary' ) }
+				description={ __(
+					'Configure AI platforms and customize prompts for summary generation',
+					'pointwise-summary'
+				) }
 			/>
 
 			{ /* Global Settings */ }

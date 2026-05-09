@@ -30,14 +30,34 @@ const Sidebar: React.FC = () => {
 	);
 
 	const menuItems = [
-		{ path: '/overview', label: __( 'Overview', 'pointwise-summary' ), icon: LayoutDashboard },
-		{ path: '/ai-settings', label: __( 'AI Settings', 'pointwise-summary' ), icon: Sparkles },
-		{ path: '/display', label: __( 'Display Settings', 'pointwise-summary' ), icon: Eye },
-		{ path: '/social', label: __( 'Social Sharing', 'pointwise-summary' ), icon: Share2 },
-		{ path: '/advanced', label: __( 'Advanced', 'pointwise-summary' ), icon: Settings },
-		{ path: '/analytics', label: __( 'Analytics', 'pointwise-summary' ), icon: BarChart3 },
+		// { path: '/overview', label: __( 'Overview', 'pointwise-summary' ), icon: LayoutDashboard },
+		{
+			path: '/ai-settings',
+			label: __( 'AI Settings', 'pointwise-summary' ),
+			icon: Sparkles,
+		},
+		{
+			path: '/display',
+			label: __( 'Display Settings', 'pointwise-summary' ),
+			icon: Eye,
+		},
+		{
+			path: '/social',
+			label: __( 'Social Sharing', 'pointwise-summary' ),
+			icon: Share2,
+		},
+		{
+			path: '/advanced',
+			label: __( 'Advanced', 'pointwise-summary' ),
+			icon: Settings,
+		},
+		// { path: '/analytics', label: __( 'Analytics', 'pointwise-summary' ), icon: BarChart3 },
 		// { path: '/per-post', label: __( 'Per-Post Settings', 'pointwise-summary' ), icon: FileEdit },
-		{ path: '/help', label: __( 'Help & Support', 'pointwise-summary' ), icon: HelpCircle },
+		{
+			path: '/help',
+			label: __( 'Help & Support', 'pointwise-summary' ),
+			icon: HelpCircle,
+		},
 	];
 
 	return (
@@ -67,7 +87,10 @@ const Sidebar: React.FC = () => {
 						<NotepadText className="w-10 h-10 text-indigo-500" />
 						<div>
 							<h1 className="text-xl font-bold! text-gray-900">
-								{ __( 'AI Summary (TL;DR)', 'pointwise-summary' ) }
+								{ __(
+									'AI Summary (TL;DR)',
+									'pointwise-summary'
+								) }
 							</h1>
 							<p className="text-xs text-gray-500 m-0!">v1.0.0</p>
 						</div>

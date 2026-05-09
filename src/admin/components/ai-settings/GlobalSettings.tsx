@@ -9,7 +9,7 @@ import { Select, Toggle } from '../common';
 
 /**
  * GlobalSettings Component.
- * 
+ *
  * Manages core AI behavior settings such as summary length,
  * heading inclusion, and metadata context.
  *
@@ -18,11 +18,7 @@ import { Select, Toggle } from '../common';
 export const GlobalSettings: React.FC = () => {
 	const dispatch = useDispatch();
 	const { aiSettings, persistSettings } = useAISettingsUpdate();
-	const {
-		summaryLength,
-		includeHeadings,
-		includeMetadata,
-	} = aiSettings;
+	const { summaryLength, includeHeadings, includeMetadata } = aiSettings;
 
 	/**
 	 * Updates the global summary length and persists the change.
@@ -75,13 +71,19 @@ export const GlobalSettings: React.FC = () => {
 				{ /* LEFT SIDE */ }
 				<div className="space-y-4">
 					<Select
-						label={ __( 'Default Summary Length', 'pointwise-summary' ) }
+						label={ __(
+							'Default Summary Length',
+							'pointwise-summary'
+						) }
 						value={ summaryLength }
 						onChange={ handleSummaryLengthChange }
 						options={ [
 							{
 								value: 'short',
-								label: __( 'Short (2–3 points)', 'pointwise-summary' ),
+								label: __(
+									'Short (2–3 points)',
+									'pointwise-summary'
+								),
 								description: __(
 									'A brief summary with the most essential points (150–250 words).',
 									'pointwise-summary'
@@ -89,7 +91,10 @@ export const GlobalSettings: React.FC = () => {
 							},
 							{
 								value: 'medium',
-								label: __( 'Medium (3–5 points)', 'pointwise-summary' ),
+								label: __(
+									'Medium (3–5 points)',
+									'pointwise-summary'
+								),
 								description: __(
 									'A balanced summary with key points (250–350 words).',
 									'pointwise-summary'
@@ -97,9 +102,34 @@ export const GlobalSettings: React.FC = () => {
 							},
 							{
 								value: 'detailed',
-								label: __( 'Detailed (5–7 points)', 'pointwise-summary' ),
+								label: __(
+									'Detailed (5–7 points)',
+									'pointwise-summary'
+								),
 								description: __(
 									'An in-depth summary covering all important aspects (350–500 words).',
+									'pointwise-summary'
+								),
+							},
+							{
+								value: 'large',
+								label: __(
+									'Large (8–12 points)',
+									'pointwise-summary'
+								),
+								description: __(
+									'A comprehensive summary with extensive coverage (500–800 words).',
+									'pointwise-summary'
+								),
+							},
+							{
+								value: 'extra',
+								label: __(
+									'Extra Large (12+ points)',
+									'pointwise-summary'
+								),
+								description: __(
+									'An exhaustive summary with detailed analysis (800+ words).',
 									'pointwise-summary'
 								),
 							},
@@ -111,21 +141,36 @@ export const GlobalSettings: React.FC = () => {
 				{ /* RIGHT SIDE */ }
 				<div className="md:border-l md:border-gray-200 md:pl-6 gap-3 flex flex-col">
 					<label className="block text-sm font-medium text-gray-900 pt-2.5">
-						{ __( 'AI Prompts for better context', 'pointwise-summary' ) }
+						{ __(
+							'AI Prompts for better context',
+							'pointwise-summary'
+						) }
 					</label>
 					<Toggle
 						checked={ includeHeadings }
 						onChange={ handleIncludeHeadingsChange }
-						label={ __( 'Include Heading Structure', 'pointwise-summary' ) }
-						description={ __( 'Include H1, H2, H3 headings in AI prompts for better context', 'pointwise-summary' ) }
+						label={ __(
+							'Include Heading Structure',
+							'pointwise-summary'
+						) }
+						description={ __(
+							'Include H1, H2, H3 headings in AI prompts for better context',
+							'pointwise-summary'
+						) }
 						className="border border-gray-200 p-4 rounded-lg"
 					/>
 
 					<Toggle
 						checked={ includeMetadata }
 						onChange={ handleIncludeMetadataChange }
-						label={ __( 'Include Post Metadata', 'pointwise-summary' ) }
-						description={ __( 'Include title, URL, and meta description in prompts', 'pointwise-summary' ) }
+						label={ __(
+							'Include Post Metadata',
+							'pointwise-summary'
+						) }
+						description={ __(
+							'Include Author, Date and meta description ( Excerpt ) in prompts',
+							'pointwise-summary'
+						) }
 						className="border border-gray-200 p-4 rounded-lg"
 					/>
 				</div>

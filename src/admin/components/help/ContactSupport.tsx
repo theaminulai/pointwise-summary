@@ -3,7 +3,7 @@ import { MessageCircleQuestionMark } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../store/types';
 
-export const ContactSupport: React.FC = (  ) => {
+export const ContactSupport: React.FC = () => {
 	const contactSupport = useSelector(
 		( state: RootState ) => state.help.contactSupport
 	);

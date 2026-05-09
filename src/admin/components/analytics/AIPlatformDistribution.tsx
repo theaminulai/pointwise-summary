@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
 import type { RootState } from '../../store/types';
 
-export const AIPlatformDistribution: React.FC = (  ) => {
+export const AIPlatformDistribution: React.FC = () => {
 	const aiPlatformData = useSelector(
 		( state: RootState ) => state.analytics.aiPlatformData
 	);

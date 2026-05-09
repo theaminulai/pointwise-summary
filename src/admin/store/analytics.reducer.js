@@ -9,20 +9,20 @@ import {
 	SET_ANALYTICS_RANGE,
 } from './analytics.actions';
 
-const clampToRange = (value, min, max) =>
-	Math.max(min, Math.min(value, max));
+const clampToRange = ( value, min, max ) =>
+	Math.max( min, Math.min( value, max ) );
 
-const toDateValue = (value) => new Date(`${value}T00:00:00Z`);
+const toDateValue = ( value ) => new Date( `${ value }T00:00:00Z` );
 
-const getRangeDays = (startDate, endDate) => {
-	const start = toDateValue(startDate);
-	const end = toDateValue(endDate);
-	const diff = Math.floor((end - start) / 86400000) + 1;
-	return clampToRange(diff, 1, 365);
+const getRangeDays = ( startDate, endDate ) => {
+	const start = toDateValue( startDate );
+	const end = toDateValue( endDate );
+	const diff = Math.floor( ( end - start ) / 86400000 ) + 1;
+	return clampToRange( diff, 1, 365 );
 };
 
-const scaleValue = (value, scale) =>
-	Math.max(1, Math.round(value * scale));
+const scaleValue = ( value, scale ) =>
+	Math.max( 1, Math.round( value * scale ) );
 
 const monthLabels = [
 	'Jan',
@@ -39,26 +39,26 @@ const monthLabels = [
 	'Dec',
 ];
 
-const formatShortDate = (dateValue) => {
-	const month = monthLabels[dateValue.getUTCMonth()];
-	const day = String(dateValue.getUTCDate()).padStart(2, '0');
-	return `${month} ${day}`;
+const formatShortDate = ( dateValue ) => {
+	const month = monthLabels[ dateValue.getUTCMonth() ];
+	const day = String( dateValue.getUTCDate() ).padStart( 2, '0' );
+	return `${ month } ${ day }`;
 };
 
-const buildDailySummaryData = (startDate, days) => {
-	const start = toDateValue(startDate);
+const buildDailySummaryData = ( startDate, days ) => {
+	const start = toDateValue( startDate );
 	const output = [];
-	for (let i = 0; i < days; i += 1) {
-		const current = new Date(start.getTime() + i * 86400000);
+	for ( let i = 0; i < days; i += 1 ) {
+		const current = new Date( start.getTime() + i * 86400000 );
 		const summaries =
-			40 + ((i * 7) % 35) + Math.round(12 * Math.sin(i / 5));
-		output.push({
-			date: formatShortDate(current),
-			dateKey: current.toISOString().slice(0, 10),
+			40 + ( ( i * 7 ) % 35 ) + Math.round( 12 * Math.sin( i / 5 ) );
+		output.push( {
+			date: formatShortDate( current ),
+			dateKey: current.toISOString().slice( 0, 10 ),
 			summaries,
 			views: summaries * 3 + 60,
-			shares: Math.max(1, Math.round(summaries * 0.4)),
-		});
+			shares: Math.max( 1, Math.round( summaries * 0.4 ) ),
+		} );
 	}
 	return output;
 };
@@ -708,26 +708,26 @@ const analyticsRangeBounds = {
 	yearly: { startDate: '2025-04-01', endDate: '2026-03-01' },
 };
 
-const filterByRange = (items, range) => {
-	const bounds = analyticsRangeBounds[range];
-	if (!bounds) {
+const filterByRange = ( items, range ) => {
+	const bounds = analyticsRangeBounds[ range ];
+	if ( ! bounds ) {
 		return [];
 	}
-	const start = toDateValue(bounds.startDate);
-	const end = toDateValue(bounds.endDate);
-	return items.filter((item) => {
-		const itemDate = toDateValue(item.dateKey);
+	const start = toDateValue( bounds.startDate );
+	const end = toDateValue( bounds.endDate );
+	return items.filter( ( item ) => {
+		const itemDate = toDateValue( item.dateKey );
 		return itemDate >= start && itemDate <= end;
-	});
+	} );
 };
 
-const getRangeData = (range) => ({
-	summaryData: filterByRange(analyticsRangeData.summaryData, range),
-	aiPlatformData: filterByRange(analyticsRangeData.aiPlatformData, range),
-	socialShareData: filterByRange(analyticsRangeData.socialShareData, range),
-	topPosts: filterByRange(analyticsRangeData.topPosts, range),
-	insights: filterByRange(analyticsRangeData.insights, range),
-});
+const getRangeData = ( range ) => ( {
+	summaryData: filterByRange( analyticsRangeData.summaryData, range ),
+	aiPlatformData: filterByRange( analyticsRangeData.aiPlatformData, range ),
+	socialShareData: filterByRange( analyticsRangeData.socialShareData, range ),
+	topPosts: filterByRange( analyticsRangeData.topPosts, range ),
+	insights: filterByRange( analyticsRangeData.insights, range ),
+} );
 
 const emptyRangeData = {
 	summaryData: [],
@@ -737,65 +737,64 @@ const emptyRangeData = {
 	insights: [],
 };
 
-const dailySummaryData = buildDailySummaryData('2025-04-01', 375);
+const dailySummaryData = buildDailySummaryData( '2025-04-01', 375 );
 
-const buildCustomRangeData = (customRange) => {
-	const base = getRangeData('yearly') || emptyRangeData;
+const buildCustomRangeData = ( customRange ) => {
+	const base = getRangeData( 'yearly' ) || emptyRangeData;
 	const start = customRange.startDate || '2025-04-01';
 	const end = customRange.endDate || '2026-04-10';
-	const startValue = toDateValue(start);
-	const endValue = toDateValue(end);
+	const startValue = toDateValue( start );
+	const endValue = toDateValue( end );
 	const safeStart = startValue <= endValue ? start : end;
 	const safeEnd = startValue <= endValue ? end : start;
 
-	const filteredSummary = dailySummaryData.filter((item) => {
-		const itemDate = toDateValue(item.dateKey);
+	const filteredSummary = dailySummaryData.filter( ( item ) => {
+		const itemDate = toDateValue( item.dateKey );
 		return (
-			itemDate >= toDateValue(safeStart) &&
-			itemDate <= toDateValue(safeEnd)
+			itemDate >= toDateValue( safeStart ) &&
+			itemDate <= toDateValue( safeEnd )
 		);
-	});
+	} );
 
-	const daysInRange = getRangeDays(safeStart, safeEnd);
-	const scale = clampToRange(daysInRange / 365, 0.05, 1);
+	const daysInRange = getRangeDays( safeStart, safeEnd );
+	const scale = clampToRange( daysInRange / 365, 0.05, 1 );
 
 	const totalAi = base.aiPlatformData.reduce(
-		(sum, item) => sum + item.value,
+		( sum, item ) => sum + item.value,
 		0
 	);
-	const maxAi = base.aiPlatformData.reduce((max, item) =>
+	const maxAi = base.aiPlatformData.reduce( ( max, item ) =>
 		item.value > max.value ? item : max
 	);
-	const maxAiPercent = Math.round((maxAi.value / totalAi) * 100);
+	const maxAiPercent = Math.round( ( maxAi.value / totalAi ) * 100 );
 
-	const bestDay = (filteredSummary.length
-		? filteredSummary
-		: dailySummaryData
-	).reduce((max, item) =>
+	const bestDay = (
+		filteredSummary.length ? filteredSummary : dailySummaryData
+	).reduce( ( max, item ) =>
 		item.summaries > max.summaries ? item : max
 	);
 
 	return {
 		summaryData: filteredSummary.length
 			? filteredSummary
-			: dailySummaryData.slice(-7),
-		aiPlatformData: base.aiPlatformData.map((item) => ({
+			: dailySummaryData.slice( -7 ),
+		aiPlatformData: base.aiPlatformData.map( ( item ) => ( {
 			...item,
-			value: scaleValue(item.value, scale),
-		})),
-		socialShareData: base.socialShareData.map((item) => ({
+			value: scaleValue( item.value, scale ),
+		} ) ),
+		socialShareData: base.socialShareData.map( ( item ) => ( {
 			...item,
-			value: scaleValue(item.value, scale),
-		})),
-		topPosts: base.topPosts.map((item) => ({
+			value: scaleValue( item.value, scale ),
+		} ) ),
+		topPosts: base.topPosts.map( ( item ) => ( {
 			...item,
-			summaries: scaleValue(item.summaries, scale),
-		})),
+			summaries: scaleValue( item.summaries, scale ),
+		} ) ),
 		insights: [
 			{
 				label: 'Best Performing Day',
 				value: bestDay.date,
-				detail: `${bestDay.summaries} summaries generated`,
+				detail: `${ bestDay.summaries } summaries generated`,
 				accent: 'indigo',
 				bgClass: 'bg-linear-to-br from-blue-50 to-indigo-50',
 				borderClass: 'border-blue-100',
@@ -804,7 +803,7 @@ const buildCustomRangeData = (customRange) => {
 			{
 				label: 'Most Popular AI',
 				value: maxAi.name,
-				detail: `${maxAiPercent}% of all summaries`,
+				detail: `${ maxAiPercent }% of all summaries`,
 				accent: 'green',
 				bgClass: 'bg-linear-to-br from-green-50 to-emerald-50',
 				borderClass: 'border-green-100',
@@ -825,7 +824,7 @@ const buildCustomRangeData = (customRange) => {
 };
 
 const initialState = {
-	...(getRangeData('weekly') || emptyRangeData),
+	...( getRangeData( 'weekly' ) || emptyRangeData ),
 	range: 'weekly',
 	customRange: {
 		startDate: '',
@@ -833,48 +832,42 @@ const initialState = {
 	},
 };
 
-const analyticsReducer = (state = initialState, action) => {
-	switch (action.type) {
-		case SET_ANALYTICS_RANGE:
-			{
-				const nextRange =
-					getRangeData(action.payload)
-						? action.payload
-						: action.payload === 'custom'
-							? 'custom'
-							: 'weekly';
-				if (nextRange === 'custom') {
-					const customData = buildCustomRangeData(
-						state.customRange
-					);
-					return {
-						...state,
-						...customData,
-						range: 'custom',
-					};
-				}
-				const rangeData =
-					getRangeData(nextRange) || emptyRangeData;
-				return {
-					...state,
-					...rangeData,
-					range: nextRange,
-				};
-			}
-		case SET_ANALYTICS_CUSTOM_RANGE:
-			{
-				const nextCustomRange = {
-					startDate: action.payload?.startDate || '',
-					endDate: action.payload?.endDate || '',
-				};
-				const customData = buildCustomRangeData(nextCustomRange);
+const analyticsReducer = ( state = initialState, action ) => {
+	switch ( action.type ) {
+		case SET_ANALYTICS_RANGE: {
+			const nextRange = getRangeData( action.payload )
+				? action.payload
+				: action.payload === 'custom'
+				? 'custom'
+				: 'weekly';
+			if ( nextRange === 'custom' ) {
+				const customData = buildCustomRangeData( state.customRange );
 				return {
 					...state,
 					...customData,
-					customRange: nextCustomRange,
 					range: 'custom',
 				};
 			}
+			const rangeData = getRangeData( nextRange ) || emptyRangeData;
+			return {
+				...state,
+				...rangeData,
+				range: nextRange,
+			};
+		}
+		case SET_ANALYTICS_CUSTOM_RANGE: {
+			const nextCustomRange = {
+				startDate: action.payload?.startDate || '',
+				endDate: action.payload?.endDate || '',
+			};
+			const customData = buildCustomRangeData( nextCustomRange );
+			return {
+				...state,
+				...customData,
+				customRange: nextCustomRange,
+				range: 'custom',
+			};
+		}
 		default:
 			return state;
 	}

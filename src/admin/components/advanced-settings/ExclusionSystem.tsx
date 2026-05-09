@@ -33,22 +33,35 @@ export const ExclusionSystem: React.FC = () => {
 
 	return (
 		<div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-			<h3 className="text-gray-900 mb-4">{ __( 'Exclusion System', 'pointwise-summary' ) }</h3>
+			<h3 className="text-gray-900 mb-4">
+				{ __( 'Exclusion System', 'pointwise-summary' ) }
+			</h3>
 
 			<div className="space-y-4">
 				<div>
 					<label className="block text-sm font-medium text-gray-900 mb-2">
-						{ __( 'Exclude Specific Posts/Pages by ID', 'pointwise-summary' ) }
+						{ __(
+							'Exclude Specific Posts/Pages by ID',
+							'pointwise-summary'
+						) }
 					</label>
 					<input
 						type="text"
 						value={ excludedIds }
-						onChange={ ( e ) => handleExcludedIdsChange( e.target.value ) }
-						placeholder={ __( 'e.g., 12, 45, 789', 'pointwise-summary' ) }
+						onChange={ ( e ) =>
+							handleExcludedIdsChange( e.target.value )
+						}
+						placeholder={ __(
+							'e.g., 12, 45, 789',
+							'pointwise-summary'
+						) }
 						className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
 					/>
 					<p className="text-xs text-gray-500 mt-1">
-						{ __( "Enter post/page IDs separated by commas. Summary buttons won't appear on these posts.", 'pointwise-summary' ) }
+						{ __(
+							"Enter post/page IDs separated by commas. Summary buttons won't appear on these posts.",
+							'pointwise-summary'
+						) }
 					</p>
 				</div>
 			</div>

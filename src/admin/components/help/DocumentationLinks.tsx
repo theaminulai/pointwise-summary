@@ -4,7 +4,7 @@ import { Book, Code, ExternalLink, HelpCircle } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../store/types';
 
-export const DocumentationLinks: React.FC = (  ) => {
+export const DocumentationLinks: React.FC = () => {
 	const documentationLinks = useSelector(
 		( state: RootState ) => state.help.documentationLinks
 	);
@@ -21,7 +21,9 @@ export const DocumentationLinks: React.FC = (  ) => {
 				return (
 					<a
 						key={ link.title }
-						href="#"
+						href={ link.url }
+						target="_blank"
+						rel="noopener noreferrer"
 						className={ `bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6 hover:shadow-md transition-shadow ${ link.cardClass }` }
 					>
 						<div

@@ -7,7 +7,7 @@ import { QuickStartGuide } from './QuickStartGuide';
 import { ShortcodeExamples } from './ShortcodeExamples';
 import { SystemInfo } from './SystemInfo';
 
-export const Help: React.FC = (  ) => {
+export const Help: React.FC = () => {
 	return (
 		<div className="space-y-6 lg:space-y-8">
 			{ /* Header */ }
@@ -19,7 +19,7 @@ export const Help: React.FC = (  ) => {
 			<QuickStartGuide />
 			<DocumentationLinks />
 			<FAQs />
-			<ShortcodeExamples />
+			{ /* <ShortcodeExamples /> */ }
 			<SystemInfo />
 			<ContactSupport />
 		</div>

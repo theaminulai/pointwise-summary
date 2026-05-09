@@ -23,7 +23,10 @@ export const HelpCard: React.FC = () => {
 							{ __( 'Need Help?', 'pointwise-summary' ) }
 						</h4>
 						<p className="text-xs text-gray-600 leading-relaxed m-0!">
-							{ __( 'Use the tabs to configure display mode, position, and style. Changes are shown in real-time in the preview.', 'pointwise-summary' ) }
+							{ __(
+								'Use the tabs to configure display mode, position, and style. Changes are shown in real-time in the preview.',
+								'pointwise-summary'
+							) }
 						</p>
 					</div>
 				</div>

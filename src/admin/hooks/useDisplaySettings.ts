@@ -1,9 +1,11 @@
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setActiveTab, setDisplaySettingField } from '../store/displaySettings.actions';
+import {
+	setActiveTab,
+	setDisplaySettingField,
+} from '../store/displaySettings.actions';
 import type { RootState } from '../store/types';
 import { useDisplaySettingsUpdate } from './useDisplaySettingsUpdate';
-
 
 /** The currently selected tab in the display settings panel. */
 type ActiveTab = RootState[ 'displaySettings' ][ 'activeTab' ];
@@ -16,7 +18,7 @@ type ActiveTab = RootState[ 'displaySettings' ][ 'activeTab' ];
  *
  * @returns Settings state and action handlers.
  */
-export function  useDisplaySettings() {
+export function useDisplaySettings() {
 	const dispatch = useDispatch();
 
 	const settings = useSelector(
@@ -33,7 +35,7 @@ export function  useDisplaySettings() {
 	 * @param value - The new value.
 	 */
 	const changeGroupSetting = useCallback(
-		(group: string, field: string, value: unknown) => {
+		( group: string, field: string, value: unknown ) => {
 			dispatch( setDisplaySettingField( group, field, value ) );
 		},
 		[ dispatch ]

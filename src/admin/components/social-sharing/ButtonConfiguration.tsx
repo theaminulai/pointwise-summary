@@ -23,7 +23,9 @@ export const ButtonConfiguration: React.FC = () => {
 
 	return (
 		<div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-			<h3 className="text-gray-900 mb-4">{ __( 'Button Configuration', 'pointwise-summary' ) }</h3>
+			<h3 className="text-gray-900 mb-4">
+				{ __( 'Button Configuration', 'pointwise-summary' ) }
+			</h3>
 
 			<div className="space-y-6">
 				<Select
@@ -36,20 +38,26 @@ export const ButtonConfiguration: React.FC = () => {
 						{
 							value: 'social-first',
 							label: __( 'Social First', 'pointwise-summary' ),
-							description:
-								__( 'Display social buttons before AI buttons', 'pointwise-summary' ),
+							description: __(
+								'Display social buttons before AI buttons',
+								'pointwise-summary'
+							),
 						},
 						{
 							value: 'ai-first',
 							label: __( 'AI First', 'pointwise-summary' ),
-							description:
-								__( 'Display AI buttons before social buttons', 'pointwise-summary' ),
+							description: __(
+								'Display AI buttons before social buttons',
+								'pointwise-summary'
+							),
 						},
 						{
 							value: 'mixed',
 							label: __( 'Mixed', 'pointwise-summary' ),
-							description:
-								__( 'Alternate between social and AI buttons', 'pointwise-summary' ),
+							description: __(
+								'Alternate between social and AI buttons',
+								'pointwise-summary'
+							),
 						},
 					] }
 				/>

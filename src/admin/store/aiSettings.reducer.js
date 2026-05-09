@@ -19,14 +19,15 @@ const initialState = {
 	includeMetadata: false,
 	globalPrompt: '',
 	useGlobalPrompt: true,
+	enableAiSummary: true,
 	expandedPlatform: null,
 	platforms: [],
 };
 
-const aiSettingsReducer = (state = initialState, action) => {
-	switch (action.type) {
+const aiSettingsReducer = ( state = initialState, action ) => {
+	switch ( action.type ) {
 		case SET_AI_SETTING_FIELD:
-			return { ...state, [action.payload.field]: action.payload.value };
+			return { ...state, [ action.payload.field ]: action.payload.value };
 		case SET_EXPANDED_PLATFORM:
 			return {
 				...state,
@@ -38,16 +39,16 @@ const aiSettingsReducer = (state = initialState, action) => {
 		case TOGGLE_PLATFORM:
 			return {
 				...state,
-				platforms: state.platforms.map((platform) =>
+				platforms: state.platforms.map( ( platform ) =>
 					platform.id === action.payload
-						? { ...platform, enabled: !platform.enabled }
+						? { ...platform, enabled: ! platform.enabled }
 						: platform
 				),
 			};
 		case UPDATE_PLATFORM_PROMPT:
 			return {
 				...state,
-				platforms: state.platforms.map((platform) =>
+				platforms: state.platforms.map( ( platform ) =>
 					platform.id === action.payload.id
 						? { ...platform, prompt: action.payload.prompt }
 						: platform
@@ -56,10 +57,10 @@ const aiSettingsReducer = (state = initialState, action) => {
 		case APPLY_GLOBAL_PROMPT_TO_ALL:
 			return {
 				...state,
-				platforms: state.platforms.map((platform) => ({
+				platforms: state.platforms.map( ( platform ) => ( {
 					...platform,
 					prompt: state.globalPrompt,
-				})),
+				} ) ),
 			};
 		case SET_AI_SETTINGS:
 			return {

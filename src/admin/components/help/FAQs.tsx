@@ -3,7 +3,7 @@ import { HelpCircle } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../store/types';
 
-export const FAQs: React.FC = (  ) => {
+export const FAQs: React.FC = () => {
 	const faqs = useSelector( ( state: RootState ) => state.help.faqs );
 
 	return (

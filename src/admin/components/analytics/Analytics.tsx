@@ -6,7 +6,7 @@ import { SocialShares } from './SocialShares';
 import { SummaryChart } from './SummaryChart';
 import { TopPerformingPosts } from './TopPerformingPosts';
 
-export const Analytics: React.FC = (  ) => {
+export const Analytics: React.FC = () => {
 	return (
 		<div className="space-y-6 lg:space-y-8">
 			<Header />

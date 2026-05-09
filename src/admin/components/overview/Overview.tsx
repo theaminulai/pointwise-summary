@@ -17,7 +17,7 @@ import RecentActivityItem from './RecentActivityItem';
 import StatsGrid from './StatsGrid';
 import TopPostItem from './TopPostItem';
 
-export const Overview: React.FC = (  ) => {
+export const Overview: React.FC = () => {
 	const { stats, recentActivity, topPosts, quickSettings } = useSelector(
 		( state: RootState ) => state.overview
 	);

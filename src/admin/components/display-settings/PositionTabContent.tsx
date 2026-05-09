@@ -21,7 +21,7 @@ interface PositionTabContentProps {
 
 /**
  * Component for managing the spatial placement of summary buttons.
- * 
+ *
  * @param props - Component properties.
  * @returns The rendered position settings tab content.
  */
@@ -43,7 +43,10 @@ export const PositionTabContent: React.FC< PositionTabContentProps > = ( {
 			{ isFloatingMode && (
 				<div className="space-y-4">
 					<label className="font-medium text-gray-900">
-						{ __( 'Floating Button Position', 'pointwise-summary' ) }
+						{ __(
+							'Floating Button Position',
+							'pointwise-summary'
+						) }
 					</label>
 					<div
 						className="grid gap-3"
@@ -53,17 +56,33 @@ export const PositionTabContent: React.FC< PositionTabContentProps > = ( {
 						} }
 					>
 						{ [
-							{ value: 'bottom-right', label: __( 'Bottom Right', 'pointwise-summary' ) },
-							{ value: 'bottom-left', label: __( 'Bottom Left', 'pointwise-summary' ) },
-							{ value: 'top-right', label: __( 'Top Right', 'pointwise-summary' ) },
-							{ value: 'top-left', label: __( 'Top Left', 'pointwise-summary' ) },
-							{ value: 'left-center', label: __( 'Left Center', 'pointwise-summary' ) },
-							{ value: 'right-center', label: __( 'Right Center', 'pointwise-summary' ) },
+							{
+								value: 'bottom-right',
+								label: __(
+									'Bottom Right',
+									'pointwise-summary'
+								),
+							},
+							{
+								value: 'bottom-left',
+								label: __( 'Bottom Left', 'pointwise-summary' ),
+							},
+							{
+								value: 'top-right',
+								label: __( 'Top Right', 'pointwise-summary' ),
+							},
+							{
+								value: 'top-left',
+								label: __( 'Top Left', 'pointwise-summary' ),
+							},
 						].map( ( position ) => (
 							<button
 								key={ position.value }
 								onClick={ () =>
-									onChange( 'floatingPosition', position.value )
+									onChange(
+										'floatingPosition',
+										position.value
+									)
 								}
 								className={ `cursor-pointer relative px-4 py-3 rounded-lg text-sm font-medium transition-all ${
 									floatingPosition === position.value
@@ -88,7 +107,10 @@ export const PositionTabContent: React.FC< PositionTabContentProps > = ( {
 					<div className="space-y-4">
 						<div className="space-y-3 pt-4">
 							<label className="font-medium text-gray-900">
-								{ __( 'Button Alignment', 'pointwise-summary' ) }
+								{ __(
+									'Button Alignment',
+									'pointwise-summary'
+								) }
 							</label>
 							<div
 								className="grid gap-3"
@@ -98,14 +120,35 @@ export const PositionTabContent: React.FC< PositionTabContentProps > = ( {
 								} }
 							>
 								{ [
-									{ value: 'left', label: __( 'Left', 'pointwise-summary' ) },
-									{ value: 'center', label: __( 'Center', 'pointwise-summary' ) },
-									{ value: 'right', label: __( 'Right', 'pointwise-summary' ) },
+									{
+										value: 'left',
+										label: __(
+											'Left',
+											'pointwise-summary'
+										),
+									},
+									{
+										value: 'center',
+										label: __(
+											'Center',
+											'pointwise-summary'
+										),
+									},
+									{
+										value: 'right',
+										label: __(
+											'Right',
+											'pointwise-summary'
+										),
+									},
 								].map( ( align ) => (
 									<button
 										key={ align.value }
 										onClick={ () =>
-											onChange( 'buttonAlignment', align.value )
+											onChange(
+												'buttonAlignment',
+												align.value
+											)
 										}
 										className={ `cursor-pointer relative px-4 py-3 rounded-lg text-sm font-medium transition-all ${
 											buttonAlignment === align.value
@@ -125,39 +168,63 @@ export const PositionTabContent: React.FC< PositionTabContentProps > = ( {
 						</div>
 					</div>
 					<Select
-						label={ __( 'Inline Button Position', 'pointwise-summary' ) }
+						label={ __(
+							'Inline Button Position',
+							'pointwise-summary'
+						) }
 						value={ inlinePosition }
-						onChange={ ( value ) => onChange( 'inlinePosition', value ) }
+						onChange={ ( value ) =>
+							onChange( 'inlinePosition', value )
+						}
 						options={ [
 							{
 								value: 'disabled',
 								label: __( 'Disabled', 'pointwise-summary' ),
-								description:
-									__( 'Use shortcode only - button will not be automatically added to posts', 'pointwise-summary' ),
+								description: __(
+									'Use shortcode only - button will not be automatically added to posts',
+									'pointwise-summary'
+								),
 							},
 							{
 								value: 'before-title',
-								label: __( 'Before Title', 'pointwise-summary' ),
-								description:
-									__( 'Button appears before the article title', 'pointwise-summary' ),
+								label: __(
+									'Before Title',
+									'pointwise-summary'
+								),
+								description: __(
+									'Button appears before the article title',
+									'pointwise-summary'
+								),
 							},
 							{
 								value: 'after-title',
 								label: __( 'After Title', 'pointwise-summary' ),
-								description:
-									__( 'Button appears after the article title', 'pointwise-summary' ),
+								description: __(
+									'Button appears after the article title',
+									'pointwise-summary'
+								),
 							},
 							{
 								value: 'before-content',
-								label: __( 'Before Content', 'pointwise-summary' ),
-								description:
-									__( 'Button appears before the article content', 'pointwise-summary' ),
+								label: __(
+									'Before Content',
+									'pointwise-summary'
+								),
+								description: __(
+									'Button appears before the article content',
+									'pointwise-summary'
+								),
 							},
 							{
 								value: 'after-content',
-								label: __( 'After Content', 'pointwise-summary' ),
-								description:
-									__( 'Button appears after the article content', 'pointwise-summary' ),
+								label: __(
+									'After Content',
+									'pointwise-summary'
+								),
+								description: __(
+									'Button appears after the article content',
+									'pointwise-summary'
+								),
 							},
 						] }
 					/>

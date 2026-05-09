@@ -27,7 +27,7 @@ const Header: React.FC = () => {
 					>
 						<Menu className="w-6 h-6 text-gray-800" />
 					</button>
-					{/* <NotepadText className="w-10 h-10 text-indigo-500" /> */}
+					{ /* <NotepadText className="w-10 h-10 text-indigo-500" /> */ }
 					<div className="ml-0">
 						<h1 className="text-xl! font-medium! text-gray-900 hidden sm:block! p-0!">
 							{ __( 'Pointwise Summary', 'pointwise-summary' ) }

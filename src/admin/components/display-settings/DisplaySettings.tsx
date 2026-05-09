@@ -14,13 +14,25 @@ import { PositionTabContent } from './PositionTabContent';
 import { StyleTabContent } from './StyleTabContent';
 import Tabs, { TabItem } from './Tabs';
 /** The currently selected tab in the display settings panel. */
-type ActiveTab = RootState['displaySettings']['activeTab'];
+type ActiveTab = RootState[ 'displaySettings' ][ 'activeTab' ];
 
 /** Tab definitions for the display settings navigation. */
 const TABS: TabItem[] = [
-	{ label: __( 'Mode', 'pointwise-summary' ), value: 'mode', icon: SlidersHorizontal },
-	{ label: __( 'Position', 'pointwise-summary' ), value: 'position', icon: Move },
-	{ label: __( 'Style', 'pointwise-summary' ), value: 'style', icon: Palette },
+	{
+		label: __( 'Mode', 'pointwise-summary' ),
+		value: 'mode',
+		icon: SlidersHorizontal,
+	},
+	{
+		label: __( 'Position', 'pointwise-summary' ),
+		value: 'position',
+		icon: Move,
+	},
+	{
+		label: __( 'Style', 'pointwise-summary' ),
+		value: 'style',
+		icon: Palette,
+	},
 ];
 
 /**
@@ -38,7 +50,7 @@ export const DisplaySettings: React.FC = () => {
 		changeGroupSetting,
 	} = useDisplaySettings();
 	const { activeTab, mode, position, style } = settings;
-	const [isLoading, setIsLoading] = useState(false);
+	const [ isLoading, setIsLoading ] = useState( false );
 	const dispatch = useDispatch();
 	/**
 	 * Handles resetting all AI settings.
@@ -60,7 +72,10 @@ export const DisplaySettings: React.FC = () => {
 		<div className="space-y-6 lg:space-y-8">
 			<Title
 				title={ __( 'Display Settings', 'pointwise-summary' ) }
-				description={ __( 'Customize how and where summary buttons appear on your site', 'pointwise-summary' ) }
+				description={ __(
+					'Customize how and where summary buttons appear on your site',
+					'pointwise-summary'
+				) }
 			/>
 
 			<div className="max-w-7xl">
@@ -78,48 +93,61 @@ export const DisplaySettings: React.FC = () => {
 								/>
 							</div>
 
-							{
-								activeTab === 'mode' && (
-									<ModeTabContent
-										{...mode}
-										onChange={(field, value) =>
-											changeGroupSetting('mode', field, value)
-										}
-									/>
-								)
-							}
+							{ activeTab === 'mode' && (
+								<ModeTabContent
+									{ ...mode }
+									onChange={ ( field, value ) =>
+										changeGroupSetting(
+											'mode',
+											field,
+											value
+										)
+									}
+								/>
+							) }
 
-							{
-								activeTab === 'position' && (
-									<PositionTabContent
-										{...position}
-										displayMode={mode.displayMode}
-										onChange={(field, value) =>
-											changeGroupSetting('position', field, value)
-										}
-									/>
-								)
-							}
+							{ activeTab === 'position' && (
+								<PositionTabContent
+									{ ...position }
+									displayMode={ mode.displayMode }
+									onChange={ ( field, value ) =>
+										changeGroupSetting(
+											'position',
+											field,
+											value
+										)
+									}
+								/>
+							) }
 
-							{
-								activeTab === 'style' && (
-									<StyleTabContent
-										{...style}
-										onChange={(field, value) =>
-											changeGroupSetting('style', field, value)
-										}
-									/>
-								)
-							}
+							{ activeTab === 'style' && (
+								<StyleTabContent
+									{ ...style }
+									displayMode={ mode.displayMode }
+									onChange={ ( field, value ) =>
+										changeGroupSetting(
+											'style',
+											field,
+											value
+										)
+									}
+								/>
+							) }
 						</div>
 
 						<ActionsButton
 							isSaving={ isSaving }
-							onSave={() => void saveSettings()}
-							saveLabel={ __( 'Save Display Settings', 'pointwise-summary' ) }
-							onReset={handleReset}
-							isDeleting={isLoading}
-							resetLabel={ __( 'Reset Display Settings', 'pointwise-summary' ) }
+							onSave={ () => void saveSettings() }
+							saveLabel={ __(
+								'Save Display Settings',
+								'pointwise-summary'
+							) }
+							onReset={ handleReset }
+							isDeleting={ isLoading }
+							resetLabel={ __(
+								'Reset Display Settings',
+								'pointwise-summary'
+							) }
 						/>
 					</div>
 

@@ -14,18 +14,18 @@ const initialState = {
 			question: 'Is this plugin GDPR compliant?',
 			answer: "Yes, Pointwise Summary is 100% GDPR compliant. No user data is collected, stored, or transmitted. All summary generation happens on the user's device.",
 		},
-		{
-			question: 'Can I customize prompts for different posts?',
-			answer: 'Absolutely! You can set global default prompts for each AI platform, and also override them on a per-post basis using the Per-Post Settings tab.',
-		},
+		// {
+		// 	question: 'Can I customize prompts for different posts?',
+		// 	answer: 'Absolutely! You can set global default prompts for each AI platform, and also override them on a per-post basis using the Per-Post Settings tab.',
+		// },
 		{
 			question: 'How does the scroll trigger work?',
 			answer: 'The scroll trigger displays the floating button only after users scroll a certain percentage down the page (configurable from 5% to 50%), reducing initial visual clutter.',
 		},
-		{
-			question: 'Can I use shortcodes?',
-			answer: 'Yes! Use [pointwise_summary] to manually place summary buttons anywhere in your content. You can also pass parameters like ai="chatgpt" or style="minimal".',
-		},
+		// {
+		// 	question: 'Can I use shortcodes?',
+		// 	answer: 'Yes! Use [pointwise_summary] to manually place summary buttons anywhere in your content. You can also pass parameters like ai="chatgpt" or style="minimal".',
+		// },
 	],
 	quickStart: [
 		'Install and activate Pointwise Summary plugin',
@@ -35,30 +35,13 @@ const initialState = {
 		'Customize visual styling to match your theme',
 		"Test on a post and you're ready to go!",
 	],
-	shortcodeExamples: [
-		{
-			code: '[pointwise_summary]',
-			description:
-				'Basic usage - displays all enabled AI platforms with default settings',
-		},
-		{
-			code: '[pointwise_summary ai="chatgpt,gemini"]',
-			description: 'Show only specific AI platforms',
-		},
-		{
-			code: '[pointwise_summary style="minimal" align="center"]',
-			description: 'Customize styling and alignment',
-		},
-		{
-			code: '[pointwise_summary social="true" order="ai-first"]',
-			description: 'Include social sharing with custom button order',
-		},
-	],
+	shortcodeExamples: [],
 	documentationLinks: [
 		{
 			title: 'Documentation',
 			description: 'Complete guide to all features and settings',
 			cta: 'Read Docs',
+			url: '#',
 			iconKey: 'book',
 			bgClass: 'bg-blue-100',
 			iconClass: 'text-blue-600',
@@ -68,6 +51,7 @@ const initialState = {
 			title: 'Developer Guide',
 			description: 'Hooks, filters, and customization options',
 			cta: 'View Guide',
+			url: '#',
 			iconKey: 'code',
 			bgClass: 'bg-green-100',
 			iconClass: 'text-green-600',
@@ -77,6 +61,7 @@ const initialState = {
 			title: 'Support Forum',
 			description: 'Get help from the community',
 			cta: 'Visit Forum',
+			url: 'https://github.com/theaminulai/pointwise-summary/issues',
 			iconKey: 'help-circle',
 			bgClass: 'bg-purple-100',
 			iconClass: 'text-purple-600',
@@ -84,20 +69,8 @@ const initialState = {
 		},
 	],
 	systemInfo: {
-		plugin: [
-			{ label: 'Version', value: '1.0.0', valueClass: 'text-gray-900' },
-			{ label: 'Status', value: 'Active', valueClass: 'text-green-600' },
-			{
-				label: 'Database Version',
-				value: '1.0',
-				valueClass: 'text-gray-900',
-			},
-		],
-		environment: [
-			{ label: 'WordPress Version', value: '6.4.2' },
-			{ label: 'PHP Version', value: '8.2.0' },
-			{ label: 'Theme', value: 'Twenty Twenty-Four' },
-		],
+		plugin: [],
+		environment: [],
 	},
 	contactSupport: {
 		title: 'Need More Help?',
@@ -109,6 +82,34 @@ const initialState = {
 	},
 };
 
-const helpReducer = ( state = initialState ) => state;
+import {
+	SET_HELP_DATA,
+	SET_SHORTCODE_EXAMPLES,
+	SET_SYSTEM_INFO,
+} from './help.actions';
+
+const helpReducer = ( state = initialState, action ) => {
+	switch ( action.type ) {
+		case SET_HELP_DATA:
+			return {
+				...state,
+				...action.payload,
+			};
+		case SET_SHORTCODE_EXAMPLES:
+			return {
+				...state,
+				shortcodeExamples: Array.isArray( action.payload )
+					? action.payload
+					: state.shortcodeExamples,
+			};
+		case SET_SYSTEM_INFO:
+			return {
+				...state,
+				systemInfo: action.payload || state.systemInfo,
+			};
+		default:
+			return state;
+	}
+};
 
 export default helpReducer;

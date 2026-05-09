@@ -14,47 +14,47 @@ export const SET_ADVANCED_TRANSLATIONS = 'SET_ADVANCED_TRANSLATIONS';
 export const SET_ADVANCED_EDITOR_SUPPORT = 'SET_ADVANCED_EDITOR_SUPPORT';
 export const SET_ADVANCED_SETTINGS = 'SET_ADVANCED_SETTINGS';
 
-export const setAdvancedSettings = (payload) => ({
+export const setAdvancedSettings = ( payload ) => ( {
 	type: SET_ADVANCED_SETTINGS,
 	payload,
-});
+} );
 
-export const setAdvancedPostTypes = (payload) => ({
+export const setAdvancedPostTypes = ( payload ) => ( {
 	type: SET_ADVANCED_POST_TYPES,
 	payload,
-});
+} );
 
-export const setAdvancedExclusion = (payload) => ({
+export const setAdvancedExclusion = ( payload ) => ( {
 	type: SET_ADVANCED_EXCLUSION,
 	payload,
-});
+} );
 
-export const setAdvancedStyling = (payload) => ({
+export const setAdvancedStyling = ( payload ) => ( {
 	type: SET_ADVANCED_STYLING,
 	payload,
-});
+} );
 
-export const setAdvancedPerformance = (payload) => ({
+export const setAdvancedPerformance = ( payload ) => ( {
 	type: SET_ADVANCED_PERFORMANCE,
 	payload,
-});
+} );
 
-export const setAdvancedAccessibility = (payload) => ({
+export const setAdvancedAccessibility = ( payload ) => ( {
 	type: SET_ADVANCED_ACCESSIBILITY,
 	payload,
-});
+} );
 
-export const setAdvancedSeo = (payload) => ({
+export const setAdvancedSeo = ( payload ) => ( {
 	type: SET_ADVANCED_SEO,
 	payload,
-});
+} );
 
-export const setAdvancedTranslations = (payload) => ({
+export const setAdvancedTranslations = ( payload ) => ( {
 	type: SET_ADVANCED_TRANSLATIONS,
 	payload,
-});
+} );
 
-export const setAdvancedEditorSupport = (payload) => ({
+export const setAdvancedEditorSupport = ( payload ) => ( {
 	type: SET_ADVANCED_EDITOR_SUPPORT,
 	payload,
-});
+} );

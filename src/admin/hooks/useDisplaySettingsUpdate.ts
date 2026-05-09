@@ -15,7 +15,9 @@ import { __ } from '@wordpress/i18n';
  */
 export function useDisplaySettingsUpdate() {
 	const dispatch = useDispatch();
-	const displaySettings = useSelector( ( state: RootState ) => state.displaySettings );
+	const displaySettings = useSelector(
+		( state: RootState ) => state.displaySettings
+	);
 	const [ isSaving, setIsSaving ] = useState( false );
 
 	/**
@@ -24,7 +26,9 @@ export function useDisplaySettingsUpdate() {
 	 * @param overrideSettings - Optional partial settings to merge before saving.
 	 */
 	const persistSettings = useCallback(
-		async ( overrideSettings?: Partial< RootState[ 'displaySettings' ] > ) => {
+		async (
+			overrideSettings?: Partial< RootState[ 'displaySettings' ] >
+		) => {
 			setIsSaving( true );
 			try {
 				const payload = {
@@ -39,7 +43,12 @@ export function useDisplaySettingsUpdate() {
 					dispatch( setDisplaySettings( data ) );
 				}
 			} catch ( error ) {
-				toast.error( __('Failed to save display settings. Please try again.', 'pointwise-summary') );
+				toast.error(
+					__(
+						'Failed to save display settings. Please try again.',
+						'pointwise-summary'
+					)
+				);
 			} finally {
 				setIsSaving( false );
 			}

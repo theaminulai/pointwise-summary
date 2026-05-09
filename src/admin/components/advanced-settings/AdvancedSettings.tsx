@@ -40,11 +40,14 @@ export const AdvancedSettings: React.FC = () => {
 			{ /* Header */ }
 			<Title
 				title={ __( 'Advanced Settings', 'pointwise-summary' ) }
-				description={ __( 'Configure advanced options, Custom Styling, and popular editor support', 'pointwise-summary' ) }
+				description={ __(
+					'Configure advanced options, Custom Styling, and popular editor support',
+					'pointwise-summary'
+				) }
 			/>
 
 			<PostTypeControl />
-			{/* <ExclusionSystem /> */}
+			{ /* <ExclusionSystem /> */ }
 			<SEOSetting />
 			<PerformanceCaching />
 			<Accessibility />
@@ -54,8 +57,11 @@ export const AdvancedSettings: React.FC = () => {
 
 			<ResetButton
 				handleReset={ () => void handleReset() }
-				isLoading={isResetting}
-				resetLabel={ __( 'Reset All Advanced Settings', 'pointwise-summary' ) }
+				isLoading={ isResetting }
+				resetLabel={ __(
+					'Reset All Advanced Settings',
+					'pointwise-summary'
+				) }
 			/>
 		</div>
 	);

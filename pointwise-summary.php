@@ -17,9 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 define( 'POINTWISE_SUMMARY_VERSION', '0.5.0' );
 define( 'POINTWISE_SUMMARY_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-define( 'POINTWISE_SUMMARY_DEV', WP_DEBUG ); 
+define( 'POINTWISE_SUMMARY_DEV', WP_DEBUG );
 
 // Include REST API endpoints
 require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/plugin.php';
-
-

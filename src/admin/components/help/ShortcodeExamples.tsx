@@ -3,7 +3,7 @@ import { Lightbulb } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../store/types';
 
-export const ShortcodeExamples: React.FC = (  ) => {
+export const ShortcodeExamples: React.FC = () => {
 	const shortcodeExamples = useSelector(
 		( state: RootState ) => state.help.shortcodeExamples
 	);

@@ -47,7 +47,9 @@ export const CustomStyling: React.FC = () => {
 
 	return (
 		<div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-			<h3 className="text-gray-900 mb-4">{ __( 'Custom Styling', 'pointwise-summary' ) }</h3>
+			<h3 className="text-gray-900 mb-4">
+				{ __( 'Custom Styling', 'pointwise-summary' ) }
+			</h3>
 
 			<div className="space-y-4">
 				<div>
@@ -62,11 +64,17 @@ export const CustomStyling: React.FC = () => {
 								customCssClass: e.target.value,
 							} )
 						}
-						placeholder={ __( 'e.g., my-custom-class', 'pointwise-summary' ) }
+						placeholder={ __(
+							'e.g., my-custom-class',
+							'pointwise-summary'
+						) }
 						className="w-full px-3! py-2.5! border! border-gray-300! rounded-lg text-sm focus-within:ring focus-within:ring-indigo-500 focus-within:border-indigo-500 transition-all"
 					/>
 					<p className="text-xs text-gray-500 mt-1">
-						{ __( 'Add a custom CSS class to summary buttons for advanced styling', 'pointwise-summary' ) }
+						{ __(
+							'Add a custom CSS class to summary buttons for advanced styling',
+							'pointwise-summary'
+						) }
 					</p>
 				</div>
 
@@ -106,7 +114,10 @@ export const CustomStyling: React.FC = () => {
 						/>
 					</div>
 					<p className="text-xs text-gray-500 mt-2">
-						{ __( 'Write custom CSS to style summary buttons and elements. This CSS will be applied globally across your site. The editor supports syntax highlighting and auto-completion.', 'pointwise-summary' ) }
+						{ __(
+							'Write custom CSS to style summary buttons and elements. This CSS will be applied globally across your site. The editor supports syntax highlighting and auto-completion.',
+							'pointwise-summary'
+						) }
 					</p>
 					<div className="flex items-center justify-end gap-4">
 						<button
@@ -119,7 +130,9 @@ export const CustomStyling: React.FC = () => {
 							}` }
 						>
 							<Save className="w-4 h-4" />
-							{ isSaving ? __( 'Saving...', 'pointwise-summary' ) : __( 'Save Style', 'pointwise-summary' ) }
+							{ isSaving
+								? __( 'Saving...', 'pointwise-summary' )
+								: __( 'Save Style', 'pointwise-summary' ) }
 						</button>
 					</div>
 				</div>
