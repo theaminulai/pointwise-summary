@@ -14,7 +14,8 @@ export const MultilingualSupport: React.FC = () => {
 		( state: RootState ) => state.advancedSettings.translations
 	);
 	const { isSaving, persistSettings } = useAdvancedSettingsUpdate();
-	const [ draftTranslations, setDraftTranslations ] = useState( translations );
+	const [ draftTranslations, setDraftTranslations ] =
+		useState( translations );
 
 	useEffect( () => {
 		setDraftTranslations( translations );
@@ -28,9 +29,9 @@ export const MultilingualSupport: React.FC = () => {
 			prev.map( ( item ) =>
 				item.locale === field
 					? {
-						...item,
-						buttonText: value,
-					}
+							...item,
+							buttonText: value,
+					  }
 					: item
 			)
 		);
@@ -52,7 +53,10 @@ export const MultilingualSupport: React.FC = () => {
 			...prev,
 			{
 				locale: `custom_${ nextIndex }`,
-				label: `${ __( 'Custom', 'pointwise-summary' ) } ${ nextIndex }`,
+				label: `${ __(
+					'Custom',
+					'pointwise-summary'
+				) } ${ nextIndex }`,
 				buttonText: __( 'AI Summary', 'pointwise-summary' ),
 			},
 		] );
@@ -67,7 +71,8 @@ export const MultilingualSupport: React.FC = () => {
 		);
 	};
 
-	const hasChanges = JSON.stringify( draftTranslations ) !== JSON.stringify( translations );
+	const hasChanges =
+		JSON.stringify( draftTranslations ) !== JSON.stringify( translations );
 
 	/**
 	 * Persists all drafted translation rows.
@@ -80,9 +85,14 @@ export const MultilingualSupport: React.FC = () => {
 
 	return (
 		<div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-			<h3 className="text-gray-900 mb-4">{ __( 'Multilingual Support', 'pointwise-summary' ) }</h3>
+			<h3 className="text-gray-900 mb-4">
+				{ __( 'Multilingual Support', 'pointwise-summary' ) }
+			</h3>
 			<p className="text-sm text-gray-600 mb-4">
-				{ __( 'Customize button text for different languages', 'pointwise-summary' ) }
+				{ __(
+					'Customize button text for different languages',
+					'pointwise-summary'
+				) }
 			</p>
 
 			<div className="space-y-3">
@@ -99,19 +109,32 @@ export const MultilingualSupport: React.FC = () => {
 								{ translation.locale }
 							</p>
 						</div>
-						
+
 						<input
 							type="text"
 							value={ translation.buttonText }
-							onChange={ ( e ) => handleChange(translation.locale, e.target.value) }
+							onChange={ ( e ) =>
+								handleChange(
+									translation.locale,
+									e.target.value
+								)
+							}
 							className="flex-1 px-3! py-2! border! border-gray-300! rounded-lg text-sm focus-within:ring focus-within:ring-indigo-500 focus-within:border-indigo-500 transition-all"
 						/>
 						<button
 							type="button"
-							onClick={ () => handleRemoveLanguage( translation.locale ) }
+							onClick={ () =>
+								handleRemoveLanguage( translation.locale )
+							}
 							className="cursor-pointer h-9 w-9 inline-flex items-center justify-center border border-gray-300 rounded-lg text-gray-500 hover:text-red-600 hover:border-red-300 hover:bg-red-50 transition-colors"
-							aria-label={ __( 'Remove language', 'pointwise-summary' ) }
-							title={ __( 'Remove language', 'pointwise-summary' ) }
+							aria-label={ __(
+								'Remove language',
+								'pointwise-summary'
+							) }
+							title={ __(
+								'Remove language',
+								'pointwise-summary'
+							) }
 						>
 							<X className="w-4 h-4" />
 						</button>
@@ -137,10 +160,11 @@ export const MultilingualSupport: React.FC = () => {
 					}` }
 				>
 					<Save className="w-4 h-4" />
-					{ isSaving ? __( 'Saving...', 'pointwise-summary' ) : __( 'Save Languages', 'pointwise-summary' ) }
+					{ isSaving
+						? __( 'Saving...', 'pointwise-summary' )
+						: __( 'Save Languages', 'pointwise-summary' ) }
 				</button>
 			</div>
-			
 		</div>
 	);
 };

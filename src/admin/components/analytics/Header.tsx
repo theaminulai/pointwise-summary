@@ -9,20 +9,18 @@ import {
 import type { AnalyticsRange, RootState } from '../../store/types';
 import { Title } from '../common';
 
-export const Header: React.FC = (  ) => {
-	const CalendarIcon = ( props: React.SVGProps<SVGSVGElement> ) => (
+export const Header: React.FC = () => {
+	const CalendarIcon = ( props: React.SVGProps< SVGSVGElement > ) => (
 		<Calendar { ...props } className="w-4 h-4" fill="white" />
 	);
 	const dispatch = useDispatch();
-	const range = useSelector(
-		( state: RootState ) => state.analytics.range
-	);
+	const range = useSelector( ( state: RootState ) => state.analytics.range );
 	const customRange = useSelector(
 		( state: RootState ) => state.analytics.customRange
 	);
-	const [ pickerValue, setPickerValue ] = useState<
-		[ Date, Date ] | null
-	>( null );
+	const [ pickerValue, setPickerValue ] = useState< [ Date, Date ] | null >(
+		null
+	);
 
 	useEffect( () => {
 		if ( customRange.startDate && customRange.endDate ) {
@@ -35,7 +33,7 @@ export const Header: React.FC = (  ) => {
 		}
 	}, [ customRange.endDate, customRange.startDate ] );
 
-	const rangeOptions: Array<{ value: AnalyticsRange; label: string }> = [
+	const rangeOptions: Array< { value: AnalyticsRange; label: string } > = [
 		{ value: 'weekly', label: 'Last 7 Days' },
 		{ value: 'monthly', label: 'Last 30 Days' },
 		{ value: 'yearly', label: 'Last 12 Months' },
@@ -54,23 +52,25 @@ export const Header: React.FC = (  ) => {
 						Date Range:
 					</span>
 					<div className="flex rounded-lg border border-gray-300 overflow-hidden">
-						{rangeOptions.map( ( option ) => (
+						{ rangeOptions.map( ( option ) => (
 							<button
 								key={ option.value }
 								onClick={ () =>
-									dispatch( setAnalyticsRange( option.value ) )
+									dispatch(
+										setAnalyticsRange( option.value )
+									)
 								}
 								className={
 									'cursor-pointer px-3 py-2 text-xs sm:text-sm transition-colors ' +
-									(option.value === range
+									( option.value === range
 										? 'bg-indigo-600 text-white'
-										: 'bg-white text-gray-700 hover:bg-gray-50')
+										: 'bg-white text-gray-700 hover:bg-gray-50' )
 								}
 								aria-pressed={ option.value === range }
 							>
-								{option.label}
+								{ option.label }
 							</button>
-						))}
+						) ) }
 					</div>
 				</div>
 				<div className="flex items-center gap-2">
@@ -85,7 +85,11 @@ export const Header: React.FC = (  ) => {
 						caretAs={ CalendarIcon }
 						value={ pickerValue }
 						onChange={ ( nextValue ) => {
-							if ( nextValue && nextValue[ 0 ] && nextValue[ 1 ] ) {
+							if (
+								nextValue &&
+								nextValue[ 0 ] &&
+								nextValue[ 1 ]
+							) {
 								dispatch(
 									setAnalyticsCustomRange( {
 										startDate: nextValue[ 0 ]
@@ -99,7 +103,9 @@ export const Header: React.FC = (  ) => {
 							} else if ( ! nextValue ) {
 								dispatch( setAnalyticsRange( 'weekly' ) );
 							}
-							setPickerValue( nextValue as [ Date, Date ] | null );
+							setPickerValue(
+								nextValue as [ Date, Date ] | null
+							);
 						} }
 						style={ { width: 230 } }
 					/>

@@ -12,7 +12,7 @@ import {
 } from 'recharts';
 import type { RootState } from '../../store/types';
 
-export const SummaryChart: React.FC = (  ) => {
+export const SummaryChart: React.FC = () => {
 	const summaryData = useSelector(
 		( state: RootState ) => state.analytics.summaryData
 	);

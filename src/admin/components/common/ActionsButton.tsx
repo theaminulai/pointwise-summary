@@ -38,7 +38,9 @@ export const ActionsButton: React.FC< ActionsProps > = ( {
 				className="cursor-pointer px-4 py-2 border text-sm font-medium text-red-600 hover:bg-red-50 rounded-lg transition-colors flex items-center gap-2 "
 			>
 				<Trash className="w-4 h-4" />
-				{ isDeleting ? __( 'Resetting...', 'pointwise-summary' ) : resetLabel }
+				{ isDeleting
+					? __( 'Resetting...', 'pointwise-summary' )
+					: resetLabel }
 			</button>
 
 			{ /* Save Button */ }
@@ -52,7 +54,9 @@ export const ActionsButton: React.FC< ActionsProps > = ( {
 				}` }
 			>
 				<Save className="w-4 h-4" />
-				{ isSaving ? __( 'Saving...', 'pointwise-summary' ) : saveLabel }
+				{ isSaving
+					? __( 'Saving...', 'pointwise-summary' )
+					: saveLabel }
 			</button>
 		</div>
 	);

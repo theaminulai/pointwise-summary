@@ -19,6 +19,15 @@ export type EditorSupport = {
 	supported: boolean;
 };
 
+export type SeoPlatformConfig = {
+	name: string;
+	file?: string;
+	meta_key?: string;
+	noindex?: string;
+	is_array?: boolean;
+	custom?: boolean;
+};
+
 export type AdvancedSettingsState = {
 	postTypes: AdvancedSettingsContentType[];
 	exclusion: {
@@ -43,11 +52,13 @@ export type AdvancedSettingsState = {
 		excludeNoindex: boolean;
 		seoElement: string;
 		noFollow: boolean;
-		platform: string[];
+		platform:
+			| SeoPlatformConfig[]
+			| Record< string, SeoPlatformConfig >
+			| string[];
 	};
 	translations: AdvancedSettingsTranslation[];
 	editorSupport: EditorSupport[];
-
 };
 
 export type UiState = {
@@ -61,6 +72,7 @@ export type AiPlatform = {
 	logoKey: string;
 	enabled: boolean;
 	prompt: string;
+	color: string;
 };
 
 export type AiSettingsState = {
@@ -69,6 +81,7 @@ export type AiSettingsState = {
 	includeMetadata: boolean;
 	globalPrompt: string;
 	useGlobalPrompt: boolean;
+	enableAiSummary: boolean;
 	expandedPlatform: string | null;
 	platforms: AiPlatform[];
 };
@@ -96,17 +109,22 @@ export type DisplaySettingsState = {
 			| 'bottom-right'
 			| 'bottom-left'
 			| 'top-right'
-			| 'top-left'
-			| 'left-center'
-			| 'right-center';
+			| 'top-left';
 		buttonAlignment: 'left' | 'center' | 'right';
 		inlinePosition: InlinePosition;
 	};
 	style: {
-		buttonStyle: 'brand' | 'minimal' | 'dark' | 'gradient' | 'outline';
+		buttonStyle:
+			| 'default'
+			| 'brand'
+			| 'minimal'
+			| 'dark'
+			| 'gradient'
+			| 'outline';
 		buttonShape: 'rounded' | 'circular' | 'square';
 		iconDisplay: IconDisplay;
 		enableAnimations: boolean;
+		floatingStyle: 'collapsed' | 'flat';
 	};
 	preview: {
 		title: string;
@@ -224,6 +242,7 @@ export type HelpDocumentationLink = {
 	title: string;
 	description: string;
 	cta: string;
+	url: string;
 	iconKey: string;
 	bgClass: string;
 	iconClass: string;

@@ -30,9 +30,14 @@ export const PostTypeControl: React.FC = () => {
 
 	return (
 		<div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-			<h3 className="text-gray-900 mb-4">{ __( 'Post Type Control', 'pointwise-summary' ) }</h3>
+			<h3 className="text-gray-900 mb-4">
+				{ __( 'Post Type Control', 'pointwise-summary' ) }
+			</h3>
 			<p className="text-sm text-gray-600 mb-4">
-				{ __( 'Select which post types should display summary buttons', 'pointwise-summary' ) }
+				{ __(
+					'Select which post types should display summary buttons',
+					'pointwise-summary'
+				) }
 			</p>
 
 			<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -51,9 +56,7 @@ export const PostTypeControl: React.FC = () => {
 						<input
 							type="checkbox"
 							checked={ type.enabled }
-							onChange={ () =>
-								handleTogglePostType( type.id )
-							}
+							onChange={ () => handleTogglePostType( type.id ) }
 							className="w-4 h-4 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500"
 						/>
 					</label>

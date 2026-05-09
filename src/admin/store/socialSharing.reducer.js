@@ -18,8 +18,8 @@ const initialState = {
 	networks: [],
 };
 
-const socialSharingReducer = (state = initialState, action) => {
-	switch (action.type) {
+const socialSharingReducer = ( state = initialState, action ) => {
+	switch ( action.type ) {
 		case SET_ENABLE_SOCIAL_SHARING:
 			return { ...state, enableSocialSharing: action.payload };
 		case SET_BUTTON_ORDER:
@@ -27,16 +27,16 @@ const socialSharingReducer = (state = initialState, action) => {
 		case TOGGLE_NETWORK:
 			return {
 				...state,
-				networks: state.networks.map((network) =>
+				networks: state.networks.map( ( network ) =>
 					network.id === action.payload
-						? { ...network, enabled: !network.enabled }
+						? { ...network, enabled: ! network.enabled }
 						: network
 				),
 			};
 		case UPDATE_NETWORK_MENTION:
 			return {
 				...state,
-				networks: state.networks.map((network) =>
+				networks: state.networks.map( ( network ) =>
 					network.id === action.payload.id
 						? { ...network, mention: action.payload.mention }
 						: network
@@ -46,7 +46,7 @@ const socialSharingReducer = (state = initialState, action) => {
 			return {
 				...state,
 				...action.payload,
-				networks: Array.isArray(action.payload?.networks)
+				networks: Array.isArray( action.payload?.networks )
 					? action.payload.networks
 					: state.networks,
 			};

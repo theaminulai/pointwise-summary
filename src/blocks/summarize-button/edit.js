@@ -66,15 +66,17 @@ function ButtonsEdit( { attributes, className } ) {
 		directInsert: ! hasButtonVariations,
 		template: [
 			[
-				'core/button', {
+				'core/button',
+				{
 					text: 'Summarize with AI',
 				},
 			],
 			[
-				'core/button', {
+				'core/button',
+				{
 					text: 'Get Summary',
-				}
-			]
+				},
+			],
 		],
 		templateInsertUpdatesSelection: true,
 		orientation: layout?.orientation ?? 'horizontal',

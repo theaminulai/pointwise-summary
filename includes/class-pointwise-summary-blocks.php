@@ -27,8 +27,8 @@ class Pointwise_Summary_Blocks {
 	 * @see https://make.wordpress.org/core/2025/03/13/more-efficient-block-type-registration-in-6-8/
 	 */
 	public function register_blocks() {
-		$blocks_dir      = POINTWISE_SUMMARY_PLUGIN_DIR . 'build/blocks';
-		$manifest_path   = POINTWISE_SUMMARY_PLUGIN_DIR . 'build/blocks-manifest.php';
+		$blocks_dir    = POINTWISE_SUMMARY_PLUGIN_DIR . 'build/blocks';
+		$manifest_path = POINTWISE_SUMMARY_PLUGIN_DIR . 'build/blocks-manifest.php';
 
 		if ( ! file_exists( $blocks_dir ) || ! file_exists( $manifest_path ) ) {
 			return;

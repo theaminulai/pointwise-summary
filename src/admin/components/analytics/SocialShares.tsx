@@ -12,7 +12,7 @@ import {
 } from 'recharts';
 import type { RootState } from '../../store/types';
 
-export const SocialShares: React.FC = (  ) => {
+export const SocialShares: React.FC = () => {
 	const socialShareData = useSelector(
 		( state: RootState ) => state.analytics.socialShareData
 	);

@@ -35,7 +35,7 @@ export const SocialSharing: React.FC = () => {
 		setIsLoading( true );
 		try {
 			const data = await socialSharingApi.reset();
-			if (data) {
+			if ( data ) {
 				dispatch( setSocialSharing( data ) );
 			}
 		} finally {
@@ -48,7 +48,10 @@ export const SocialSharing: React.FC = () => {
 			{ /* Header */ }
 			<Title
 				title={ __( 'Social Sharing', 'pointwise-summary' ) }
-				description={ __( 'Configure social media sharing options alongside AI summaries', 'pointwise-summary' ) }
+				description={ __(
+					'Configure social media sharing options alongside AI summaries',
+					'pointwise-summary'
+				) }
 			/>
 
 			{ /* Enable/Disable */ }
@@ -57,7 +60,10 @@ export const SocialSharing: React.FC = () => {
 					checked={ enableSocialSharing }
 					onChange={ handleEnableSocialSharingChange }
 					label={ __( 'Enable Social Sharing', 'pointwise-summary' ) }
-					description={ __( 'Add social sharing buttons alongside AI summary buttons', 'pointwise-summary' ) }
+					description={ __(
+						'Add social sharing buttons alongside AI summary buttons',
+						'pointwise-summary'
+					) }
 				/>
 			</div>
 

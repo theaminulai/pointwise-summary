@@ -82,12 +82,12 @@ class Pointwise_Summary_Advanced_Settings_API {
 				'customCssClass' => 'my-custom-class',
 			),
 			'performance'   => array(
-				'enableCache' => true,
+				'enableCache' => false,
 				'cacheExpiry' => 24,
 				'dataCleanup' => false,
 			),
 			'accessibility' => array(
-				'enableKeyboard'      => true,
+				'enableKeyboard'      => false,
 				'keyboardShortcut'    => 'Alt+S',
 				'enableRTL'           => false,
 				'enableAccessibility' => true,
@@ -96,13 +96,44 @@ class Pointwise_Summary_Advanced_Settings_API {
 				'excludeNoindex' => true,
 				'seoElement'     => 'link',
 				'noFollow'       => true,
-				'platform'       => array( 'Yoast SEO', 'Rank Math', 'All in One SEO', 'SEOPress', 'The SEO Framework' ),
+				'platform'       => array(
+					'yoast' => array(
+						'name'     => 'Yoast SEO',
+						'file'     => 'wordpress-seo/wp-seo.php',
+						'meta_key' => '_yoast_wpseo_meta-robots-noindex',
+						'noindex'  => '1',
+					),
+					'rankmath' => array(
+						'name'     => 'Rank Math',
+						'file'     => 'seo-by-rank-math/rank-math.php',
+						'meta_key' => 'rank_math_robots',
+						'noindex'  => 'noindex',
+						'is_array' => true,
+					),
+					'aioseo' => array(
+						'name'   => 'All in One SEO',
+						'file'   => 'all-in-one-seo-pack/all_in_one_seo_pack.php',
+						'custom' => true,
+					),
+					'seopress' => array(
+						'name'     => 'SEOPress',
+						'file'     => 'wp-seopress/seopress.php',
+						'meta_key' => '_seopress_robots_index',
+						'noindex'  => 'yes',
+					),
+					'tsf' => array(
+						'name'     => 'The SEO Framework',
+						'file'     => 'autodescription/autodescription.php',
+						'meta_key' => '_genesis_noindex',
+						'noindex'  => '1',
+					),
+				),
 			),
 			'translations'  => array(
 				array(
 					'locale'     => 'en_US',
 					'label'      => 'English',
-					'buttonText' => 'AI Summary',
+					'buttonText' => 'Ask AI',
 				),
 				array(
 					'locale'     => 'fr_FR',
@@ -260,33 +291,38 @@ class Pointwise_Summary_Advanced_Settings_API {
 		$sanitized = $defaults;
 
 		// Helper
-		$get_bool = fn( $arr, $key, $default ) => isset( $arr[$key] ) ? (bool) $arr[$key] : $default;
-		$get_text = fn( $arr, $key, $default ) => isset( $arr[$key] ) ? sanitize_text_field( (string) $arr[$key] ) : $default;
+		$get_bool = fn( $arr, $key, $default ) => isset( $arr[ $key ] ) ? (bool) $arr[ $key ] : $default;
+		$get_text = fn( $arr, $key, $default ) => isset( $arr[ $key ] ) ? sanitize_text_field( (string) $arr[ $key ] ) : $default;
 
 		/**
 		 * Post Types
 		 */
 		if ( ! empty( $input['postTypes'] ) && is_array( $input['postTypes'] ) ) {
-			$enabled_map = [];
+			$enabled_map = array();
 
 			foreach ( $input['postTypes'] as $type ) {
-				if ( empty( $type['id'] ) || ! is_array( $type ) ) continue;
+				if ( empty( $type['id'] ) || ! is_array( $type ) ) {
+					continue;
+				}
 
 				$id = sanitize_key( $type['id'] );
 
 				if ( isset( $post_type_map[ $id ] ) ) {
-					$enabled_map[$id] = $get_bool( $type, 'enabled', $post_type_map[$id]['enabled'] );
+					$enabled_map[ $id ] = $get_bool( $type, 'enabled', $post_type_map[ $id ]['enabled'] );
 				}
 			}
 
-			$sanitized['postTypes'] = array_map( function( $type ) use ( $enabled_map ) {
-				$id = $type['id'];
-				return [
-					'id'      => $id,
-					'label'   => $type['label'],
-					'enabled' => $enabled_map[$id] ?? $type['enabled'],
-				];
-			}, $defaults['postTypes'] );
+			$sanitized['postTypes'] = array_map(
+				function ( $type ) use ( $enabled_map ) {
+					$id = $type['id'];
+					return array(
+						'id'      => $id,
+						'label'   => $type['label'],
+						'enabled' => $enabled_map[ $id ] ?? $type['enabled'],
+					);
+				},
+				$defaults['postTypes']
+			);
 		}
 
 		/**
@@ -303,7 +339,7 @@ class Pointwise_Summary_Advanced_Settings_API {
 		if ( ! empty( $input['styling'] ) ) {
 			$styling = $input['styling'];
 
-			$sanitized['styling'] = [
+			$sanitized['styling'] = array(
 				'customCss'      => isset( $styling['customCss'] )
 					? sanitize_textarea_field( $styling['customCss'] )
 					: $defaults['styling']['customCss'],
@@ -311,7 +347,7 @@ class Pointwise_Summary_Advanced_Settings_API {
 				'customCssClass' => isset( $styling['customCssClass'] )
 					? sanitize_html_class( $styling['customCssClass'] )
 					: $defaults['styling']['customCssClass'],
-			];
+			);
 		}
 
 		/**
@@ -320,13 +356,13 @@ class Pointwise_Summary_Advanced_Settings_API {
 		if ( ! empty( $input['performance'] ) ) {
 			$p = $input['performance'];
 
-			$sanitized['performance'] = [
+			$sanitized['performance'] = array(
 				'enableCache' => $get_bool( $p, 'enableCache', $defaults['performance']['enableCache'] ),
 				'cacheExpiry' => isset( $p['cacheExpiry'] )
 					? max( 1, min( 168, absint( $p['cacheExpiry'] ) ) )
 					: $defaults['performance']['cacheExpiry'],
 				'dataCleanup' => $get_bool( $p, 'dataCleanup', $defaults['performance']['dataCleanup'] ),
-			];
+			);
 		}
 
 		/**
@@ -335,12 +371,12 @@ class Pointwise_Summary_Advanced_Settings_API {
 		if ( ! empty( $input['accessibility'] ) ) {
 			$a = $input['accessibility'];
 
-			$sanitized['accessibility'] = [
+			$sanitized['accessibility'] = array(
 				'enableKeyboard'      => $get_bool( $a, 'enableKeyboard', $defaults['accessibility']['enableKeyboard'] ),
 				'keyboardShortcut'    => $get_text( $a, 'keyboardShortcut', $defaults['accessibility']['keyboardShortcut'] ),
 				'enableRTL'           => $get_bool( $a, 'enableRTL', $defaults['accessibility']['enableRTL'] ),
 				'enableAccessibility' => $get_bool( $a, 'enableAccessibility', $defaults['accessibility']['enableAccessibility'] ),
-			];
+			);
 		}
 
 		/**
@@ -349,73 +385,146 @@ class Pointwise_Summary_Advanced_Settings_API {
 		if ( ! empty( $input['seo'] ) ) {
 			$seo = $input['seo'];
 
-			$sanitized['seo'] = [
+			$sanitized['seo'] = array(
 				'excludeNoindex' => $get_bool( $seo, 'excludeNoindex', $defaults['seo']['excludeNoindex'] ),
 				'noFollow'       => $get_bool( $seo, 'noFollow', $defaults['seo']['noFollow'] ),
 				'seoElement'     => in_array(
 					$seo['seoElement'] ?? '',
-					['link', 'button'],
+					array( 'link', 'button' ),
 					true
 				) ? sanitize_text_field( $seo['seoElement'] ) : $defaults['seo']['seoElement'],
-			];
+			);
 
-			if ( ! empty( $seo['platform'] ) && is_array( $seo['platform'] ) ) {
-				$sanitized['seo']['platform'] = array_values(
-					array_filter(
-						array_map( fn( $p ) => sanitize_text_field( $p ), $seo['platform'] )
-					)
-				);
-			}
+			$sanitized['seo']['platform'] = $this->sanitize_seo_platforms(
+				$seo['platform'] ?? null,
+				$defaults
+			);
 		}
 
 		/**
 		 * Translations
 		 */
 		if ( ! empty( $input['translations'] ) ) {
-			$sanitized['translations'] = array_values( array_filter( array_map(
-				function( $t ) {
-					if ( empty( $t['locale'] ) ) return null;
+			$sanitized['translations'] = array_values(
+				array_filter(
+					array_map(
+						function ( $t ) {
+							if ( empty( $t['locale'] ) ) {
+								return null;
+							}
 
-					$locale = sanitize_text_field( $t['locale'] );
+							$locale = sanitize_text_field( $t['locale'] );
 
-					return [
-						'locale'     => $locale,
-						'label'      => sanitize_text_field( $t['label'] ?? $locale ),
-						'buttonText' => sanitize_text_field( $t['buttonText'] ?? '' ),
-					];
-				},
-				$input['translations']
-			) ) );
+							return array(
+								'locale'     => $locale,
+								'label'      => sanitize_text_field( $t['label'] ?? $locale ),
+								'buttonText' => sanitize_text_field( $t['buttonText'] ?? '' ),
+							);
+						},
+						$input['translations']
+					)
+				)
+			);
 		}
 
 		/**
 		 * Editor Support
 		 */
 		if ( ! empty( $input['editorSupport'] ) ) {
-			$sanitized['editorSupport'] = array_values( array_filter( array_map(
-				function( $editor ) use ( $editor_support_map ) {
-					if ( empty( $editor['editor'] ) ) return null;
+			$sanitized['editorSupport'] = array_values(
+				array_filter(
+					array_map(
+						function ( $editor ) use ( $editor_support_map ) {
+							if ( empty( $editor['editor'] ) ) {
+								return null;
+							}
 
-					$id = sanitize_key( $editor['editor'] );
+							$id = sanitize_key( $editor['editor'] );
 
-					if ( ! isset( $editor_support_map[$id] ) ) return null;
+							if ( ! isset( $editor_support_map[ $id ] ) ) {
+								return null;
+							}
 
-					$base = $editor_support_map[$id];
+							$base = $editor_support_map[ $id ];
 
-					return [
-						'editor'      => $base['editor'],
-						'label'       => $base['label'],
-						'description' => $base['description'],
-						'supported'   => isset( $editor['supported'] )
-							? (bool) $editor['supported']
-							: $base['supported'],
-					];
-				},
-				$input['editorSupport']
-			) ) );
+							return array(
+								'editor'      => $base['editor'],
+								'label'       => $base['label'],
+								'description' => $base['description'],
+								'supported'   => isset( $editor['supported'] )
+									? (bool) $editor['supported']
+									: $base['supported'],
+							);
+						},
+						$input['editorSupport']
+					)
+				)
+			);
 		}
 
 		return $sanitized;
+	}
+
+	/**
+	 * Sanitize SEO platforms while keeping default metadata.
+	 *
+	 * @param mixed $input Platform payload.
+	 * @param array $defaults Default settings.
+	 * @return array
+	 */
+	private function sanitize_seo_platforms( $input, $defaults ) {
+		$platform_defaults = $defaults['seo']['platform'] ?? array();
+		if ( empty( $platform_defaults ) || ! is_array( $platform_defaults ) ) {
+			return array();
+		}
+
+		if ( ! is_array( $input ) ) {
+			return $platform_defaults;
+		}
+
+		$name_map = array();
+		foreach ( $platform_defaults as $slug => $platform ) {
+			if ( ! empty( $platform['name'] ) ) {
+				$name_map[ strtolower( (string) $platform['name'] ) ] = $slug;
+			}
+		}
+
+		$sanitized = array();
+		foreach ( $input as $key => $value ) {
+			if ( is_array( $value ) ) {
+				$slug = is_string( $key ) ? sanitize_key( $key ) : '';
+				if ( empty( $slug ) || ! isset( $platform_defaults[ $slug ] ) ) {
+					continue;
+				}
+
+				$base               = $platform_defaults[ $slug ];
+				$sanitized[ $slug ] = array(
+					'name'     => sanitize_text_field( (string) ( $value['name'] ?? $base['name'] ?? '' ) ),
+					'file'     => sanitize_text_field( (string) ( $value['file'] ?? $base['file'] ?? '' ) ),
+					'meta_key' => sanitize_text_field( (string) ( $value['meta_key'] ?? $base['meta_key'] ?? '' ) ),
+					'noindex'  => sanitize_text_field( (string) ( $value['noindex'] ?? $base['noindex'] ?? '' ) ),
+					'is_array' => isset( $value['is_array'] ) ? (bool) $value['is_array'] : ( $base['is_array'] ?? false ),
+					'custom'   => isset( $value['custom'] ) ? (bool) $value['custom'] : ( $base['custom'] ?? false ),
+				);
+				continue;
+			}
+
+			if ( is_string( $value ) ) {
+				$slug = sanitize_key( $value );
+				if ( isset( $platform_defaults[ $slug ] ) ) {
+					$sanitized[ $slug ] = $platform_defaults[ $slug ];
+					continue;
+				}
+
+				$name_key = strtolower( $value );
+				if ( isset( $name_map[ $name_key ] ) ) {
+					$slug               = $name_map[ $name_key ];
+					$sanitized[ $slug ] = $platform_defaults[ $slug ];
+				}
+			}
+		}
+
+		return empty( $sanitized ) ? $platform_defaults : $sanitized;
 	}
 
 	/**
@@ -426,7 +535,6 @@ class Pointwise_Summary_Advanced_Settings_API {
 	public function get_advanced_settings_option() {
 		$defaults = $this->get_default_advanced_settings();
 		$stored   = get_option( self::OPTION_NAME, array() );
-
 		if ( empty( $stored ) ) {
 			return $defaults;
 		}

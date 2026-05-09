@@ -3,7 +3,7 @@ import { Zap } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../store/types';
 
-export const QuickStartGuide: React.FC = (  ) => {
+export const QuickStartGuide: React.FC = () => {
 	const quickStart = useSelector(
 		( state: RootState ) => state.help.quickStart
 	);

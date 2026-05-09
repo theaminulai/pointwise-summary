@@ -15,7 +15,9 @@ export const EditorSupport: React.FC = () => {
 	);
 	return (
 		<div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-			<h3 className="text-gray-900 mb-4">{ __( 'Editor Support', 'pointwise-summary' ) }</h3>
+			<h3 className="text-gray-900 mb-4">
+				{ __( 'Editor Support', 'pointwise-summary' ) }
+			</h3>
 
 			<div className="space-y-4">
 				{ editorSupport.map( ( editor ) => (

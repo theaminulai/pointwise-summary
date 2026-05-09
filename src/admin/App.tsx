@@ -14,7 +14,7 @@ import { Toaster } from 'sonner';
 
 /**
  * Main Application Component.
- * 
+ *
  * Manages the routing of the admin dashboard and queries global
  * application settings via useGetQuery.
  *
@@ -35,16 +35,19 @@ const App: React.FC = (): JSX.Element => {
 					<Route path="/" element={ <DashboardLayout /> }>
 						<Route
 							index
-							element={ <Navigate to="/overview" replace /> }
+							element={ <Navigate to="/ai-settings" replace /> }
 						/>
-						<Route path="overview" element={ <Overview /> } />
+						{ /* <Route path="overview" element={ <Overview /> } /> */ }
 						<Route path="ai-settings" element={ <AISettings /> } />
-						<Route path="display" element={ <DisplaySettings /> }/>
+						<Route path="display" element={ <DisplaySettings /> } />
 						<Route path="social" element={ <SocialSharing /> } />
-						<Route path="advanced" element={ <AdvancedSettings /> }/>
-						<Route path="analytics" element={ <Analytics /> } />
+						<Route
+							path="advanced"
+							element={ <AdvancedSettings /> }
+						/>
+						{ /* <Route path="analytics" element={ <Analytics /> } /> */ }
 
-						{/* <Route path="per-post" element={ <PerPostSettings	 /> } /> */}
+						{ /* <Route path="per-post" element={ <PerPostSettings	 /> } /> */ }
 						<Route path="help" element={ <Help /> } />
 					</Route>
 				</Routes>

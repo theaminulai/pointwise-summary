@@ -13,11 +13,15 @@ import { __ } from '@wordpress/i18n';
  */
 export function useSocialSharingUpdate() {
 	const dispatch = useDispatch();
-	const socialSharing = useSelector( ( state: RootState ) => state.socialSharing );
+	const socialSharing = useSelector(
+		( state: RootState ) => state.socialSharing
+	);
 	const [ isSaving, setIsSaving ] = useState( false );
 
 	const persistSettings = useCallback(
-		async ( overrideSettings?: Partial< RootState[ 'socialSharing' ] > ) => {
+		async (
+			overrideSettings?: Partial< RootState[ 'socialSharing' ] >
+		) => {
 			setIsSaving( true );
 			try {
 				const payload = {
@@ -30,12 +34,17 @@ export function useSocialSharingUpdate() {
 					dispatch( setSocialSharing( data ) );
 				}
 			} catch ( error ) {
-				toast.error( __('Failed to save social sharing settings. Please try again.', 'pointwise-summary') );
+				toast.error(
+					__(
+						'Failed to save social sharing settings. Please try again.',
+						'pointwise-summary'
+					)
+				);
 			} finally {
 				setIsSaving( false );
 			}
 		},
-		[socialSharing ]
+		[ socialSharing ]
 	);
 
 	return {
@@ -44,4 +53,3 @@ export function useSocialSharingUpdate() {
 		socialSharing,
 	};
 }
-

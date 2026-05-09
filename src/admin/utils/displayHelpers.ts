@@ -10,10 +10,14 @@ export type FloatingPosition =
 	| 'top-left'
 	| 'top-right'
 	| 'bottom-left'
-	| 'bottom-right'
-	| 'left-center'
-	| 'right-center';
-export type ButtonStyle = 'brand' | 'minimal' | 'dark' | 'gradient' | 'outline';
+	| 'bottom-right';
+export type ButtonStyle =
+	| 'default'
+	| 'brand'
+	| 'minimal'
+	| 'dark'
+	| 'gradient'
+	| 'outline';
 export type ButtonShape = 'rounded' | 'circular' | 'square';
 export type ButtonAlignment = 'left' | 'center' | 'right';
 
@@ -23,14 +27,12 @@ export type ButtonAlignment = 'left' | 'center' | 'right';
  * @returns {string} CSS classes for positioning
  */
 export function getFloatingPositionClass( position: FloatingPosition ): string {
-	return clsx({
+	return clsx( {
 		'top-4 left-4': position === 'top-left',
 		'top-4 right-4': position === 'top-right',
 		'bottom-4 left-4': position === 'bottom-left',
 		'bottom-4 right-4': position === 'bottom-right',
-		'top-1/2 -translate-y-1/2 left-4': position === 'left-center',
-		'top-1/2 -translate-y-1/2 right-4': position === 'right-center',
-	});
+	} );
 }
 
 /**
@@ -45,22 +47,30 @@ export function getFloatingMenuPositionClasses(
 		return 'absolute bottom-full right-0 mb-2';
 	}
 
-	return clsx({
+	return clsx( {
 		'absolute bottom-full left-0 mb-2': position === 'bottom-left',
-		'absolute top-full right-0 mt-2':
-			position === 'top-right' || position === 'right-center',
-		'absolute top-full left-0 mt-2':
-			position === 'top-left' || position === 'left-center',
-	});
+		'absolute top-full right-0 mt-2': position === 'top-right',
+		'absolute top-full left-0 mt-2': position === 'top-left',
+	} );
 }
 
+export function collapsedPositionClass(
+	position: 'left' | 'center' | 'right' = 'left'
+): string {
+	return clsx( {
+		'absolute top-full left-0 mt-2': position === 'left',
+		'absolute top-full right-0 mt-2': position === 'right',
+		'absolute top-full left-1/2 transform -translate-x-1/2 mt-2':
+			position === 'center',
+	} );
+}
 /**
  * Get CSS classes for button style
  * @param {ButtonStyle} style - Style of the button
  * @returns {string} CSS classes for button styling
  */
 export function getStyleClasses( style: ButtonStyle ): string {
-	return clsx({
+	return clsx( {
 		'bg-indigo-600 text-white hover:bg-indigo-700': style === 'brand',
 		'bg-gray-200 text-gray-700 hover:bg-gray-300': style === 'minimal',
 		'bg-gray-900 text-white hover:bg-gray-800': style === 'dark',
@@ -68,7 +78,7 @@ export function getStyleClasses( style: ButtonStyle ): string {
 			style === 'gradient',
 		'border-2 border-indigo-600 bg-white text-indigo-600 hover:bg-indigo-50':
 			style === 'outline',
-	});
+	} );
 }
 
 /**
@@ -77,11 +87,11 @@ export function getStyleClasses( style: ButtonStyle ): string {
  * @returns {string} CSS classes for button shape
  */
 export function getShapeClasses( shape: ButtonShape ): string {
-	return clsx({
+	return clsx( {
 		'rounded-lg': shape === 'rounded',
 		'rounded-full': shape === 'circular',
 		'rounded-none': shape === 'square',
-	});
+	} );
 }
 
 /**
@@ -90,9 +100,9 @@ export function getShapeClasses( shape: ButtonShape ): string {
  * @returns {string} CSS classes for button alignment
  */
 export function getAlignmentClasses( alignment: ButtonAlignment ): string {
-	return clsx({
+	return clsx( {
 		'justify-start': alignment === 'left',
 		'justify-center': alignment === 'center',
 		'justify-end': alignment === 'right',
-	});
+	} );
 }

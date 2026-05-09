@@ -84,10 +84,11 @@ class Pointwise_Summary_Display_Settings_API {
 				'inlinePosition'   => 'after-content',
 			),
 			'style'    => array(
-				'buttonStyle'      => 'brand',
+				'buttonStyle'      => 'default',
 				'buttonShape'      => 'rounded',
 				'iconDisplay'      => 'icons-text',
 				'enableAnimations' => true,
+				'floatingStyle'    => 'collapsed',
 			),
 		);
 	}
@@ -109,7 +110,7 @@ class Pointwise_Summary_Display_Settings_API {
 
 		// Mode Settings
 		if ( isset( $input['mode'] ) && is_array( $input['mode'] ) ) {
-			$mode = $input['mode'];
+			$mode                                     = $input['mode'];
 			$sanitized['mode']['displayMode']         = isset( $mode['displayMode'] ) ? sanitize_text_field( $mode['displayMode'] ) : $defaults['mode']['displayMode'];
 			$sanitized['mode']['enableScrollTrigger'] = isset( $mode['enableScrollTrigger'] ) ? (bool) $mode['enableScrollTrigger'] : $defaults['mode']['enableScrollTrigger'];
 			$sanitized['mode']['scrollTrigger']       = isset( $mode['scrollTrigger'] ) ? absint( $mode['scrollTrigger'] ) : $defaults['mode']['scrollTrigger'];
@@ -117,7 +118,7 @@ class Pointwise_Summary_Display_Settings_API {
 
 		// Position Settings
 		if ( isset( $input['position'] ) && is_array( $input['position'] ) ) {
-			$pos = $input['position'];
+			$pos                                       = $input['position'];
 			$sanitized['position']['floatingPosition'] = isset( $pos['floatingPosition'] ) ? sanitize_text_field( $pos['floatingPosition'] ) : $defaults['position']['floatingPosition'];
 			$sanitized['position']['buttonAlignment']  = isset( $pos['buttonAlignment'] ) ? sanitize_text_field( $pos['buttonAlignment'] ) : $defaults['position']['buttonAlignment'];
 			$sanitized['position']['inlinePosition']   = isset( $pos['inlinePosition'] ) ? sanitize_text_field( $pos['inlinePosition'] ) : $defaults['position']['inlinePosition'];
@@ -125,11 +126,12 @@ class Pointwise_Summary_Display_Settings_API {
 
 		// Style Settings
 		if ( isset( $input['style'] ) && is_array( $input['style'] ) ) {
-			$style = $input['style'];
+			$style                                  = $input['style'];
 			$sanitized['style']['buttonStyle']      = isset( $style['buttonStyle'] ) ? sanitize_text_field( $style['buttonStyle'] ) : $defaults['style']['buttonStyle'];
 			$sanitized['style']['buttonShape']      = isset( $style['buttonShape'] ) ? sanitize_text_field( $style['buttonShape'] ) : $defaults['style']['buttonShape'];
 			$sanitized['style']['iconDisplay']      = isset( $style['iconDisplay'] ) ? sanitize_text_field( $style['iconDisplay'] ) : $defaults['style']['iconDisplay'];
 			$sanitized['style']['enableAnimations'] = isset( $style['enableAnimations'] ) ? (bool) $style['enableAnimations'] : $defaults['style']['enableAnimations'];
+			$sanitized['style']['floatingStyle']    = isset( $style['floatingStyle'] ) ? sanitize_text_field( $style['floatingStyle'] ) : $defaults['style']['floatingStyle'];
 		}
 
 		return $sanitized;

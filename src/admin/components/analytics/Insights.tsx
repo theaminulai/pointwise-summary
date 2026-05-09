@@ -2,7 +2,7 @@ import type * as React from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../store/types';
 
-export const Insights: React.FC = (  ) => {
+export const Insights: React.FC = () => {
 	const insights = useSelector(
 		( state: RootState ) => state.analytics.insights
 	);

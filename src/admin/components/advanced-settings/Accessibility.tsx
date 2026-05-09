@@ -15,74 +15,87 @@ export const Accessibility: React.FC = () => {
 	const { persistSettings } = useAdvancedSettingsUpdate();
 
 	const accessibility = useSelector(
-		(state: RootState) => state.advancedSettings.accessibility
+		( state: RootState ) => state.advancedSettings.accessibility
 	);
 
-	const {
-		enableAccessibility,
-		enableKeyboard,
-		keyboardShortcut,
-		enableRTL,
-	} = accessibility;
+	const { enableAccessibility, enableKeyboard, keyboardShortcut, enableRTL } =
+		accessibility;
 
 	/**
 	 * Updates a single accessibility field in Redux and persists the merged object.
 	 */
-	const handleChange = <K extends keyof typeof accessibility>(
-			key: K,
-			value: typeof accessibility[K]
-		) => {
-			const nextAccessibility = {
-				...accessibility,
-				[ key ]: value,
-			};
-
-			dispatch(
-				setAdvancedAccessibility({
-					[key]: value,
-				})
-			);
-			void persistSettings( {
-				accessibility: nextAccessibility,
-			} );
+	const handleChange = < K extends keyof typeof accessibility >(
+		key: K,
+		value: ( typeof accessibility )[ K ]
+	) => {
+		const nextAccessibility = {
+			...accessibility,
+			[ key ]: value,
 		};
+
+		dispatch(
+			setAdvancedAccessibility( {
+				[ key ]: value,
+			} )
+		);
+		void persistSettings( {
+			accessibility: nextAccessibility,
+		} );
+	};
 
 	return (
 		<div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
 			<h3 className="text-gray-900 mb-4">
-				{__('Accessibility', 'pointwise-summary')}
+				{ __( 'Accessibility', 'pointwise-summary' ) }
 			</h3>
 
 			<div className="space-y-4">
-
-				{/* Accessibility Toggle */}
+				{ /* Accessibility Toggle */ }
 				<Toggle
-					checked={enableAccessibility}
-					onChange={(value) => handleChange('enableAccessibility', value)}
-					label={__('Enhanced Accessibility', 'pointwise-summary')}
-					description={__('ARIA labels, focus management, and screen reader support', 'pointwise-summary')}
+					checked={ enableAccessibility }
+					onChange={ ( value ) =>
+						handleChange( 'enableAccessibility', value )
+					}
+					label={ __(
+						'Enhanced Accessibility',
+						'pointwise-summary'
+					) }
+					description={ __(
+						'ARIA labels, focus management, and screen reader support',
+						'pointwise-summary'
+					) }
 				/>
 
-				{/* Keyboard Toggle */}
+				{ /* Keyboard Toggle */ }
 				<Toggle
-					checked={enableKeyboard}
-					onChange={(value) => handleChange('enableKeyboard', value)}
-					label={__('Keyboard Navigation', 'pointwise-summary')}
-					description={__('Enable keyboard shortcuts for summary buttons', 'pointwise-summary')}
+					checked={ enableKeyboard }
+					onChange={ ( value ) =>
+						handleChange( 'enableKeyboard', value )
+					}
+					label={ __( 'Keyboard Navigation', 'pointwise-summary' ) }
+					description={ __(
+						'Enable keyboard shortcuts for summary buttons',
+						'pointwise-summary'
+					) }
 				/>
 
 				<KeyboardShortcut
 					enabled={ enableKeyboard }
 					value={ keyboardShortcut }
-					onChange={ ( value ) => handleChange( 'keyboardShortcut', value ) }
+					onChange={ ( value ) =>
+						handleChange( 'keyboardShortcut', value )
+					}
 				/>
 
-				{/* RTL Toggle */}
+				{ /* RTL Toggle */ }
 				<Toggle
-					checked={enableRTL}
-					onChange={(value) => handleChange('enableRTL', value)}
-					label={__('RTL Support', 'pointwise-summary')}
-					description={__('Right-to-left language support (Arabic, Hebrew, etc.)', 'pointwise-summary')}
+					checked={ enableRTL }
+					onChange={ ( value ) => handleChange( 'enableRTL', value ) }
+					label={ __( 'RTL Support', 'pointwise-summary' ) }
+					description={ __(
+						'Right-to-left language support (Arabic, Hebrew, etc.)',
+						'pointwise-summary'
+					) }
 				/>
 			</div>
 		</div>

@@ -11,7 +11,9 @@ import type { RootState } from '../store/types';
  */
 export function useAdvancedSettingsUpdate() {
 	const dispatch = useDispatch();
-	const advancedSettings = useSelector( ( state: RootState ) => state.advancedSettings );
+	const advancedSettings = useSelector(
+		( state: RootState ) => state.advancedSettings
+	);
 	const [ isSaving, setIsSaving ] = useState( false );
 
 	/**
@@ -20,7 +22,9 @@ export function useAdvancedSettingsUpdate() {
 	 * @param overrideSettings Optional values to merge before save.
 	 */
 	const persistSettings = useCallback(
-		async ( overrideSettings?: Partial< RootState[ 'advancedSettings' ] > ) => {
+		async (
+			overrideSettings?: Partial< RootState[ 'advancedSettings' ] >
+		) => {
 			setIsSaving( true );
 			try {
 				const payload = {
@@ -32,7 +36,12 @@ export function useAdvancedSettingsUpdate() {
 					dispatch( setAdvancedSettings( data ) );
 				}
 			} catch ( error ) {
-				toast.error( __( 'Failed to save advanced settings. Please try again.', 'pointwise-summary' ) );
+				toast.error(
+					__(
+						'Failed to save advanced settings. Please try again.',
+						'pointwise-summary'
+					)
+				);
 			} finally {
 				setIsSaving( false );
 			}

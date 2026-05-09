@@ -1,8 +1,18 @@
 import { __ } from '@wordpress/i18n';
 import type * as React from 'react';
-import type { IconDisplay } from '../../store/types';
+import type { DisplayMode, IconDisplay } from '../../store/types';
 import type { ButtonShape, ButtonStyle } from '../../utils/displayHelpers';
+import { MODEL_DEFAULT_COLORS } from '../../utils/modelDefaultColors';
 import { Select, Toggle } from '../common';
+
+const DEFAULT_STYLE_SWATCHES = [
+	MODEL_DEFAULT_COLORS.chatgpt,
+	MODEL_DEFAULT_COLORS.gemini,
+	MODEL_DEFAULT_COLORS.claude,
+	MODEL_DEFAULT_COLORS.perplexity,
+	MODEL_DEFAULT_COLORS.grok,
+	MODEL_DEFAULT_COLORS[ 'google-ai' ],
+];
 
 /**
  * Properties for the StyleTabContent component.
@@ -12,12 +22,14 @@ interface StyleTabContentProps {
 	buttonShape: ButtonShape;
 	iconDisplay: IconDisplay;
 	enableAnimations: boolean;
+	floatingStyle: 'collapsed' | 'flat';
+	displayMode: DisplayMode;
 	onChange: ( field: string, value: unknown ) => void;
 }
 
 /**
  * Component for customizing the visual appearance (style, shape, animation) of buttons.
- * 
+ *
  * @param props - Component properties.
  * @returns The rendered style settings tab content.
  */
@@ -26,8 +38,11 @@ export const StyleTabContent: React.FC< StyleTabContentProps > = ( {
 	buttonShape,
 	iconDisplay,
 	enableAnimations,
+	floatingStyle,
+	displayMode,
 	onChange,
 } ) => {
+	const isFloatingMode = displayMode === 'floating' || displayMode === 'both';
 	return (
 		<div className="space-y-6">
 			<div className="space-y-4">
@@ -36,6 +51,11 @@ export const StyleTabContent: React.FC< StyleTabContentProps > = ( {
 				</label>
 				<div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
 					{ [
+						{
+							value: 'default',
+							label: __( 'Default', 'pointwise-summary' ),
+							color: '',
+						},
 						{
 							value: 'brand',
 							label: __( 'Brand', 'pointwise-summary' ),
@@ -46,7 +66,11 @@ export const StyleTabContent: React.FC< StyleTabContentProps > = ( {
 							label: __( 'Minimal', 'pointwise-summary' ),
 							color: 'bg-gray-200',
 						},
-						{ value: 'dark', label: __( 'Dark', 'pointwise-summary' ), color: 'bg-gray-900' },
+						{
+							value: 'dark',
+							label: __( 'Dark', 'pointwise-summary' ),
+							color: 'bg-gray-900',
+						},
 						{
 							value: 'gradient',
 							label: __( 'Gradient', 'pointwise-summary' ),
@@ -60,16 +84,30 @@ export const StyleTabContent: React.FC< StyleTabContentProps > = ( {
 					].map( ( style ) => (
 						<button
 							key={ style.value }
-							onClick={ () => onChange( 'buttonStyle', style.value ) }
+							onClick={ () =>
+								onChange( 'buttonStyle', style.value )
+							}
 							className={ `cursor-pointer flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition-all ${
 								buttonStyle === style.value
 									? 'border-indigo-600 bg-indigo-50'
 									: 'border-gray-200 hover:border-gray-300'
 							}` }
 						>
-							<div
-								className={ `w-10 h-10 rounded ${ style.color }` }
-							></div>
+							{ style.value === 'default' ? (
+								<div className="w-10 h-10 rounded grid grid-cols-3 gap-0.5 p-0.5 bg-white border border-gray-200">
+									{ DEFAULT_STYLE_SWATCHES.map( ( color ) => (
+										<span
+											key={ color }
+											className="rounded-xs"
+											style={ { backgroundColor: color } }
+										/>
+									) ) }
+								</div>
+							) : (
+								<div
+									className={ `w-10 h-10 rounded ${ style.color }` }
+								/>
+							) }
 							<span className="text-xs font-medium text-gray-900">
 								{ style.label }
 							</span>
@@ -102,7 +140,9 @@ export const StyleTabContent: React.FC< StyleTabContentProps > = ( {
 					].map( ( shape ) => (
 						<button
 							key={ shape.value }
-							onClick={ () => onChange( 'buttonShape', shape.value ) }
+							onClick={ () =>
+								onChange( 'buttonShape', shape.value )
+							}
 							className={ `cursor-pointer flex-1 flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition-all ${
 								buttonShape === shape.value
 									? 'border-indigo-600 bg-indigo-50'
@@ -128,24 +168,61 @@ export const StyleTabContent: React.FC< StyleTabContentProps > = ( {
 					{
 						value: 'icons-text',
 						label: __( 'Icons + Text', 'pointwise-summary' ),
-						description: __( 'Show both icon and text', 'pointwise-summary' ),
+						description: __(
+							'Show both icon and text',
+							'pointwise-summary'
+						),
 					},
 					{
 						value: 'icons-only',
 						label: __( 'Icons Only', 'pointwise-summary' ),
-						description: __( 'Compact button with icon only', 'pointwise-summary' ),
+						description: __(
+							'Compact button with icon only',
+							'pointwise-summary'
+						),
 					},
 					{
 						value: 'text-only',
 						label: __( 'Text Only', 'pointwise-summary' ),
-						description: __( 'Text button without icon', 'pointwise-summary' ),
+						description: __(
+							'Text button without icon',
+							'pointwise-summary'
+						),
 					},
 				] }
 			/>
+			{ isFloatingMode && (
+				<Select
+					label={ __( 'Floating Style', 'pointwise-summary' ) }
+					value={ floatingStyle }
+					onChange={ ( value ) => onChange( 'floatingStyle', value ) }
+					options={ [
+						{
+							value: 'collapsed',
+							label: __( 'Collapsed', 'pointwise-summary' ),
+							description: __(
+								'Show expand on click',
+								'pointwise-summary'
+							),
+						},
+						{
+							value: 'flat',
+							label: __( 'Flat', 'pointwise-summary' ),
+							description: __(
+								'Show all buttons expanded',
+								'pointwise-summary'
+							),
+						},
+					] }
+				/>
+			) }
 
 			<Toggle
 				label={ __( 'Enable Animations', 'pointwise-summary' ) }
-				description={ __( 'Add hover and entrance animations to buttons', 'pointwise-summary' ) }
+				description={ __(
+					'Add hover and entrance animations to buttons',
+					'pointwise-summary'
+				) }
 				className="pt-4 border-t border-gray-200"
 				checked={ enableAnimations }
 				onChange={ ( v ) => onChange( 'enableAnimations', v ) }

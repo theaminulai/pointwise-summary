@@ -15,7 +15,7 @@ interface ModeTabContentProps {
 
 /**
  * Component for managing display mode settings (floating, inline, etc.).
- * 
+ *
  * @param props - Component properties.
  * @returns The rendered mode settings tab content.
  */
@@ -35,25 +35,36 @@ export const ModeTabContent: React.FC< ModeTabContentProps > = ( {
 					{
 						value: 'floating',
 						label: __( 'Floating Button', 'pointwise-summary' ),
-						description:
-							__( 'Fixed position button that follows scroll', 'pointwise-summary' ),
+						description: __(
+							'Fixed position button that follows scroll',
+							'pointwise-summary'
+						),
 					},
 					{
 						value: 'inline',
 						label: __( 'Inline Button', 'pointwise-summary' ),
-						description: __( 'Button embedded within content', 'pointwise-summary' ),
+						description: __(
+							'Button embedded within content',
+							'pointwise-summary'
+						),
 						isRecommended: true,
 					},
 					{
 						value: 'collapse',
 						label: __( 'Collapse Button', 'pointwise-summary' ),
-						description: __( 'Button that expands on click to show ai modal', 'pointwise-summary' ),
+						description: __(
+							'Button that expands on click to show ai modal',
+							'pointwise-summary'
+						),
 						isRecommended: true,
 					},
 					{
 						value: 'both',
 						label: __( 'Both', 'pointwise-summary' ),
-						description: __( 'Floating + inline buttons', 'pointwise-summary' ),
+						description: __(
+							'Floating + inline buttons',
+							'pointwise-summary'
+						),
 					},
 				] }
 			/>
@@ -61,24 +72,33 @@ export const ModeTabContent: React.FC< ModeTabContentProps > = ( {
 			{ ( displayMode === 'floating' || displayMode === 'both' ) && (
 				<div className="space-y-4 pt-4 border-t border-gray-200">
 					<Toggle
-						label={ __( 'Enable Scroll Trigger', 'pointwise-summary' ) }
-						description={ __( 'Button will appear after user scrolls down the page', 'pointwise-summary' ) }
+						label={ __(
+							'Enable Scroll Trigger',
+							'pointwise-summary'
+						) }
+						description={ __(
+							'Button will appear after user scrolls down the page',
+							'pointwise-summary'
+						) }
 						className="pt-4 border-t border-gray-200"
 						checked={ enableScrollTrigger }
-						onChange={ ( v ) => onChange( 'enableScrollTrigger', v ) }
+						onChange={ ( v ) =>
+							onChange( 'enableScrollTrigger', v )
+						}
 					/>
 
 					{ enableScrollTrigger && (
 						<div className="space-y-3 pl-4 border-l-2 border-indigo-100">
 							<div className="flex items-center justify-between">
 								<label className="text-sm text-gray-700">
-									{
-										sprintf(
-											/* translators: %s is replaced with scroll trigger percentage */
-											__( 'Trigger at %s scroll', 'pointwise-summary' ),
-											`%${ scrollTrigger }`
-										)
-									}
+									{ sprintf(
+										/* translators: %s is replaced with scroll trigger percentage */
+										__(
+											'Trigger at %s scroll',
+											'pointwise-summary'
+										),
+										`%${ scrollTrigger }`
+									) }
 								</label>
 								<span className="text-sm font-medium text-indigo-600">
 									{ scrollTrigger }%
@@ -99,7 +119,10 @@ export const ModeTabContent: React.FC< ModeTabContentProps > = ( {
 								className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
 							/>
 							<p className="text-xs text-gray-500">
-								{ __( 'Button will appear when user scrolls down this percentage of the page', 'pointwise-summary' ) }
+								{ __(
+									'Button will appear when user scrolls down this percentage of the page',
+									'pointwise-summary'
+								) }
 							</p>
 						</div>
 					) }

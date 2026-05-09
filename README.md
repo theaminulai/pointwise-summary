@@ -1,6 +1,6 @@
 # Pointwise Summary - AI-Powered TL;DR & Content Summary Buttons
 
-[![WordPress Plugin Version](https://img.shields.io/badge/version-0.4.0-blue.svg)](https://github.com/theaminulai/pointwise-summary/releases)
+[![WordPress Plugin Version](https://img.shields.io/badge/version-0.5.0-blue.svg)](https://github.com/theaminulai/pointwise-summary/releases)
 [![WordPress Compatibility](https://img.shields.io/badge/wordpress-6.1%2B-brightgreen.svg)](https://wordpress.org/)
 [![License](https://img.shields.io/badge/license-GPL--2.0--or--later-orange.svg)](LICENSE)
 [![PHP Version](https://img.shields.io/badge/php-7.4%2B-purple.svg)](https://www.php.net/)
@@ -15,7 +15,7 @@ A powerful Gutenberg block plugin that enables you to add professional "Summariz
 
 ## 🎯 What is Pointwise Summary?
 
-Pointwise Summary provides customizable button blocks designed specifically for content summarization. Whether you're running a news site, blog, documentation portal, or educational platform, this plugin helps readers quickly identify relevant content and navigate long articles efficiently.
+Pointwise Summary is a comprehensive WordPress plugin that adds customizable summary and sharing buttons to your content. It features a powerful admin interface with REST API integration, flexible shortcode system, and advanced styling options. Perfect for news sites, blogs, documentation portals, and educational platforms, it helps readers quickly access summarized content and share articles across social networks.
 
 ### What is TL;DR?
 
@@ -49,12 +49,11 @@ Pointwise Summary provides customizable button blocks designed specifically for 
 - **No External Dependencies** - Self-contained with no heavy libraries
 - **Fast Registration** - Efficient block registration for quick page loads
 
-### 🤖 AI-Ready (Coming Soon)
-- **Chrome Built-in AI** - Integration with Gemini Nano for on-device summarization
-- **Multiple Summary Types** - TL;DR, key-points, headlines, teasers
-- **Adjustable Length** - Short, medium, or long summaries
-- **Format Options** - Bullet points, paragraphs, or structured markdown
-- **Multi-language** - Summarize content in 50+ languages
+### 🤖 Admin Settings & API
+- **Comprehensive Settings Dashboard** - Manage AI platforms, display options, social sharing, and advanced settings from the WordPress admin
+- **REST API Endpoints** - Access plugin configuration and data via `/pointwise-summary/v1/` endpoints
+- **Settings Management** - Centralized UI for AI platform configuration, display preferences, and social network settings
+- **Help & Documentation** - Built-in help system with FAQs, quick-start guide, and shortcode examples
 
 ## 🎯 Perfect Use Cases
 
@@ -242,27 +241,44 @@ npm run plugin-zip
 
 ```
 pointwise-summary/
-├── src/                        # Source files (uncompiled)
-│   ├── admin/                  # Admin settings (placeholder)
-│   └── blocks/                 # Block source files
-│       └── summarize-button/   # Main block
-│           ├── block.json      # Block metadata & config
-│           ├── index.js        # Block registration
-│           ├── edit.js         # Editor component (React)
-│           ├── save.js         # Frontend save function
-│           ├── view.js         # Frontend interactivity (JS)
-│           ├── transforms.js   # Block transformations
-│           ├── deprecated.js   # Legacy versions
-│           ├── style.scss      # Frontend & editor styles
-│           └── editor.scss     # Editor-only styles
-├── build/                      # Compiled assets (generated)
-│   └── blocks/
-│       └── summarize-button/
-├── pointwise-summary.php                 # Main plugin file
-├── readme.txt                  # WordPress.org readme
-├── README.md                   # This file
-├── package.json                # Node dependencies
-└── webpack.config.js           # Custom webpack config
+├── pointwise-summary.php                 # Main plugin file (entry point)
+├── includes/                              # Core plugin classes
+│   ├── plugin.php                        # Bootstrap and initialization
+│   ├── class-pointwise-summary-*.php     # Admin UI classes
+│   ├── api/                              # REST API endpoints (6 endpoints)
+│   │   ├── class-pointwise-summary-ai-settings-api.php
+│   │   ├── class-pointwise-summary-display-settings-api.php
+│   │   ├── class-pointwise-summary-social-sharing-api.php
+│   │   ├── class-pointwise-summary-advanced-settings-api.php
+│   │   ├── class-pointwise-summary-shortcode-api.php
+│   │   └── class-pointwise-summary-system-info-api.php
+│   ├── frontend/                         # Frontend rendering classes
+│   │   ├── class-pointwise-summary-buttons.php
+│   │   ├── class-pointwise-summary-frontend.php
+│   │   ├── class-pointwise-summary-inline.php
+│   │   ├── class-pointwise-summary-fab.php
+│   │   └── ... (other frontend helpers)
+│   └── helpers/                          # Utility classes and traits
+├── src/                                  # React admin UI source (uncompiled)
+│   ├── admin/                            # Admin React application
+│   │   ├── store/                        # Redux state management
+│   │   ├── components/                   # React settings components
+│   │   ├── hooks/                        # Custom React hooks
+│   │   ├── services/                     # REST API client
+│   │   └── index.tsx                     # App entry point
+│   └── frontend/                         # Frontend React (if any)
+├── build/                                # Compiled assets (generated)
+│   ├── admin.js                          # Compiled admin UI
+│   ├── admin.css                         # Admin styles
+│   └── ...
+├── package.json                          # Node.js dependencies
+├── webpack.config.js                     # Webpack configuration
+├── README.md                             # This file
+├── ARCHITECTURE.md                       # Detailed architecture docs
+├── AGENTS.md                             # AI agent guidelines
+└── .github/
+    ├── PULL_REQUEST_TEMPLATE.md
+    └── copilot-instructions.md
 ```
 
 ## 🔮 Roadmap - Future AI Features

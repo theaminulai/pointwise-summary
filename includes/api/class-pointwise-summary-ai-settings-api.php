@@ -78,6 +78,7 @@ class Pointwise_Summary_AI_Settings_API {
 			'includeMetadata' => false,
 			'globalPrompt'    => 'Please provide a concise summary of this article in 3-5 bullet points.',
 			'useGlobalPrompt' => true,
+			'enableAiSummary' => true,
 			'platforms'       => array(
 				array(
 					'id'          => 'chatgpt',
@@ -86,6 +87,7 @@ class Pointwise_Summary_AI_Settings_API {
 					'logoKey'     => 'chatgpt',
 					'enabled'     => true,
 					'prompt'      => 'Please provide a concise summary of this article in 3-5 bullet points.',
+					'color'       => '#11A27F',
 				),
 				array(
 					'id'          => 'gemini',
@@ -94,6 +96,7 @@ class Pointwise_Summary_AI_Settings_API {
 					'logoKey'     => 'gemini',
 					'enabled'     => true,
 					'prompt'      => 'Summarize this article in bullet points, focusing on key takeaways.',
+					'color'       => '#8AB5FF',
 				),
 				array(
 					'id'          => 'claude',
@@ -102,6 +105,7 @@ class Pointwise_Summary_AI_Settings_API {
 					'logoKey'     => 'claude',
 					'enabled'     => true,
 					'prompt'      => 'Create a brief summary of this article with main points.',
+					'color'       => '#D97757',
 				),
 				array(
 					'id'          => 'perplexity',
@@ -110,6 +114,7 @@ class Pointwise_Summary_AI_Settings_API {
 					'logoKey'     => 'perplexity',
 					'enabled'     => false,
 					'prompt'      => 'Provide a structured summary of this article.',
+					'color'       => '#23B8CD',
 				),
 				array(
 					'id'          => 'grok',
@@ -118,6 +123,7 @@ class Pointwise_Summary_AI_Settings_API {
 					'logoKey'     => 'grok',
 					'enabled'     => false,
 					'prompt'      => 'Summarize this content in an easy-to-understand format.',
+					'color'       => '#000000',
 				),
 				array(
 					'id'          => 'google-ai',
@@ -126,6 +132,7 @@ class Pointwise_Summary_AI_Settings_API {
 					'logoKey'     => 'google-ai',
 					'enabled'     => false,
 					'prompt'      => 'Generate a comprehensive summary of this article.',
+					'color'       => '#FBBC03',
 				),
 			),
 		);
@@ -164,14 +171,15 @@ class Pointwise_Summary_AI_Settings_API {
 		$sanitized = $defaults;
 
 		if ( isset( $input['summaryLength'] ) ) {
-			$allowed_lengths           = array( 'short', 'medium', 'detailed' );
-			$summary_length            = sanitize_text_field( $input['summaryLength'] );
+			$allowed_lengths            = array( 'short', 'medium', 'detailed', 'large', 'extra' );
+			$summary_length             = sanitize_text_field( $input['summaryLength'] );
 			$sanitized['summaryLength'] = in_array( $summary_length, $allowed_lengths, true ) ? $summary_length : $defaults['summaryLength'];
 		}
 
 		$sanitized['includeHeadings'] = isset( $input['includeHeadings'] ) ? (bool) $input['includeHeadings'] : $defaults['includeHeadings'];
 		$sanitized['includeMetadata'] = isset( $input['includeMetadata'] ) ? (bool) $input['includeMetadata'] : $defaults['includeMetadata'];
 		$sanitized['useGlobalPrompt'] = isset( $input['useGlobalPrompt'] ) ? (bool) $input['useGlobalPrompt'] : $defaults['useGlobalPrompt'];
+		$sanitized['enableAiSummary'] = isset( $input['enableAiSummary'] ) ? (bool) $input['enableAiSummary'] : $defaults['enableAiSummary'];
 
 		if ( isset( $input['globalPrompt'] ) ) {
 			$sanitized['globalPrompt'] = sanitize_textarea_field( (string) $input['globalPrompt'] );
@@ -199,6 +207,9 @@ class Pointwise_Summary_AI_Settings_API {
 					'logoKey'     => $base['logoKey'],
 					'enabled'     => isset( $platform['enabled'] ) ? (bool) $platform['enabled'] : $base['enabled'],
 					'prompt'      => isset( $platform['prompt'] ) ? sanitize_textarea_field( (string) $platform['prompt'] ) : $base['prompt'],
+					'color'       => isset( $platform['color'] ) && sanitize_hex_color( (string) $platform['color'] )
+						? sanitize_hex_color( (string) $platform['color'] )
+						: $base['color'],
 				);
 			}
 

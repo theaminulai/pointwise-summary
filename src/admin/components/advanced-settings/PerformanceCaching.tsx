@@ -21,9 +21,9 @@ export const PerformanceCaching: React.FC = () => {
 	/**
 	 * Updates a performance field and persists the merged performance settings.
 	 */
-	const handleChange = <K extends keyof typeof performance>(
+	const handleChange = < K extends keyof typeof performance >(
 		key: K,
-		value: typeof performance[K]
+		value: ( typeof performance )[ K ]
 	) => {
 		const nextPerformance = {
 			...performance,
@@ -32,38 +32,58 @@ export const PerformanceCaching: React.FC = () => {
 
 		dispatch(
 			setAdvancedPerformance( {
-				[key]: value,
+				[ key ]: value,
 			} )
 		);
 		void persistSettings( {
 			performance: nextPerformance,
 		} );
 	};
-	
+
 	return (
 		<div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-			<h3 className="text-gray-900 mb-4">{ __( 'Performance & Caching', 'pointwise-summary' ) }</h3>
+			<h3 className="text-gray-900 mb-4">
+				{ __( 'Performance & Caching', 'pointwise-summary' ) }
+			</h3>
 
 			<div className="space-y-4">
 				<Toggle
 					checked={ enableCache }
-					onChange={ ( value ) => handleChange( 'enableCache', value ) }
-					label={ __( 'Enable Summary Caching', 'pointwise-summary' ) }
-					description={ __( 'Cache generated summaries to improve performance', 'pointwise-summary' ) }
+					onChange={ ( value ) =>
+						handleChange( 'enableCache', value )
+					}
+					label={ __(
+						'Enable Summary Caching',
+						'pointwise-summary'
+					) }
+					description={ __(
+						'Cache generated summaries to improve performance',
+						'pointwise-summary'
+					) }
 				/>
 
 				<CacheExpiry
 					enabled={ enableCache }
 					value={ cacheExpiry }
-					onChange={ ( value ) => handleChange( 'cacheExpiry', value ) }
+					onChange={ ( value ) =>
+						handleChange( 'cacheExpiry', value )
+					}
 				/>
 
 				<div>
 					<Toggle
 						checked={ dataCleanup }
-						onChange={ ( value ) => handleChange( 'dataCleanup', value ) }
-						label={ __( 'Delete all plugin data when plugin is deleted (uninstalled)', 'pointwise-summary' ) }
-						description={ __( 'Keep plugin data on deactivation, but remove on uninstall', 'pointwise-summary' ) }
+						onChange={ ( value ) =>
+							handleChange( 'dataCleanup', value )
+						}
+						label={ __(
+							'Delete all plugin data when plugin is deleted (uninstalled)',
+							'pointwise-summary'
+						) }
+						description={ __(
+							'Keep plugin data on deactivation, but remove on uninstall',
+							'pointwise-summary'
+						) }
 					/>
 
 					{ dataCleanup && (
@@ -87,7 +107,10 @@ export const PerformanceCaching: React.FC = () => {
 										{ __( 'Warning', 'pointwise-summary' ) }
 									</p>
 									<p className="text-xs text-red-800 mt-1">
-										{ __( 'If enabled, all plugin settings, AI configurations, analytics data, and cached summaries will be permanently deleted when you delete (not just deactivate) this plugin from WordPress.', 'pointwise-summary' ) }
+										{ __(
+											'If enabled, all plugin settings, AI configurations, analytics data, and cached summaries will be permanently deleted when you delete (not just deactivate) this plugin from WordPress.',
+											'pointwise-summary'
+										) }
 									</p>
 								</div>
 							</div>
