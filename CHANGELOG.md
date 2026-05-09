@@ -1,5 +1,6 @@
 # Changelog
 ## x.y.z - 2026-05-09
+- Remove Stats & Badges section from README ([#15](https://github.com/theaminulai/pointwise-summary/pull/15)) @theaminulai
 - Upgrade license to GPLv3; update README; add wiki stub ([#14](https://github.com/theaminulai/pointwise-summary/pull/14)) @theaminulai
 - Add CI, release workflows, hooks, and repo configs ([#13](https://github.com/theaminulai/pointwise-summary/pull/13)) @theaminulai
 ## 0.5.0 - 2026-01-20 
