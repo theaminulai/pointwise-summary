@@ -2,7 +2,7 @@
 	"name": "pointwise-summary",
 	"version": "0.5.0",
 	"description": "AI-powered text summarizer with ChatGPT, Claude, Gemini, and Grok support. Generate TL;DR summaries, key points, and condensed content with customizable AI summary buttons and auto-insert support.",
-	"author": "theaminul",
+	"author": "theaminulai",
 	"license": "GPL-3.0-or-later",
 	"scripts": {
 		"build": "wp-scripts build --blocks-manifest",
@@ -34,7 +34,8 @@
 		"@wordpress/scripts": "^30.23.0",
 		"webpack-remove-empty-scripts": "^1.1.1",
 		"simple-git": "^3.27.0",
-		"npm-check-updates": "^16.14.20"
+		"npm-check-updates": "^16.14.20",
+		"@actions/core": "^1.10.0"
 	},
 	"dependencies": {
 		"@monaco-editor/react": "^4.7.0",
