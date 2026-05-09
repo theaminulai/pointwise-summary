@@ -46,8 +46,7 @@ const App: React.FC = (): JSX.Element => {
 							element={ <AdvancedSettings /> }
 						/>
 						{ /* <Route path="analytics" element={ <Analytics /> } /> */ }
-
-						{ /* <Route path="per-post" element={ <PerPostSettings	 /> } /> */ }
+						{/* <Route path="per-post" element={ <PerPostSettings	 /> } /> */}
 						<Route path="help" element={ <Help /> } />
 					</Route>
 				</Routes>
