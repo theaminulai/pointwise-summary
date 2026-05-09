@@ -23,8 +23,8 @@ async function getChangesSinceLastTag() {
 		});
 		const tags = tagsResult.all;
 		if (tags.length === 0) {
-			console.error('❌ Error: No previous tags found.');
-			return null;
+			console.warn('⚠️ Warning: No previous tags found. Assuming first release.');
+			return { all: [] };
 		}
 		const previousTag = tags[0]; // The most recent tag
 
@@ -40,8 +40,14 @@ async function getChangesSinceLastTag() {
 // we are not using getChangesSinceGitTag because it returns the just the merges and not the commits.
 // So for example if a hotfix was committed directly to trunk this function will detect it but getChangesSinceGitTag will not.
 async function getHasChangesSinceGitTag(tag) {
-	const changes = await git.log([`HEAD...${tag}`]);
-	return changes?.all?.length > 0;
+	try {
+		const changes = await git.log([`HEAD...${tag}`]);
+		return changes?.all?.length > 0;
+	} catch (err) {
+		// Tag may not exist locally (common in CI); treat as changes exist to allow release
+		console.warn(`⚠️ Warning: Could not check changes since ${tag}: ${err.message}. Assuming changes exist.`);
+		return true;
+	}
 }
 
 async function updateVersion() {
@@ -70,15 +76,26 @@ async function updateVersion() {
 		process.exit(1);
 	}
 
+	// Fetch tags from remote first
+	try {
+		await git.fetch(['origin', 'refs/tags/*:refs/tags/*', '--force']);
+		console.info('✅ Tags fetched from remote');
+	} catch (err) {
+		console.warn(`⚠️ Warning: Failed to fetch tags from remote: ${err.message}`);
+	}
+
 	// get changes since last tag
 	let changes = [];
 	try {
 		changes = await getChangesSinceLastTag();
+		if (!changes) {
+			changes = { all: [] };
+		}
 	} catch (error) {
-		console.error(
-			`❌ Error: failed to get changes since last tag: ${error}`
+		console.warn(
+			`⚠️ Warning: failed to get changes since last tag: ${error}. Using empty changelog.`
 		);
-		process.exit(1);
+		changes = { all: [] };
 	}
 
 	const packageJson = require('./package.json');
