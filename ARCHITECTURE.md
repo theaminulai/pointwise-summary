@@ -1,15 +1,25 @@
-# AI Summarizer - Architecture Documentation
+# Pointwise Summary - Architecture Documentation
 
 ## Overview
 
-AI Summarizer is a WordPress Gutenberg block plugin that provides AI-powered summarize button groups with flexible layouts and advanced styling capabilities. Built following WordPress Core Contributor guidelines and modern block development standards, the plugin offers seamless integration with the WordPress block editor.
+Pointwise Summary is a comprehensive WordPress plugin (v0.5.0+) that provides AI-powered summary and social sharing button functionality with a full-stack architecture:
+
+- **Backend**: PHP-based REST API with settings management and shortcode rendering
+- **Admin UI**: React application with Redux state management and TypeScript
+- **Frontend**: Server-side rendering with JavaScript interactivity hooks
+- **Database**: WordPress options API for persistent settings storage
+
+---
 
 ## Table of Contents
 
-2. [Plugin Structure](#plugin-structure)
-3. [Contributing](#contributing)
-4. [Resources](#resources)
-
+1. [Plugin Structure](#plugin-structure)
+2. [Backend Architecture](#backend-architecture)
+3. [REST API Endpoints](#rest-api-endpoints)
+4. [Admin UI Architecture](#admin-ui-architecture)
+5. [Frontend System](#frontend-system)
+6. [Development Workflow](#development-workflow)
+7. [Contributing](#contributing)
 
 ---
 
@@ -19,73 +29,464 @@ AI Summarizer is a WordPress Gutenberg block plugin that provides AI-powered sum
 
 ```
 pointwise-summary/
-├── pointwise-summary.php           # Main plugin file (entry point)
-├── package.json                # NPM dependencies and scripts
-├── webpack.config.js           # Custom webpack configuration
-├── LICENSE                     # GPL-2.0-or-later license
-├── README.md                   # User-facing documentation
-├── ARCHITECTURE.md             # This file
 │
-├── src/                        # Source files (uncompiled)
-│   ├── admin/                  # Admin settings (future)
-│   │   └── index.js
-│   └── blocks/                 # Block source files
-│       ├── tests/              # Unit and integration tests
-│       │   └── index.js
-│       └── summarize-button/   # Summarize Button block
-│           ├── block.json      # Block metadata (schema)
-│           ├── index.js        # Block registration
-│           ├── edit.js         # Editor component (React)
-│           ├── save.js         # Frontend save function
-│           ├── view.js         # Frontend interactivity (JS)
-│           ├── transforms.js   # Block transformations
-│           ├── deprecated.js   # Deprecated versions
-│           ├── style.scss      # Frontend & editor styles
-│           └── editor.scss     # Editor-only styles
+├── pointwise-summary.php                 # Main plugin file (entry point)
+│
+├── includes/                             # Core PHP classes
+│   ├── plugin.php                        # Bootstrap & initialization
+│   │
+│   ├── api/                              # REST API Controllers (6 endpoints)
+│   │   ├── class-pointwise-summary-ai-settings-api.php
+│   │   ├── class-pointwise-summary-display-settings-api.php
+│   │   ├── class-pointwise-summary-social-sharing-api.php
+│   │   ├── class-pointwise-summary-advanced-settings-api.php
+│   │   ├── class-pointwise-summary-shortcode-api.php
+│   │   └── class-pointwise-summary-system-info-api.php
+│   │
+│   ├── frontend/                         # Server-side Frontend Rendering
+│   │   ├── class-pointwise-summary-frontend.php          # Data getters
+│   │   ├── class-pointwise-summary-buttons.php           # Button rendering
+│   │   ├── class-pointwise-summary-inline.php            # Inline context
+│   │   ├── class-pointwise-summary-fab.php               # FAB context
+│   │   ├── class-pointwise-summary-frontend-assets.php   # JS/CSS loading
+│   │   ├── class-pointwise-summary-icons.php             # Icon utilities
+│   │   ├── class-pointwise-summary-prompt.php            # Prompt handling
+│   │   └── class-pointwise-summary-seo.php               # SEO features
+│   │
+│   ├── admin/                            # Admin Classes
+│   │   ├── class-pointwise-summary-admin-menu.php
+│   │   ├── class-pointwise-summary-assets.php
+│   │   └── class-pointwise-summary-blocks.php
+│   │
+│   └── helpers/                          # Utilities
+│       └── trait-pointwise-summary-singleton.php
+│
+├── src/                                  # React Source (TypeScript/JSX)
+│   │
+│   ├── admin/                            # Admin Application Root
+│   │   ├── App.tsx                       # Root component
+│   │   ├── index.tsx                     # Entry point
+│   │   │
+│   │   ├── store/                        # Redux State Management
+│   │   │   ├── index.js                  # Store configuration
+│   │   │   ├── rootReducer.js            # Root reducer
+│   │   │   ├── {entity}.actions.js       # Action creators (6 feature slices)
+│   │   │   ├── {entity}.reducer.js       # Reducers
+│   │   │   └── types.ts                  # TypeScript type definitions
+│   │   │
+│   │   ├── components/                   # React Components by Feature
+│   │   │   ├── ai-settings/              # AI platform configuration
+│   │   │   ├── display-settings/         # Display options
+│   │   │   ├── social-sharing/           # Social network settings
+│   │   │   ├── advanced-settings/        # Advanced options
+│   │   │   ├── help/                     # Help screen & documentation
+│   │   │   └── ...
+│   │   │
+│   │   ├── hooks/                        # Custom React Hooks
+│   │   │   ├── useGetQuery.ts            # Initial data fetching
+│   │   │   ├── useUpdateMutation.ts      # Settings updates
+│   │   │   └── ...
+│   │   │
+│   │   ├── services/                     # API Client
+│   │   │   └── api.js                    # Wrapped REST endpoints
+│   │   │
+│   │   ├── providers/                    # Context/Redux Providers
+│   │   │   └── AppProvider.tsx
+│   │   │
+│   │   ├── pages/                        # Page-level components
+│   │   ├── assets/                       # Static assets (SVGs, etc.)
+│   │   └── utils/                        # Helper utilities
+│   │
+│   └── frontend/                         # Frontend Scripts (if used)
+│
+├── build/                                # Compiled Output (generated by webpack)
+│   ├── admin.js                          # Compiled admin React app
+│   ├── admin.css                         # Admin styles
+│   ├── admin.css.map                     # Source maps
+│   ├── manifest.json                     # Block manifest (WordPress 6.7+)
+│   └── ...
+│
+├── .github/
+│   ├── PULL_REQUEST_TEMPLATE.md          # PR template
+│   └── copilot-instructions.md           # Coding standards
+│
+├── package.json                          # Node.js dependencies
+├── webpack.config.js                     # Webpack configuration
+├── pointwise-summary.php                 # Main plugin (same as root)
+├── README.md                             # User documentation
+├── ARCHITECTURE.md                       # This file
+├── AGENTS.md                             # AI agent guidelines
+└── LICENSE                               # GPL-2.0-or-later
+```
+
+---
+
+## Backend Architecture
+
+### Plugin Bootstrap (pointwise-summary.php)
+
+1. **Plugin Header** - Registers plugin metadata (name, description, author, etc.)
+2. **Constants** - Defines `POINTWISE_SUMMARY_PLUGIN_DIR`, `POINTWISE_SUMMARY_PLUGIN_URL`
+3. **Includes** - Requires `includes/plugin.php` for class loading
+4. **Activation/Deactivation Hooks** - Handles plugin lifecycle
+
+### Central Loader (includes/plugin.php)
+
+This file is the heart of the backend initialization:
+
+```php
+// 1. Include singleton trait (base for all classes)
+require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/helpers/trait-pointwise-summary-singleton.php';
+
+// 2. Include all API classes
+require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/api/class-pointwise-summary-*.php';
+
+// 3. Include admin UI classes
+require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/class-pointwise-summary-admin-menu.php';
+// ... etc
+
+// 4. Include frontend rendering classes
+require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/frontend/class-pointwise-summary-buttons.php';
+// ... etc
+
+// 5. Initialize all singletons
+Pointwise_Summary_Admin_Menu::get_instance();
+Pointwise_Summary_AI_Settings_API::get_instance();
+Pointwise_Summary_Buttons::get_instance();
+// ... etc
+```
+
+### Singleton Pattern
+
+All classes use the **Singleton pattern** via `trait-pointwise-summary-singleton.php`:
+
+```php
+class My_Plugin_Class {
+    use Pointwise_Summary_Singleton;
+    
+    // Class is automatically instantiated once
+    // Access via: My_Plugin_Class::get_instance()
+}
+```
+
+---
+
+## REST API Endpoints
+
+### Base URL
+```
+/wp-json/pointwise-summary/v1/
+```
+
+### Permission
+- All endpoints require: `current_user_can('manage_options')` (admin only)
+- Nonce verification: WordPress REST API nonce mechanism
+
+### Endpoints
+
+| Endpoint | Method | Purpose |
+|----------|--------|---------|
+| `/ai-settings` | GET/POST | Get/update AI platform configuration |
+| `/display-settings` | GET/POST | Get/update display options |
+| `/social-sharing` | GET/POST | Get/update social network settings |
+| `/advanced-settings` | GET/POST | Get/update advanced options |
+| `/shortcodes` | GET | Get shortcode examples and documentation |
+| `/system-info` | GET | Get plugin and environment information |
+
+### Response Format
+
+All endpoints follow a standard response format:
+
+```json
+{
+  "success": true,
+  "data": {
+    // Endpoint-specific data
+  }
+}
+```
+
+For errors:
+```json
+{
+  "success": false,
+  "message": "Error description"
+}
+```
+
+### Endpoint Classes
+
+Each endpoint is a self-contained REST controller:
+
+```php
+class Pointwise_Summary_AI_Settings_API {
+    use Pointwise_Summary_Singleton;
+    
+    public function __construct() {
+        add_action('rest_api_init', [$this, 'register_routes']);
+    }
+    
+    public function register_routes() {
+        register_rest_route(
+            'pointwise-summary/v1',
+            '/ai-settings',
+            [
+                'methods'             => 'GET, POST',
+                'callback'            => [$this, 'handle_request'],
+                'permission_callback' => [$this, 'permission_check'],
+            ]
+        );
+    }
+}
+```
+
+---
+
+## Admin UI Architecture
+
+### React Application Structure
+
+The admin UI is a modern React application built with TypeScript:
+
+**Tech Stack:**
+- React 18+ with TypeScript
+- Redux for state management
+- @wordpress/scripts for build tooling
+- Webpack for bundling
+
+### Redux Store
+
+**State Shape:**
+```typescript
+{
+  aiSettings: { ... },
+  displaySettings: { ... },
+  socialSharing: { ... },
+  advancedSettings: { ... },
+  help: {
+    faqs: [...],
+    quickStart: [...],
+    shortcodeExamples: [...],
+    systemInfo: { ... },
+  },
+  ui: { ... },
+  analytics: { ... },
+}
+```
+
+**Initialization Flow:**
+
+1. App loads (`src/admin/index.tsx`)
+2. Redux store created with initial state
+3. `useGetQuery` hook fires on mount
+4. API calls fetch all settings and help data
+5. Actions dispatch: `SET_AI_SETTINGS`, `SET_DISPLAY_SETTINGS`, etc.
+6. Reducers merge data into store
+7. Components subscribe to store and re-render
+
+### Component Organization
+
+Components are organized by feature (settings area):
+
+```
+components/
+├── ai-settings/           # AI platform configuration UI
+│   ├── GlobalSettings.tsx
+│   ├── AIPlatforms.tsx
+│   ├── CustomPrompts.tsx
+│   └── ...
+├── display-settings/      # Display options UI
+│   ├── PreviewButton.tsx
+│   ├── AlignmentSettings.tsx
+│   └── ...
+├── social-sharing/        # Social network UI
+│   ├── SocialNetworks.tsx
+│   ├── ButtonPreview.tsx
+│   └── ...
+├── advanced-settings/     # Advanced options
+├── help/                  # Help screen & documentation
+└── common/                # Shared components
+```
+
+### API Client Service
+
+The `src/admin/services/api.js` provides wrapped endpoints:
+
+```javascript
+export const aiSettingsApi = {
+    get: () => safeApiRequest('/ai-settings'),
+    update: (data) => safeApiRequest('/ai-settings', { method: 'POST', data }),
+};
+
+export const shortcodesApi = {
+    get: () => safeApiRequest('/shortcodes'),
+};
+
+export const systemInfoApi = {
+    get: () => safeApiRequest('/system-info'),
+};
+```
+
+---
+
+## Frontend System
+
+### Rendering Contexts
+
+The plugin supports multiple rendering contexts:
+
+1. **Inline** - Buttons within post content
+2. **FAB** (Floating Action Button) - Fixed position, animated
+3. **Floating** - Sticky position, collapsible
+4. **Shortcode** - Server-rendered via `[pointwise_summary]`
+
+### Frontend Data Flow
+
+```
+WordPress Database
+        ↓
+Pointwise_Summary_Frontend::get_*_settings()  [Data Getters]
+        ↓
+Pointwise_Summary_Buttons::render_buttons()   [Shared Renderer]
+        ↓
+Server-rendered HTML (with CSS classes & data attributes)
+        ↓
+Frontend JavaScript hooks (data attributes trigger JS)
+        ↓
+Interactive buttons on frontend
+```
+
+### Frontend Classes
+
+**Pointwise_Summary_Frontend** - Data getter helpers:
+```php
+get_ai_settings()
+get_social_settings()
+get_display_settings()
+get_enabled_ai_platforms()
+get_enabled_social_networks()
+get_translated_button_text()
+```
+
+**Pointwise_Summary_Buttons** - Shared button renderer:
+```php
+render_buttons($post_id, $context)  // Main public method
+build_ai_buttons()
+build_social_buttons()
+render_icon()
+render_label()
+get_ai_url()
+get_social_url()
+```
+
+**Pointwise_Summary_Inline** - Inline context rendering
+**Pointwise_Summary_FAB** - FAB context rendering
+**Pointwise_Summary_Frontend_Assets** - Frontend JS/CSS loading
+
+### Shortcode System
+
+The `[pointwise_summary]` shortcode enables server-side rendering:
+
+```
+[pointwise_summary ai="chatgpt" social="facebook,twitter" style="outline" align="center"]
+```
+
+Attributes:
+- `ai` - AI platforms to display (comma-separated)
+- `social` - Social networks to display (comma-separated)
+- `style` - Button style (outline, solid, minimal, etc.)
+- `align` - Alignment (left, center, right)
+- `order` - Button order (platform, network, custom)
+- `post_id` - Override post ID for link generation
+- `context` - Rendering context (inline, fab, floating)
+
+---
+
+## Development Workflow
+
+### Local Development
+
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Start development server:**
+   ```bash
+   npm run start
+   ```
+   - Watches for changes in `src/`
+   - Rebuilds on file changes
+   - No page refresh needed (webpack handles hot reload)
+
+3. **Build for production:**
+   ```bash
+   npm run build
+   ```
+   - Creates optimized build in `build/`
+   - Minifies JavaScript and CSS
+
+### Code Quality
+
+```bash
+# Format code per WordPress standards
+npm run format
+
+# Lint JavaScript
+npm run lint:js
+
+# Lint CSS
+npm run lint:css
+
+# Create plugin distribution ZIP
+npm run plugin-zip
 ```
 
 ### File Responsibilities
 
-| File | Purpose |
-|------|---------|
-| `pointwise-summary.php` | Plugin initialization, block registration via manifest |
-| `block.json` | Block metadata, attributes, supports configuration |
-| `index.js` | Block type registration with React components |
-| `edit.js` | Editor UI component (what users see in Block Editor) |
-| `save.js` | Frontend markup generation (saved to post_content) |
-| `view.js` | Frontend JavaScript for interactivity (loaded on frontend) |
-| `transforms.js` | Block-to-block transformation rules |
-| `deprecated.js` | Legacy block versions for backward compatibility |
+| File/Folder | Responsibility |
+|------------|-----------------|
+| `pointwise-summary.php` | Plugin header, entry point |
+| `includes/plugin.php` | Bootstrap, class loading, initialization |
+| `includes/api/*` | REST endpoints, settings CRUD |
+| `includes/frontend/*` | Server-side rendering, output |
+| `includes/admin/*` | Admin menu, block registration, assets |
+| `src/admin/store/*` | Redux state & actions |
+| `src/admin/components/*` | React UI components |
+| `src/admin/services/*` | API client |
+| `build/*` | Compiled output (generated) |
 
 ---
 
 ## Contributing
 
-### Development Workflow
-
-1. Fork repository
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Make changes and test thoroughly
-4. Run linters: `npm run lint:js && npm run lint:css`
-5. Format code: `npm run format`
-6. Commit changes: `git commit -m 'Add amazing feature'`
-7. Push to branch: `git push origin feature/amazing-feature`
-8. Open Pull Request
-
 ### Coding Standards
 
-- **JavaScript**: [WordPress JavaScript Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/javascript/)
-- **CSS**: [WordPress CSS Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/css/)
-- **PHP**: [WordPress PHP Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/php/)
+Follow WordPress standards as defined in [AGENTS.md](AGENTS.md) and [.github/copilot-instructions.md](.github/copilot-instructions.md):
 
-### Code Review Checklist
+- **PHP**: WordPress PHP Coding Standards
+- **JavaScript**: WordPress JavaScript Standards + ES6+
+- **CSS**: WordPress CSS Standards with BEM notation
+- **React/TypeScript**: Modern React patterns with strict types
+
+### Pull Request Checklist
 
 - [ ] Follows WordPress coding standards
 - [ ] No console errors or warnings
-- [ ] Accessibility compliant (WCAG 2.1 AA)
-- [ ] Backward compatible (no breaking changes)
+- [ ] Tests added/updated (if applicable)
 - [ ] Documentation updated
-- [ ] Tests added/updated (when applicable)
+- [ ] No breaking changes
+- [ ] Backward compatible
+
+### Testing
+
+Before submitting:
+
+1. Test on WordPress 6.1+ installations
+2. Test on PHP 7.4+
+3. Test in Chrome, Firefox, Safari
+4. Test on mobile devices
+5. Run `npm run lint:js && npm run lint:css && npm run format`
 
 ---
 
@@ -95,28 +496,21 @@ pointwise-summary/
 
 - [WordPress Plugin Handbook](https://developer.wordpress.org/plugins/)
 - [WordPress Coding Standards](https://developer.wordpress.org/coding-standards/)
-- [@wordpress/scripts Documentation](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/)
+- [@wordpress/scripts](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/)
 - [React Documentation](https://react.dev/)
-- [Quicklink.js Documentation](https://github.com/GoogleChromeLabs/quicklink)
-
-### Learning Resources
-
-- [WordPress Plugin Development](https://developer.wordpress.org/plugins/)
-- [Modern WordPress Development](https://developer.wordpress.org/block-editor/)
-- [PSR-4 Autoloading Standard](https://www.php-fig.org/psr/psr-4/)
-- [Webpack Configuration](https://webpack.js.org/configuration/)
+- [Redux Documentation](https://redux.js.org/)
 
 ### Project Resources
 
-- [Pointwise Summary GitHub Repository](https://github.com/theaminulai/pointwise-summary)
+- [GitHub Repository](https://github.com/theaminulai/pointwise-summary)
 - [WordPress.org Plugin Page](https://wordpress.org/plugins/pointwise-summary/)
 - [Issue Tracker](https://github.com/theaminulai/pointwise-summary/issues)
-- [Support Forum](https://wordpress.org/support/plugin/pointwise-summary/)
 
 ### Related Documentation
 
-- [AGENTS.md](AGENTS.md) - AI coding agent guidelines
-- [CONTRIBUTING.md](CONTRIBUTING.md) - Contribution guidelines
+- [README.md](README.md) - User guide and features
+- [AGENTS.md](AGENTS.md) - AI agent development guidelines
+- [.github/copilot-instructions.md](.github/copilot-instructions.md) - Coding standards
 
 ---
 
@@ -126,7 +520,7 @@ This plugin is licensed under GPL-2.0-or-later. See [LICENSE](LICENSE) file for 
 
 ---
 
-**Last Updated**: December 21, 2025  
-**Plugin Version**: 0.4.0  
+**Last Updated**: May 9, 2026  
+**Plugin Version**: 0.5.0  
 **WordPress Compatibility**: 6.1+  
 **PHP Compatibility**: 7.4+

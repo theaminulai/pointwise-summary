@@ -1,25 +1,58 @@
 {
 	"name": "pointwise-summary",
 	"version": "0.5.0",
-	"description": "Add AI-powered summarizer buttons to your WordPress site with customizable layouts and styling options.",
+	"description": "AI-powered text summarizer with ChatGPT, Claude, Gemini, and Grok support. Generate TL;DR summaries, key points, and condensed content with customizable AI summary buttons and auto-insert support.",
 	"author": "theaminul",
-	"license": "GPL-2.0-or-later",
-	"main": "build/index.js",
+	"license": "GPL-3.0-or-later",
 	"scripts": {
 		"build": "wp-scripts build --blocks-manifest",
-		"format": "wp-scripts format",
+		"format": "wp-scripts format ./src",
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
-		"start": "wp-scripts start --blocks-manifest"
+		"start": "wp-scripts start --blocks-manifest",
+		"make-pot": "wp i18n make-pot ./languages/pointwise-summary.pot",
+		"lint:standard": "vendor\\bin\\phpcs --standard=phpcs.xml",
+		"lint:wpcs": "vendor\\bin\\phpcs --standard=phpcs.xml",
+		"lint:wpcs:fix": "vendor\\bin\\phpcbf --standard=phpcs.xml",
+		"lint:fix": "wp-scripts lint-js --fix && wp-scripts lint-style --fix",
+		"lint:pkg-json": "wp-scripts lint-pkg-json",
+		"update-version": "node update-version-and-changelog.js",
+		"zip": "wp-scripts build && composer archive --file=../dist/pointwise-summary"
 	},
 	"devDependencies": {
+		"@types/node": "^25.1.0",
+		"@types/react": "^19.2.10",
+		"@types/react-dom": "^19.2.3",
+		"@types/testing-library__jest-dom": "^5.14.9",
+		"@types/wordpress__date": "^3.3.5",
+		"@types/wordpress__editor": "^14.3.1",
+		"@types/wordpress__keycodes": "^2.3.3",
+		"@types/wordpress__media-utils": "^4.14.4",
+		"@types/wordpress__rich-text": "^6.4.5",
 		"@wordpress/scripts": "^30.23.0",
-		"webpack-remove-empty-scripts": "^1.1.1"
+		"webpack-remove-empty-scripts": "^1.1.1",
+		"simple-git": "^3.27.0",
+		"npm-check-updates": "^16.14.20"
 	},
 	"dependencies": {
-		"@wordpress/icons": "^11.3.0",
-		"clsx": "^2.1.1"
+		"@monaco-editor/react": "^4.7.0",
+		"@tailwindcss/postcss": "^4.1.18",
+		"@types/prop-types": "^15.7.15",
+		"@types/wordpress__block-editor": "^15.0.0",
+		"@types/wordpress__block-library": "^2.6.3",
+		"@types/wordpress__blocks": "^12.5.18",
+		"@types/wordpress__edit-post": "^8.4.2",
+		"clsx": "^2.1.1",
+		"lucide-react": "^0.563.0",
+		"postcss": "^8.5.6",
+		"react-redux": "^9.2.0",
+		"react-router-dom": "^7.13.0",
+		"recharts": "^3.7.0",
+		"redux": "^5.0.1",
+		"rsuite": "^6.1.2",
+		"sonner": "^2.0.7",
+		"tailwindcss": "^4.1.18"
 	}
 }

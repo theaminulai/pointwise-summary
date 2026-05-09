@@ -1,6 +1,25 @@
+---
+applyTo: "wp-content/plugins/pointwise-summary/**"
+---
+
 # WordPress Plugin Development Guidelines for AI Agents
 
 This document provides comprehensive instructions for AI agents, GitHub Copilot, and automated coding tools when working with WordPress plugin development. Follow these guidelines to ensure code quality, security, accessibility, and adherence to WordPress standards.
+
+## Pointwise Summary Project Notes
+
+Use the project docs as the source of truth for anything specific to this plugin:
+
+- [README.md](../README.md) for the current feature summary and setup notes.
+- [ARCHITECTURE.md](../ARCHITECTURE.md) for backend, admin, frontend, and shortcode boundaries.
+- [AGENTS.md](../AGENTS.md) for the short repo-specific operating guide.
+
+Project conventions that matter most here:
+
+- Keep API response shapes aligned with the React help screen and admin store.
+- Keep shortcode rendering aligned with the shared frontend renderer so styles and JS hooks stay consistent.
+- Avoid Node-only imports in browser code under `src/admin/`.
+- Prefer minimal, targeted edits and do not remove working functionality unless it is clearly redundant or broken.
 
 ---
 

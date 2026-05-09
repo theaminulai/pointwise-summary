@@ -36,7 +36,7 @@ registerBlockType( name, {
 				justifyContent: 'center',
 			},
 		},
-			innerBlocks: [
+		innerBlocks: [
 			{
 				name: 'core/button',
 				attributes: {
