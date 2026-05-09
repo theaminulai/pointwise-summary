@@ -39,7 +39,12 @@ jobs:
         id: create-branch
         run: |
           BRANCH_NAME="release/$(date +%Y-%m-%d)/${{ github.event.inputs.release_type }}-release"
-          git checkout -b $BRANCH_NAME
+          git fetch origin $BRANCH_NAME || true
+          if git show-ref --verify --quiet refs/remotes/origin/$BRANCH_NAME; then
+            git checkout -B $BRANCH_NAME origin/$BRANCH_NAME
+          else
+            git checkout -b $BRANCH_NAME
+          fi
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_OUTPUT
 
       - name: Update version and changelog
@@ -60,11 +65,7 @@ jobs:
           echo "https://github-actions[bot]:${GITHUB_TOKEN}@github.com" > ~/.git-credentials
           git add .
           git commit -m "Version bump & changelog update" --no-verify || echo "No changes to commit"
-          git fetch origin ${{ steps.create-branch.outputs.BRANCH_NAME }} || true
-          if git show-ref --verify --quiet refs/remotes/origin/${{ steps.create-branch.outputs.BRANCH_NAME }}; then
-            git rebase origin/${{ steps.create-branch.outputs.BRANCH_NAME }}
-          fi
-          git push --force-with-lease --set-upstream origin ${{ steps.create-branch.outputs.BRANCH_NAME }}
+          git push --set-upstream origin ${{ steps.create-branch.outputs.BRANCH_NAME }}
 
       - name: Create Pull Request
         uses: actions/github-script@v7
