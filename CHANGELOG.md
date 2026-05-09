@@ -1,4 +1,6 @@
 # Changelog
+## x.y.z - 2026-05-09
+- Add CI, release workflows, hooks, and repo configs ([#13](https://github.com/theaminulai/pointwise-summary/pull/13)) @theaminulai
 ## 0.5.0 - 2026-01-20 
 - Fixed: readme.txt short description to improve clarity and conciseness
 - Fixed: Removed 'summarizer' and 'etc' tags from the plugin's readme.txt to streamline tag list
