@@ -19,6 +19,11 @@ module.exports = {
 			'src/admin',
 			'index.tsx'
 		),
+		'frontend/frontend': path.resolve(
+			process.cwd(),
+			'src/frontend',
+			'index.js'
+		),
 	},
 
 	plugins: [

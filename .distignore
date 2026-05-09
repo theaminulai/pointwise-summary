@@ -1,18 +1,42 @@
 # Files to be ignored in the plugin release
 
-node_modules/
+# Directories
+/.wordpress-org
+/.git
+/.github
+/.vscode
+/.husky
+/node_modules
+/vendor
+/src
+/dev-note
+/dev-docs
+/docs
+
+# Files
 .gitignore
 .gitattributes
-package.json
-src/
-.git
-.github
-.wordpress-org
 .distignore
 .editorconfig
+.eslintignore
+.eslintrc
+.stylelintrc
+.nvmrc
+.DS_Store
+*.map
+
+CHANGELOG.md
 README.md
+AGENTS.md
+ARCHITECTURE.md
 SECURITY.md
+composer.json
+composer.lock
+package.json
 package-lock.json
 webpack.config.js
-*.map
-.DS_Store
+postcss.config.js
+tsconfig.json
+phpcs.xml
+update-version-and-changelog.js
+screenshot.png

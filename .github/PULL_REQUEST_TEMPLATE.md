@@ -1,5 +1,5 @@
-<!-- Thanks for contributing to vide-coding-two! Please follow the vide-coding-two Contributing Guidelines:
-https://github.com/theaminuli/vide-coding-two/blob/development/CONTRIBUTING.md -->
+<!-- Thanks for contributing to Pointwise Summary! Please follow the Pointwise Summary Contributing Guidelines:
+https://github.com/theaminulai/pointwise-summary/blob/main/README.md -->
 
 ## What?
 <!-- Link this PR to its associated issue. Use keywords: Closes, Fixes, or Resolves -->
