@@ -37,6 +37,7 @@
 /dev-note export-ignore
 /dev-docs export-ignore
 /docs export-ignore
+/wiki export-ignore
 
 # Files
 phpcs.xml export-ignore
