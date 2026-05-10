@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Pointwise Summary
- * Description:       AI-powered text summarizer with ChatGPT, Claude, Gemini, and Grok support. Generate TL;DR summaries, key points, and condensed content with customizable AI summary buttons and auto-insert support.
+ * Description:       Generate instant TL;DR summaries using ChatGPT, Claude, Gemini, Grok, and more. Add customizable summary buttons anywhere on your site with flexible auto-insertion support.
  * Version:           0.5.0
  * Requires at least: 6.1
  * Requires PHP:      7.4
