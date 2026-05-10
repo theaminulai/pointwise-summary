@@ -1,7 +1,7 @@
 {
 	"name": "pointwise-summary",
 	"version": "0.5.0",
-	"description": "AI-powered text summarizer with ChatGPT, Claude, Gemini, and Grok support. Generate TL;DR summaries, key points, and condensed content with customizable AI summary buttons and auto-insert support.",
+	"description": "Generate instant TL;DR summaries using ChatGPT, Claude, Gemini, Grok, and more. Add customizable summary buttons anywhere on your site with flexible auto-insertion support.",
 	"author": "theaminulai",
 	"license": "GPL-3.0-or-later",
 	"scripts": {
