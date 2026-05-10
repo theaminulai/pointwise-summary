@@ -1,10 +1,10 @@
-=== AI Summarizer – AI-Powered TL;DR, Content Summary & Social Sharing ===
+=== Pointwise Summary – AI-Powered TL;DR, Content Summary & Social Sharing ===
 Contributors:      theaminuldev, iqbal1hossain
 Tags:              ai, summarizer, tldr, summary, content-summary
 Requires at least: 6.1
 Tested up to:      6.9
 Requires PHP:      7.4
-Stable tag:        0.5.0
+Stable tag:        1.0.0
 License:           GPL-3.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,11 +12,11 @@ Generate instant TL;DR summaries using ChatGPT, Claude, Gemini, Grok, and more. 
 
 == Description ==
  
-**AI Summarizer** helps your readers get to the point — fast. It adds one-click TL;DR summary buttons to any post or page, powered by six leading AI models: ChatGPT, Claude, Gemini, Grok, Perplexity, and Google AI.
+**Pointwise Summary** helps your readers get to the point — fast. It adds one-click TL;DR summary buttons to any post or page, powered by six leading AI models: ChatGPT, Claude, Gemini, Grok, Perplexity, and Google AI.
  
 Modern readers scan before they commit. Give them a reason to stay.
  
-When a visitor clicks a summary button, AI Summarizer sends your post content to the AI model of your choice and returns a concise, readable summary — whether that's a short TL;DR, a list of key points, or a detailed overview. You control the style, length, placement, and prompt.
+When a visitor clicks a summary button, Pointwise Summary sends your post content to the AI model of your choice and returns a concise, readable summary — whether that's a short TL;DR, a list of key points, or a detailed overview. You control the style, length, placement, and prompt.
  
 = What is TL;DR and Why It Matters =
  
@@ -36,9 +36,9 @@ In today's fast-paced digital world, readers scan before committing time to a fu
 * **Increase engagement** — Summaries encourage readers to explore the full content
 * **Boost SEO** — Better engagement metrics (lower bounce, higher time-on-page) signal quality to search engines
  
-= What is AI Summarizer? =
+= What is Pointwise Summary? =
  
-AI Summarizer is a WordPress summarization plugin that combines three essential capabilities:
+Pointwise Summary is a WordPress summarization plugin that combines three essential capabilities:
  
 1. **AI-powered text summarization** — Generate TL;DR summaries and key points using six leading AI models
 2. **Smart display options** — A floating action button (FAB), or automatic inline insertion
@@ -46,7 +46,7 @@ AI Summarizer is a WordPress summarization plugin that combines three essential 
  
 In the age of information overload, readers scan content before committing time. This plugin helps visitors quickly understand whether your content is worth their time, improving engagement and reducing bounce rates.
  
-= Why Choose AI Summarizer? =
+= Why Choose Pointwise Summary? =
  
 * **6 AI models** — ChatGPT, Claude, Gemini, Grok, Perplexity, and Google AI (coming soon: Chrome's built-in Gemini Nano for on-device summarization)
 * **Full customization** — Place buttons anywhere with complete design control
@@ -152,7 +152,7 @@ Set it once — buttons appear everywhere automatically:
  
 = Social Sharing =
  
-AI Summarizer includes built-in social sharing that places share buttons directly alongside your AI summary buttons — no separate sharing plugin needed.
+Pointwise Summary includes built-in social sharing that places share buttons directly alongside your AI summary buttons — no separate sharing plugin needed.
  
 Readers can share your post or article to any of 7 supported networks with a single click, right from the same button row they use to generate summaries.
  
@@ -199,7 +199,7 @@ When readers find your content useful, sharing is the natural next step. Having 
  
 = How It Works =
  
-1. Install and activate AI Summarizer
+1. Install and activate Pointwise Summary
 2. Go to **AI Summary (TL;DR) → AI Settings** and configure your preferred AI model and API key
 3. Customize button text under **Advanced Settings** (e.g., "Summarize", "Get TL;DR", "Quick Summary")
 4. Choose a visual style under **Display Settings → Style**
@@ -231,7 +231,7 @@ When a reader clicks the button, the post content is sent to the selected AI mod
  
 TL;DR stands for "Too Long; Didn't Read." It originated in internet forums and was officially added to the Oxford English Dictionary in 2013. Adding TL;DR buttons helps readers decide if your content is relevant to them, reducing bounce rates and improving user experience.
  
-= How does AI Summarizer work? =
+= How does Pointwise Summary work? =
  
 When a reader clicks a summary button, the plugin sends your post content to the selected AI model's API and returns a formatted summary — TL;DR, key points, or a detailed overview — displayed directly on the page. You can customize the prompt, length, and style for each model.
  
@@ -253,11 +253,11 @@ It depends on your content type. Claude and ChatGPT work well for detailed or te
  
 = What is the difference between this plugin and Grammarly or QuillBot? =
  
-Grammarly and QuillBot are external subscription tools. AI Summarizer is a native WordPress plugin that offers six AI models, auto-insertion, a floating action button, and on-device summarization via Gemini Nano — features those tools do not offer within WordPress.
+Grammarly and QuillBot are external subscription tools. Pointwise Summary is a native WordPress plugin that offers six AI models, auto-insertion, a floating action button, and on-device summarization via Gemini Nano — features those tools do not offer within WordPress.
  
 = How is this different from TLDR This or DeCopy.ai? =
  
-TLDR This and DeCopy.ai are web-based summarizers with usage limits and costs. AI Summarizer integrates directly into your WordPress site, supports six AI models, works with shortcodes, and will support offline on-device summarization through Gemini Nano.
+TLDR This and DeCopy.ai are web-based summarizers with usage limits and costs. Pointwise Summary integrates directly into your WordPress site, supports six AI models, works with shortcodes, and will support offline on-device summarization through Gemini Nano.
  
 = Can I customize the button text and appearance? =
  
@@ -273,7 +273,7 @@ No. The plugin uses lightweight, dependency-free JavaScript and CSS. Summary gen
  
 = Is the plugin accessible? =
  
-Yes. AI Summarizer follows WCAG 2.1 Level AA standards with full keyboard navigation, ARIA labels, semantic HTML, and clear focus indicators.
+Yes. Pointwise Summary follows WCAG 2.1 Level AA standards with full keyboard navigation, ARIA labels, semantic HTML, and clear focus indicators.
  
 = Does it work with my theme? =
  
@@ -289,7 +289,7 @@ Yes. All button text is fully customizable and supports WordPress translation fu
  
 = Does the plugin include social sharing? =
  
-Yes. AI Summarizer has built-in social sharing with support for 7 networks: X / Twitter, Facebook, LinkedIn, Telegram, WhatsApp, Reddit, and Email. Share buttons appear alongside your AI summary buttons in the same row. You can enable or disable each network individually from Display Settings, and X / Twitter supports an optional @mention so shares can tag your account automatically.
+Yes. Pointwise Summary has built-in social sharing with support for 7 networks: X / Twitter, Facebook, LinkedIn, Telegram, WhatsApp, Reddit, and Email. Share buttons appear alongside your AI summary buttons in the same row. You can enable or disable each network individually from Display Settings, and X / Twitter supports an optional @mention so shares can tag your account automatically.
  
 = What is the Floating Action Button? =
  
@@ -326,7 +326,18 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
  
  
 == Changelog ==
- 
+= 1.0.0 - 2026-02-10 =
+* Initial stable release with all core features and social sharing support
+* Added: AI settings for six AI models, including ChatGPT, Claude, Gemini, Grok, Perplexity, and Google AI
+* Added: Display settings for automatic insertion, floating action button, collapse Button and visual styles
+* Added: Built-in social sharing with support for 7 networks
+* Added: SEO optimizations with nofollow links and clean link profiles
+* Added: Accessibility features with WCAG 2.1 AA compliance
+* Added: Performance & Caching optimizations with lightweight code and no render-blocking resources
+* Added: Add a custom CSS class to summary buttons for advanced styling
+* Added: Option to choose between `<a>` links (nofollow) or `<button>` elements for summary buttons
+* Added: Multilingual Support for 50+ languages with proper internationalization
+
 = 0.5.0 - 2026-01-20 =
 * Fixed: Improved readme.txt short description for clarity and conciseness
 * Fixed: Streamlined plugin tag list

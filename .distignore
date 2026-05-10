@@ -12,6 +12,7 @@
 /dev-note
 /dev-docs
 /docs
+/wiki
 
 # Files
 .gitignore
