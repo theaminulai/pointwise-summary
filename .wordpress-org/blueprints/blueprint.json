@@ -1,6 +1,6 @@
 {
   "$schema": "https://playground.wordpress.net/blueprint-schema.json",
-  "landingPage": "/wp-admin/edit.php?post_type=page",
+  "landingPage": "/wp-admin/tools.php?page=pointwise-summary#/ai-settings",
   "preferredVersions": {
     "php": "latest",
     "wp": "latest"
@@ -13,7 +13,7 @@
       "step": "installPlugin",
       "pluginData": {
         "resource": "wordpress.org/plugins",
-        "slug": "duplicator-post-page"
+        "slug": "pointwise-summary"
       },
       "options": {
         "activate": true
