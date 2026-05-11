@@ -370,6 +370,14 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
 * Added: WCAG 2.1 AA accessibility compliance
 * Added: Fully responsive design for all screen sizes
 * Added: Gutenberg Block API v3 support
+
+
+== Screenshots ==
+
+1. Ai-Settings.
+2. Ai-Settings Two.
+3. Display Settings.
+4. Advanced Settings.
  
 == Support ==
  
