@@ -21,3 +21,22 @@ define( 'POINTWISE_SUMMARY_DEV', WP_DEBUG );
 
 // Include REST API endpoints
 require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/plugin.php';
+
+/**
+ * Add settings link to plugin action links.
+ *
+ * @param array $links Plugin action links.
+ * @return array Modified plugin action links.
+ */
+function pointwise_summary_plugin_action_links( $links ) {
+	$settings_link = sprintf(
+		'<a href="%1$s">%2$s</a>',
+		admin_url( 'tools.php?page=pointwise-summary#/ai-settings' ),
+		esc_html__( 'Settings', 'pointwise-summary' )
+	);
+
+	array_unshift( $links, $settings_link );
+
+	return $links;
+}
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'pointwise_summary_plugin_action_links' );
