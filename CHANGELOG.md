@@ -1,9 +1,16 @@
 # Changelog
-## x.y.z - 2026-05-09
-- Update package.json author and add @actions/core ([#21](https://github.com/theaminulai/pointwise-summary/pull/21)) @theaminulai
-- Remove Stats & Badges section from README ([#15](https://github.com/theaminulai/pointwise-summary/pull/15)) @theaminulai
-- Upgrade license to GPLv3; update README; add wiki stub ([#14](https://github.com/theaminulai/pointwise-summary/pull/14)) @theaminulai
-- Add CI, release workflows, hooks, and repo configs ([#13](https://github.com/theaminulai/pointwise-summary/pull/13)) @theaminulai
+## 1.0.0 - 2026-05-09
+- Initial stable release with all core features and social sharing support
+- Added: AI settings for six AI models, including ChatGPT, Claude, Gemini, Grok, Perplexity, and Google AI
+- Added: Display settings for automatic insertion, floating action button, collapse Button and visual styles
+- Added: Built-in social sharing with support for 7 networks
+- Added: SEO optimizations with nofollow links and clean link profiles
+- Added: Accessibility features with WCAG 2.1 AA compliance
+- Added: Performance & Caching optimizations with lightweight code and no render-blocking resources
+- Added: Add a custom CSS class to summary buttons for advanced styling
+- Added: Option to choose between `<a>` links (nofollow) or `<button>` elements for summary buttons
+- Added: Multilingual Support for 50+ languages with proper internationalization
+
 ## 0.5.0 - 2026-01-20 
 - Fixed: readme.txt short description to improve clarity and conciseness
 - Fixed: Removed 'summarizer' and 'etc' tags from the plugin's readme.txt to streamline tag list
