@@ -4,7 +4,7 @@ Tags:              ai, summarizer, tldr, summary, content-summary
 Requires at least: 6.1
 Tested up to:      6.9
 Requires PHP:      7.4
-Stable tag:        1.0.0
+Stable tag: 1.1.0
 License:           GPL-3.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -326,6 +326,9 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
  
  
 == Changelog ==
+
+= 1.1.0 =
+
 = 1.0.0 - 2026-02-10 =
 * Initial stable release with all core features and social sharing support
 * Added: AI settings for six AI models, including ChatGPT, Claude, Gemini, Grok, Perplexity, and Google AI
