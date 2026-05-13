@@ -1,6 +1,13 @@
 # Changelog
 ## x.y.z - 2026-05-13
+### Added
+- Create Action Button to navigate Setting Page ([#35](https://github.com/theaminulai/pointwise-summary/pull/35)) @iqbal-web
+- Add screenshot for WordPress readme ([#34](https://github.com/theaminulai/pointwise-summary/pull/34)) @iqbal-web
+- Create blueprint.json for WordPress.com integration
+
+### Enhanced
 - Refactor release workflow and improve script ([#38](https://github.com/theaminulai/pointwise-summary/pull/38)) @theaminulai
+
 ## 1.0.0 - 2026-05-09
 - Initial stable release with all core features and social sharing support
 - Added: AI settings for six AI models, including ChatGPT, Claude, Gemini, Grok, Perplexity, and Google AI

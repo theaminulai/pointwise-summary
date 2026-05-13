@@ -328,6 +328,9 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
 == Changelog ==
 
 = 1.1.0 =
+* Added: Create Action Button to navigate Setting Page
+* Added: Add screenshot for WordPress readme
+* Added: Create blueprint.json for WordPress.com integration
 
 = 1.0.0 - 2026-02-10 =
 * Initial stable release with all core features and social sharing support
