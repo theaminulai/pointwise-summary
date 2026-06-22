@@ -1,10 +1,10 @@
-=== Pointwise Summary – AI-Powered TL;DR, Content Summary & Social Sharing ===
+=== Pointwise Summary – AI-Powered TLDR, AI Summarize & Social Sharing ===
 Contributors:      theaminuldev, iqbal1hossain
-Tags:              ai, summarizer, tldr, summary, content-summary
+Tags:              ai, summarize, tldr, summary, content-summary
 Requires at least: 6.1
-Tested up to:      6.9
+Tested up to:      7.0
 Requires PHP:      7.4
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License:           GPL-3.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -38,7 +38,7 @@ In today's fast-paced digital world, readers scan before committing time to a fu
  
 = What is Pointwise Summary? =
  
-Pointwise Summary is a WordPress summarization plugin that combines three essential capabilities:
+Pointwise Summary is a WordPress AI Summarize plugin that combines three essential capabilities:
  
 1. **AI-powered text summarization** — Generate TL;DR summaries and key points using six leading AI models
 2. **Smart display options** — A floating action button (FAB), or automatic inline insertion
@@ -326,6 +326,14 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
  
  
 == Changelog ==
+
+= 1.2.0 2026-06-22 =
+* Added: Custom Logo component for improved branding consistency
+* Enhanced: Admin sidebar UI updated with unified logo integration
+* Added: WordPress.org branding assets (banner and icons)
+* Improved: Plugin description and documentation clarity for better WordPress.org compliance
+* Updated: Plugin tags and metadata for improved discoverability and search relevance
+* Updated: Compatibility flag to WordPress 7.0
 
 = 1.1.0 =
 * Added: Create Action Button to navigate Setting Page
