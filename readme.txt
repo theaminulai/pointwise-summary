@@ -1,8 +1,8 @@
-=== Pointwise Summary – AI-Powered TL;DR, Content Summary & Social Sharing ===
+=== Pointwise Summary – AI-Powered TLDR, AI Summarize & Social Sharing ===
 Contributors:      theaminuldev, iqbal1hossain
-Tags:              ai, summarizer, tldr, summary, content-summary
+Tags:              ai, summarize, tldr, summary, content-summary
 Requires at least: 6.1
-Tested up to:      6.9
+Tested up to:      7.0
 Requires PHP:      7.4
 Stable tag: 1.1.0
 License:           GPL-3.0-or-later
@@ -38,7 +38,7 @@ In today's fast-paced digital world, readers scan before committing time to a fu
  
 = What is Pointwise Summary? =
  
-Pointwise Summary is a WordPress summarization plugin that combines three essential capabilities:
+Pointwise Summary is a WordPress AI Summarize plugin that combines three essential capabilities:
  
 1. **AI-powered text summarization** — Generate TL;DR summaries and key points using six leading AI models
 2. **Smart display options** — A floating action button (FAB), or automatic inline insertion
