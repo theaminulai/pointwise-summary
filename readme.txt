@@ -327,12 +327,7 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
  
 == Changelog ==
 
-= 1.2.0 =
-* Add PR #41 reference to changelog
-* Merge pull request #41 from theaminulai/new-update-
-* Fix : issue
-* New: update
-= Unreleased - 2026-06-22 =
+= 1.2.0 2026-06-22 =
 * Added: Custom Logo component for improved branding consistency
 * Enhanced: Admin sidebar UI updated with unified logo integration
 * Added: WordPress.org branding assets (banner and icons)
