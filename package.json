@@ -1,6 +1,6 @@
 {
 	"name": "pointwise-summary",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"description": "Generate instant TL;DR summaries using ChatGPT, Claude, Gemini, Grok, and more. Add customizable summary buttons anywhere on your site with flexible auto-insertion support.",
 	"author": "theaminulai",
 	"license": "GPL-3.0-or-later",
