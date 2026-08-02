@@ -4,7 +4,7 @@ Tags:              ai, summarize, tldr, summary, content-summary
 Requires at least: 6.1
 Tested up to:      7.0
 Requires PHP:      7.4
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License:           GPL-3.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -371,7 +371,8 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
  
  
 == Changelog ==
-= 1.x.0 - 2026-08-02 =
+
+= 1.2.1 - 2026-08-02 =
 * Fixed: Monaco code editor (used for Custom CSS) now loads its assets from files bundled with the plugin instead of the jsdelivr CDN
 * Added: Documented all third-party AI and social sharing services in an "External services" readme section
 * Added: Public link to the plugin's full uncompiled source in the "Source Code" readme section
