@@ -4,7 +4,7 @@ Tags:              ai, summarize, tldr, summary, content-summary
 Requires at least: 6.1
 Tested up to:      7.0
 Requires PHP:      7.4
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License:           GPL-3.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -377,7 +377,7 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
 * Added: Public link to the plugin's full uncompiled source in the "Source Code" readme section
 * Fixed: Shortened the readme short description to fit the 150-character limit
 
-= Unreleased - 2026-06-22 =
+= 1.2.0 2026-06-22 =
 * Added: Custom Logo component for improved branding consistency
 * Enhanced: Admin sidebar UI updated with unified logo integration
 * Added: WordPress.org branding assets (banner and icons)
