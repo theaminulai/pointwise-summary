@@ -8,7 +8,7 @@ Stable tag: 1.2.0
 License:           GPL-3.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 
-Generate instant TL;DR summaries using ChatGPT, Claude, Gemini, Grok, and more. Add customizable summary buttons anywhere on your site with flexible auto-insertion support.
+Generate instant TL;DR summaries with ChatGPT, Claude, Gemini, Grok, and more.
 
 == Description ==
  
@@ -208,6 +208,51 @@ When readers find your content useful, sharing is the natural next step. Having 
  
 When a reader clicks the button, the post content is sent to the selected AI model, which returns a clean summary displayed directly on the page — no page reload required.
  
+== External services ==
+
+This plugin connects to third-party AI and social sharing services that are external to your website. These connections are optional and are only triggered by an explicit action from your site's visitor (clicking an AI summary button or a social share button) — nothing is sent automatically or in the background.
+
+**AI summary buttons**
+
+When a visitor clicks an AI summary button, the plugin builds a prompt from the current post's title, content, and URL, then opens a new browser tab directly to the selected AI provider's own website with that prompt pre-filled via the page URL. From that point, the visitor's browser communicates directly with the AI provider. This plugin does not operate its own server-side API, does not require an API key, and does not store or receive the AI's response.
+
+* **ChatGPT (OpenAI)** — https://chatgpt.com — [Terms](https://openai.com/policies/terms-of-use) — [Privacy Policy](https://openai.com/policies/privacy-policy)
+* **Claude (Anthropic)** — https://claude.ai — [Terms](https://www.anthropic.com/legal/consumer-terms) — [Privacy Policy](https://www.anthropic.com/legal/privacy)
+* **Gemini (Google)** — https://gemini.google.com — [Terms](https://policies.google.com/terms) — [Privacy Policy](https://policies.google.com/privacy)
+* **Grok (xAI)** — https://grok.com — [Terms](https://x.ai/legal/terms-of-service) — [Privacy Policy](https://x.ai/legal/privacy-policy)
+* **Perplexity** — https://www.perplexity.ai — [Terms](https://www.perplexity.ai/hub/legal/terms-of-service) — [Privacy Policy](https://www.perplexity.ai/hub/legal/privacy-policy)
+* **Google AI Search** — https://www.google.com/search — [Terms](https://policies.google.com/terms) — [Privacy Policy](https://policies.google.com/privacy)
+
+**Social sharing buttons**
+
+When a visitor clicks a social share button, the plugin opens that network's own share dialog in a new tab (or the visitor's email client for the Email option), passing only the current post's title and URL. No other content is sent, and nothing reaches the network unless the visitor completes the share on that network's own site.
+
+* **X / Twitter** — https://twitter.com — [Terms](https://twitter.com/en/tos) — [Privacy Policy](https://twitter.com/en/privacy)
+* **Facebook** — https://www.facebook.com — [Terms](https://www.facebook.com/terms.php) — [Privacy Policy](https://www.facebook.com/privacy/policy)
+* **LinkedIn** — https://www.linkedin.com — [Terms](https://www.linkedin.com/legal/user-agreement) — [Privacy Policy](https://www.linkedin.com/legal/privacy-policy)
+* **Telegram** — https://telegram.org — [Terms](https://telegram.org/tos) — [Privacy Policy](https://telegram.org/privacy)
+* **WhatsApp** — https://www.whatsapp.com — [Terms](https://www.whatsapp.com/legal/terms-of-service) — [Privacy Policy](https://www.whatsapp.com/legal/privacy-policy)
+* **Reddit** — https://www.reddit.com — [Terms](https://www.redditinc.com/policies/user-agreement) — [Privacy Policy](https://www.reddit.com/policies/privacy-policy)
+
+== Source Code ==
+
+The JavaScript shipped in `/build` (admin dashboard, frontend script, and Gutenberg block) is compiled from human-readable source. The full uncompiled source is publicly available at:
+
+https://github.com/theaminulai/pointwise-summary
+
+Build tooling: this plugin uses `@wordpress/scripts` (webpack + Babel) via npm.
+
+* `npm install` — install dependencies
+* `npm run start` — development build with watch mode
+* `npm run build` — production build, outputs to `/build`
+
+= Bundled third-party libraries =
+
+This plugin bundles the JavaScript libraries it depends on directly inside `/build`, rather than loading any of them from a remote CDN at runtime. Every script the plugin loads is served from your own site.
+
+* **Monaco Editor** (https://github.com/microsoft/monaco-editor, MIT License) — powers the Custom CSS code field under Advanced Settings. Its runtime files (editor core, syntax highlighting, workers) are copied into this plugin at build time and served locally; no request is made to any CDN (such as cdn.jsdelivr.net) to load them.
+* **React, Redux, and related UI libraries** used to build the admin dashboard are likewise compiled into `/build/admin/admin.js` and served from this plugin — none are fetched remotely.
+
 == Installation ==
  
 = From the WordPress Dashboard =
@@ -326,6 +371,11 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
  
  
 == Changelog ==
+= 1.x.0 - 2026-08-02 =
+* Fixed: Monaco code editor (used for Custom CSS) now loads its assets from files bundled with the plugin instead of the jsdelivr CDN
+* Added: Documented all third-party AI and social sharing services in an "External services" readme section
+* Added: Public link to the plugin's full uncompiled source in the "Source Code" readme section
+* Fixed: Shortened the readme short description to fit the 150-character limit
 
 = 1.2.0 2026-06-22 =
 * Added: Custom Logo component for improved branding consistency
