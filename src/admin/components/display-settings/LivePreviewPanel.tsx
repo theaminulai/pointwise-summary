@@ -17,7 +17,7 @@ import { PreviewButton } from './PreviewButton';
  * It subscribes to the Redux store to reactively update the layout,
  * styles, and positions (both inline and floating) of the preview buttons.
  *
- * @returns The rendered preview panel.
+ * @return The rendered preview panel.
  */
 export const LivePreviewPanel: React.FC = () => {
 	const { mode, position, style, preview } = useSelector(

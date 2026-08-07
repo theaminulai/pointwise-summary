@@ -16,7 +16,7 @@ import { GlobalSettings } from './GlobalSettings';
  * Main entry point for the AI Settings page.
  * Handles the initial data fetch and global reset functionality.
  *
- * @returns The rendered component.
+ * @return The rendered component.
  */
 export const AISettings: React.FC = () => {
 	const dispatch = useDispatch();

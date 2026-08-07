@@ -20,6 +20,8 @@ export const PerformanceCaching: React.FC = () => {
 
 	/**
 	 * Updates a performance field and persists the merged performance settings.
+	 * @param key
+	 * @param value
 	 */
 	const handleChange = < K extends keyof typeof performance >(
 		key: K,

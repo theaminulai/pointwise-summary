@@ -17,6 +17,7 @@ export const PostTypeControl: React.FC = () => {
 
 	/**
 	 * Toggles enabled state for a post type and persists the updated list.
+	 * @param id
 	 */
 	const handleTogglePostType = ( id: string ) => {
 		const nextPostTypes = postTypes.map( ( type ) =>
@@ -44,6 +45,7 @@ export const PostTypeControl: React.FC = () => {
 				{ postTypes.map( ( type ) => (
 					<label
 						key={ type.id }
+						htmlFor={ `pointwise-summary-post-type-${ type.id }` }
 						className={ `flex items-center justify-between p-4 border-2 rounded-lg cursor-pointer transition-all ${
 							type.enabled
 								? 'border-indigo-500 bg-indigo-50'
@@ -54,6 +56,7 @@ export const PostTypeControl: React.FC = () => {
 							{ type.label }
 						</span>
 						<input
+							id={ `pointwise-summary-post-type-${ type.id }` }
 							type="checkbox"
 							checked={ type.enabled }
 							onChange={ () => handleTogglePostType( type.id ) }

@@ -1,12 +1,8 @@
 import { __ } from '@wordpress/i18n';
 import {
-	BarChart3,
 	ChevronRight,
 	Eye,
-	FileEdit,
 	HelpCircle,
-	LayoutDashboard,
-	NotepadText,
 	Settings,
 	Share2,
 	Sparkles,
@@ -16,12 +12,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import type { RootState } from '../../store/types';
 import { setMobileMenu } from '../../store/ui.actions';
-import { Logo } from '../icons';
 
 /**
  * Renders the main admin navigation sidebar.
  *
- * @returns Sidebar with menu links and mobile overlay behavior.
+ * @return Sidebar with menu links and mobile overlay behavior.
  */
 const Sidebar: React.FC = () => {
 	const location = useLocation();
@@ -65,8 +60,10 @@ const Sidebar: React.FC = () => {
 		<>
 			{ /* Mobile Overlay */ }
 			{ mobileMenuOpen && (
-				<div
-					className="fixed inset-0 bg-black/50 z-50 md:hidden"
+				<button
+					type="button"
+					aria-label={ __( 'Close menu', 'pointwise-summary' ) }
+					className="fixed inset-0 bg-black/50 z-50 md:hidden cursor-default"
 					onClick={ () => dispatch( setMobileMenu( false ) ) }
 				/>
 			) }
@@ -85,7 +82,7 @@ const Sidebar: React.FC = () => {
 				<div className="p-4 border-b border-gray-200 hidden md:block!">
 					<div className="flex items-center gap-3">
 						{ /* <Sparkles className="w-8 h-8 text-indigo-500" /> */ }
-						<Logo className="w-10 h-10 text-indigo-500" />
+						{ /* <Logo className="w-10 h-10 text-indigo-500" /> */ }
 						<div>
 							<h1 className="text-xl font-bold! text-gray-900">
 								{ __(

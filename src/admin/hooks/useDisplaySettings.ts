@@ -16,7 +16,7 @@ type ActiveTab = RootState[ 'displaySettings' ][ 'activeTab' ];
  * Keeps the component tree free of business logic by exposing only
  * stable, memoized callbacks alongside the current settings state.
  *
- * @returns Settings state and action handlers.
+ * @return Settings state and action handlers.
  */
 export function useDisplaySettings() {
 	const dispatch = useDispatch();

@@ -4,7 +4,6 @@ import { ContactSupport } from './ContactSupport';
 import { DocumentationLinks } from './DocumentationLinks';
 import { FAQs } from './FAQs';
 import { QuickStartGuide } from './QuickStartGuide';
-import { ShortcodeExamples } from './ShortcodeExamples';
 import { SystemInfo } from './SystemInfo';
 
 export const Help: React.FC = () => {

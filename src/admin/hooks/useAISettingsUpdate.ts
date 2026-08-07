@@ -46,7 +46,7 @@ export function useAISettingsUpdate() {
 				setIsSaving( false );
 			}
 		},
-		[ aiSettings ]
+		[ aiSettings, dispatch ]
 	);
 
 	return {

@@ -161,8 +161,8 @@ export function RecommendationFinder() {
 				</div>
 
 				<p className="text-gray-600 mb-6">
-					What's most important to you when choosing a WordPress AI
-					summarizer plugin?
+					What&apos;s most important to you when choosing a WordPress
+					AI summarizer plugin?
 				</p>
 
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">

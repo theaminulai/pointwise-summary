@@ -7,7 +7,7 @@
 /**
  * Format date to readable string
  * @param {string|Date} date - Date to format
- * @returns {string} Formatted date string
+ * @return {string} Formatted date string
  */
 export const formatDate = ( date ) => {
 	const d = new Date( date );
@@ -21,7 +21,7 @@ export const formatDate = ( date ) => {
 /**
  * Format time to relative string (e.g., "2 hours ago")
  * @param {string|Date} date - Date to format
- * @returns {string} Relative time string
+ * @return {string} Relative time string
  */
 export const formatRelativeTime = ( date ) => {
 	const now = new Date();
@@ -49,19 +49,21 @@ export const formatRelativeTime = ( date ) => {
 
 /**
  * Truncate text to specified length
- * @param {string} text - Text to truncate
+ * @param {string} text   - Text to truncate
  * @param {number} length - Maximum length
- * @returns {string} Truncated text
+ * @return {string} Truncated text
  */
 export const truncateText = ( text, length = 100 ) => {
-	if ( ! text || text.length <= length ) return text;
+	if ( ! text || text.length <= length ) {
+		return text;
+	}
 	return `${ text.substring( 0, length ) }...`;
 };
 
 /**
  * Validate email address
  * @param {string} email - Email to validate
- * @returns {boolean} True if valid
+ * @return {boolean} True if valid
  */
 export const isValidEmail = ( email ) => {
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -71,8 +73,8 @@ export const isValidEmail = ( email ) => {
 /**
  * Debounce function execution
  * @param {Function} func - Function to debounce
- * @param {number} wait - Wait time in milliseconds
- * @returns {Function} Debounced function
+ * @param {number}   wait - Wait time in milliseconds
+ * @return {Function} Debounced function
  */
 export const debounce = ( func, wait = 300 ) => {
 	let timeout;
@@ -89,7 +91,7 @@ export const debounce = ( func, wait = 300 ) => {
 /**
  * Deep clone an object
  * @param {Object} obj - Object to clone
- * @returns {Object} Cloned object
+ * @return {Object} Cloned object
  */
 export const deepClone = ( obj ) => {
 	return JSON.parse( JSON.stringify( obj ) );
@@ -97,7 +99,7 @@ export const deepClone = ( obj ) => {
 
 /**
  * Generate unique ID
- * @returns {string} Unique ID
+ * @return {string} Unique ID
  */
 export const generateId = () => {
 	return `${ Date.now() }-${ Math.random().toString( 36 ).substr( 2, 9 ) }`;
@@ -106,7 +108,7 @@ export const generateId = () => {
 /**
  * Check if object is empty
  * @param {Object} obj - Object to check
- * @returns {boolean} True if empty
+ * @return {boolean} True if empty
  */
 export const isEmpty = ( obj ) => {
 	return Object.keys( obj ).length === 0;
@@ -115,7 +117,7 @@ export const isEmpty = ( obj ) => {
 /**
  * Format number with commas
  * @param {number} num - Number to format
- * @returns {string} Formatted number
+ * @return {string} Formatted number
  */
 export const formatNumber = ( num ) => {
 	return num.toString().replace( /\B(?=(\d{3})+(?!\d))/g, ',' );
@@ -124,19 +126,21 @@ export const formatNumber = ( num ) => {
 /**
  * Capitalize first letter of string
  * @param {string} str - String to capitalize
- * @returns {string} Capitalized string
+ * @return {string} Capitalized string
  */
 export const capitalize = ( str ) => {
-	if ( ! str ) return '';
+	if ( ! str ) {
+		return '';
+	}
 	return str.charAt( 0 ).toUpperCase() + str.slice( 1 );
 };
 
 /**
  * Get value from nested object safely
- * @param {Object} obj - Object to get value from
- * @param {string} path - Path to value (e.g., 'user.profile.name')
- * @param {*} defaultValue - Default value if path not found
- * @returns {*} Value at path or default
+ * @param {Object} obj          - Object to get value from
+ * @param {string} path         - Path to value (e.g., 'user.profile.name')
+ * @param {*}      defaultValue - Default value if path not found
+ * @return {*} Value at path or default
  */
 export const getNestedValue = ( obj, path, defaultValue = null ) => {
 	const keys = path.split( '.' );
@@ -154,7 +158,7 @@ export const getNestedValue = ( obj, path, defaultValue = null ) => {
 };
 /**
  * Get Pointwise Summary configuration from global window object
- * @returns {Object} Pointwise Summary configuration
+ * @return {Object} Pointwise Summary configuration
  */
 
 export const getPointwiseConfig = () => {
@@ -170,9 +174,10 @@ export const getPointwiseConfig = () => {
 export const storage = {
 	get: ( key, defaultValue = null ) => {
 		try {
-			const item = localStorage.getItem( key );
+			const item = window.localStorage.getItem( key );
 			return item ? JSON.parse( item ) : defaultValue;
 		} catch ( error ) {
+			// eslint-disable-next-line no-console -- surfaced intentionally for debugging storage failures.
 			console.error( 'Error reading from localStorage:', error );
 			return defaultValue;
 		}
@@ -180,9 +185,10 @@ export const storage = {
 
 	set: ( key, value ) => {
 		try {
-			localStorage.setItem( key, JSON.stringify( value ) );
+			window.localStorage.setItem( key, JSON.stringify( value ) );
 			return true;
 		} catch ( error ) {
+			// eslint-disable-next-line no-console -- surfaced intentionally for debugging storage failures.
 			console.error( 'Error writing to localStorage:', error );
 			return false;
 		}
@@ -190,9 +196,10 @@ export const storage = {
 
 	remove: ( key ) => {
 		try {
-			localStorage.removeItem( key );
+			window.localStorage.removeItem( key );
 			return true;
 		} catch ( error ) {
+			// eslint-disable-next-line no-console -- surfaced intentionally for debugging storage failures.
 			console.error( 'Error removing from localStorage:', error );
 			return false;
 		}
@@ -200,9 +207,10 @@ export const storage = {
 
 	clear: () => {
 		try {
-			localStorage.clear();
+			window.localStorage.clear();
 			return true;
 		} catch ( error ) {
+			// eslint-disable-next-line no-console -- surfaced intentionally for debugging storage failures.
 			console.error( 'Error clearing localStorage:', error );
 			return false;
 		}

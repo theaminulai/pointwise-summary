@@ -22,8 +22,13 @@ interface PositionTabContentProps {
 /**
  * Component for managing the spatial placement of summary buttons.
  *
- * @param props - Component properties.
- * @returns The rendered position settings tab content.
+ * @param props                  - Component properties.
+ * @param props.displayMode
+ * @param props.floatingPosition
+ * @param props.buttonAlignment
+ * @param props.inlinePosition
+ * @param props.onChange
+ * @return The rendered position settings tab content.
  */
 export const PositionTabContent: React.FC< PositionTabContentProps > = ( {
 	displayMode,
@@ -42,12 +47,12 @@ export const PositionTabContent: React.FC< PositionTabContentProps > = ( {
 		<div className="space-y-6">
 			{ isFloatingMode && (
 				<div className="space-y-4">
-					<label className="font-medium text-gray-900">
+					<p className="font-medium text-gray-900">
 						{ __(
 							'Floating Button Position',
 							'pointwise-summary'
 						) }
-					</label>
+					</p>
 					<div
 						className="grid gap-3"
 						style={ {
@@ -106,12 +111,12 @@ export const PositionTabContent: React.FC< PositionTabContentProps > = ( {
 				<>
 					<div className="space-y-4">
 						<div className="space-y-3 pt-4">
-							<label className="font-medium text-gray-900">
+							<p className="font-medium text-gray-900">
 								{ __(
 									'Button Alignment',
 									'pointwise-summary'
 								) }
-							</label>
+							</p>
 							<div
 								className="grid gap-3"
 								style={ {

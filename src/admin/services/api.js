@@ -10,10 +10,10 @@ import { __ } from '@wordpress/i18n';
 import { toast } from 'sonner';
 // Get API configuration from WordPress localized script
 const getApiConfig = () => {
-	if ( typeof pointwiseSummary !== 'undefined' ) {
+	if ( typeof window.pointwiseSummary !== 'undefined' ) {
 		return {
-			apiRoot: pointwiseSummary.apiUrl,
-			nonce: pointwiseSummary.nonce,
+			apiRoot: window.pointwiseSummary.apiUrl,
+			nonce: window.pointwiseSummary.nonce,
 		};
 	}
 	return {
@@ -45,6 +45,7 @@ const apiRequest = async ( endpoint, options = {} ) => {
 		} );
 		return data?.data || data;
 	} catch ( error ) {
+		// eslint-disable-next-line no-console -- surfaced intentionally for debugging failed requests.
 		console.error( 'API Request Failed:', error );
 		throw error;
 	}

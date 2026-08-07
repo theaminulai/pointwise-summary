@@ -23,6 +23,8 @@ export const Accessibility: React.FC = () => {
 
 	/**
 	 * Updates a single accessibility field in Redux and persists the merged object.
+	 * @param key
+	 * @param value
 	 */
 	const handleChange = < K extends keyof typeof accessibility >(
 		key: K,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 
 /**
  * Props for the RadioCard component.
@@ -15,8 +15,14 @@ interface RadioCardProps {
 /**
  * Renders a card-styled radio option for grouped selections.
  *
- * @param props Component props.
- * @returns Selectable radio card.
+ * @param props             Component props.
+ * @param props.checked
+ * @param props.onChange
+ * @param props.label
+ * @param props.description
+ * @param props.icon
+ * @param props.disabled
+ * @return Selectable radio card.
  */
 export const RadioCard: React.FC< RadioCardProps > = ( {
 	checked,
@@ -26,8 +32,10 @@ export const RadioCard: React.FC< RadioCardProps > = ( {
 	icon,
 	disabled = false,
 } ) => {
+	const inputId = useId();
 	return (
 		<label
+			htmlFor={ inputId }
 			className={ `
 				relative flex flex-col p-4 border-2 rounded-xl cursor-pointer transition-all duration-200
 				${
@@ -39,6 +47,7 @@ export const RadioCard: React.FC< RadioCardProps > = ( {
 				` }
 		>
 			<input
+				id={ inputId }
 				type="radio"
 				checked={ checked }
 				onChange={ () => ! disabled && onChange() }

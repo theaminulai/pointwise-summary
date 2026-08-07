@@ -83,7 +83,7 @@ export const initAiModelButtons = () => {
 			wrapper.classList.add( 'is-opening' );
 			panel.hidden = false;
 
-			requestAnimationFrame( () => {
+			window.requestAnimationFrame( () => {
 				wrapper.classList.add( 'is-open' );
 			} );
 		} );

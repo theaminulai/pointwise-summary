@@ -12,8 +12,11 @@ type titleProps = {
 /**
  * Renders a page title and optional description text.
  *
- * @param props Component props.
- * @returns Title block.
+ * @param props             Component props.
+ * @param props.title
+ * @param props.description
+ * @param props.className
+ * @return Title block.
  */
 const Title: React.FC< titleProps > = ( {
 	title,

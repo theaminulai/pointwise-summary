@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import type { LucideIcon } from 'lucide-react';
 import type * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import type { SocialNetworkState } from '../../store/types';
 import { Toggle } from '../common';
 
@@ -22,6 +22,7 @@ export const NetworkRow: React.FC< NetworkRowProps > = ( {
 }: NetworkRowProps ) => {
 	const Icon = network.icon;
 	const showMentionInput = network.mentionOption && network.enabled;
+	const mentionInputId = useId();
 	const [ mentionValue, setMentionValue ] = useState( network.mention );
 
 	const handleMentionChange = (
@@ -53,13 +54,17 @@ export const NetworkRow: React.FC< NetworkRowProps > = ( {
 
 						{ showMentionInput && (
 							<div className="mt-3">
-								<label className="block text-sm text-gray-700 mb-1">
+								<label
+									htmlFor={ mentionInputId }
+									className="block text-sm text-gray-700 mb-1"
+								>
 									{ __(
 										'Mention (optional)',
 										'pointwise-summary'
 									) }
 								</label>
 								<input
+									id={ mentionInputId }
 									type="text"
 									value={ mentionValue }
 									onChange={ handleMentionChange }

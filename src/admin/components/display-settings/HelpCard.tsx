@@ -8,7 +8,7 @@ import type * as React from 'react';
  * Renders a stylized information card providing guidance on how to use
  * the display settings panel and real-time preview.
  *
- * @returns The rendered help card.
+ * @return The rendered help card.
  */
 export const HelpCard: React.FC = () => {
 	return (

@@ -1,9 +1,10 @@
 @use "tailwindcss";
 @use "rsuite/dist/rsuite-no-reset.css";
+
 #pointwise-summary-admin-root {
 	position: relative;
 	box-sizing: border-box;
-	
+
 	/* Custom range slider styling */
 	input[type="range"].slider::-webkit-slider-thumb {
 		appearance: none;
@@ -56,6 +57,7 @@
 
 	/* Animation utilities */
 	@keyframes fade-in {
+
 		from {
 			opacity: 0;
 		}
@@ -66,6 +68,7 @@
 	}
 
 	@keyframes zoom-in {
+
 		from {
 			transform: scale(0.8);
 		}
