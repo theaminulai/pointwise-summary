@@ -372,14 +372,6 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
  
 == Changelog ==
 
-= 1.2.2 =
-* Merge pull request #46 from theaminulai/development
-* Add PR #45 reference to changelog
-* Merge pull request #45 from theaminulai/Refresh-branding-and-clarify-AI-workflow
-* Add pkg-json lint config and tidy SCSS
-* Improve admin accessibility and lint cleanup
-* Refresh branding and clarify AI workflow
-
 = 1.2.2 - 2026-08-07 =
 * Fixed: Updated readme descriptions to clarify AI processing and API key requirements.
 * Fixed: Corrected the multilingual support description to accurately reflect its functionality.
