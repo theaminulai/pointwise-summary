@@ -4,7 +4,7 @@ Tags:              ai, summarize, tldr, summary, content-summary
 Requires at least: 6.1
 Tested up to:      7.0
 Requires PHP:      7.4
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License:           GPL-3.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -371,6 +371,14 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
  
  
 == Changelog ==
+
+= 1.2.2 =
+* Merge pull request #46 from theaminulai/development
+* Add PR #45 reference to changelog
+* Merge pull request #45 from theaminulai/Refresh-branding-and-clarify-AI-workflow
+* Add pkg-json lint config and tidy SCSS
+* Improve admin accessibility and lint cleanup
+* Refresh branding and clarify AI workflow
 
 = 1.2.2 - 2026-08-07 =
 * Fixed: Updated readme descriptions to clarify AI processing and API key requirements.
