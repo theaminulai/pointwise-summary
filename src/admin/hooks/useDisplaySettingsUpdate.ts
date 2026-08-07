@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  * Handles saving individual settings or whole groups to the WordPress database
  * and keeping the Redux store in sync with the server.
  *
- * @returns Object containing persist function, loading state, and current settings.
+ * @return Object containing persist function, loading state, and current settings.
  */
 export function useDisplaySettingsUpdate() {
 	const dispatch = useDispatch();
@@ -53,7 +53,7 @@ export function useDisplaySettingsUpdate() {
 				setIsSaving( false );
 			}
 		},
-		[ displaySettings ]
+		[ displaySettings, dispatch ]
 	);
 
 	return {

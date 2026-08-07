@@ -40,7 +40,7 @@ $blocks-block__margin: 0.5em;
 	// that these were block level elements that took up the full width.
 	// This back compat rule is ignored if the user decides to use the
 	// newer justification options on the button block, hence the :not.
-	// stylelint-disable-next-line @stylistic/indentation
+	// stylelint-disable @stylistic/indentation
 	&:not(
 			.is-content-justification-space-between,
 			.is-content-justification-right,

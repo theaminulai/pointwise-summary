@@ -4,6 +4,57 @@
 	"description": "Generate instant TL;DR summaries using ChatGPT, Claude, Gemini, Grok, and more. Add customizable summary buttons anywhere on your site with flexible auto-insertion support.",
 	"author": "theaminulai",
 	"license": "GPL-3.0-or-later",
+	"keywords": [
+		"wordpress",
+		"plugin",
+		"pointwise-summary",
+		"summary",
+		"tl;dr"
+	],
+	"homepage": "https://github.com/theaminulai/pointwise-summary/",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/theaminulai/pointwise-summary.git"
+	},
+	"bugs": {
+		"url": "https://github.com/theaminulai/pointwise-summary/issues"
+	},
+	"dependencies": {
+		"@monaco-editor/react": "^4.7.0",
+		"@tailwindcss/postcss": "^4.1.18",
+		"@types/prop-types": "^15.7.15",
+		"@types/wordpress__block-editor": "^15.0.0",
+		"@types/wordpress__block-library": "^2.6.3",
+		"@types/wordpress__blocks": "^12.5.18",
+		"@types/wordpress__edit-post": "^8.4.2",
+		"@wordpress/icons": "^11.8.0",
+		"clsx": "^2.1.1",
+		"lucide-react": "^0.563.0",
+		"postcss": "^8.5.6",
+		"react-redux": "^9.2.0",
+		"react-router-dom": "^7.13.0",
+		"recharts": "^3.7.0",
+		"redux": "^5.0.1",
+		"rsuite": "^6.1.2",
+		"sonner": "^2.0.7",
+		"tailwindcss": "^4.1.18"
+	},
+	"devDependencies": {
+		"@actions/core": "^1.10.0",
+		"@types/node": "^25.1.0",
+		"@types/react": "^19.2.10",
+		"@types/react-dom": "^19.2.3",
+		"@types/testing-library__jest-dom": "^5.14.9",
+		"@types/wordpress__date": "^3.3.5",
+		"@types/wordpress__editor": "^14.3.1",
+		"@types/wordpress__keycodes": "^2.3.3",
+		"@types/wordpress__media-utils": "^4.14.4",
+		"@types/wordpress__rich-text": "^6.4.5",
+		"@wordpress/scripts": "^30.23.0",
+		"npm-check-updates": "^16.14.20",
+		"simple-git": "^3.27.0",
+		"webpack-remove-empty-scripts": "^1.1.1"
+	},
 	"scripts": {
 		"build": "wp-scripts build --blocks-manifest",
 		"format": "wp-scripts format ./src",
@@ -20,40 +71,5 @@
 		"lint:pkg-json": "wp-scripts lint-pkg-json",
 		"update-version": "node update-version-and-changelog.js",
 		"zip": "npm run build && composer archive --file=../dist/pointwise-summary"
-	},
-	"devDependencies": {
-		"@types/node": "^25.1.0",
-		"@types/react": "^19.2.10",
-		"@types/react-dom": "^19.2.3",
-		"@types/testing-library__jest-dom": "^5.14.9",
-		"@types/wordpress__date": "^3.3.5",
-		"@types/wordpress__editor": "^14.3.1",
-		"@types/wordpress__keycodes": "^2.3.3",
-		"@types/wordpress__media-utils": "^4.14.4",
-		"@types/wordpress__rich-text": "^6.4.5",
-		"@wordpress/scripts": "^30.23.0",
-		"webpack-remove-empty-scripts": "^1.1.1",
-		"simple-git": "^3.27.0",
-		"npm-check-updates": "^16.14.20",
-		"@actions/core": "^1.10.0"
-	},
-	"dependencies": {
-		"@monaco-editor/react": "^4.7.0",
-		"@tailwindcss/postcss": "^4.1.18",
-		"@types/prop-types": "^15.7.15",
-		"@types/wordpress__block-editor": "^15.0.0",
-		"@types/wordpress__block-library": "^2.6.3",
-		"@types/wordpress__blocks": "^12.5.18",
-		"@types/wordpress__edit-post": "^8.4.2",
-		"clsx": "^2.1.1",
-		"lucide-react": "^0.563.0",
-		"postcss": "^8.5.6",
-		"react-redux": "^9.2.0",
-		"react-router-dom": "^7.13.0",
-		"recharts": "^3.7.0",
-		"redux": "^5.0.1",
-		"rsuite": "^6.1.2",
-		"sonner": "^2.0.7",
-		"tailwindcss": "^4.1.18"
 	}
 }

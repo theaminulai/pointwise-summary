@@ -13,7 +13,7 @@ import { Select, Toggle } from '../common';
  * Manages core AI behavior settings such as summary length,
  * heading inclusion, and metadata context.
  *
- * @returns The rendered component.
+ * @return The rendered component.
  */
 export const GlobalSettings: React.FC = () => {
 	const dispatch = useDispatch();
@@ -140,12 +140,12 @@ export const GlobalSettings: React.FC = () => {
 
 				{ /* RIGHT SIDE */ }
 				<div className="md:border-l md:border-gray-200 md:pl-6 gap-3 flex flex-col">
-					<label className="block text-sm font-medium text-gray-900 pt-2.5">
+					<p className="block text-sm font-medium text-gray-900 pt-2.5">
 						{ __(
 							'AI Prompts for better context',
 							'pointwise-summary'
 						) }
-					</label>
+					</p>
 					<Toggle
 						checked={ includeHeadings }
 						onChange={ handleIncludeHeadingsChange }

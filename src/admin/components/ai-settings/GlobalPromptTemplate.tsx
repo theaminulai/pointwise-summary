@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { Check, Cog } from 'lucide-react';
 import type * as React from 'react';
-import { useRef } from 'react';
+import { useId, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAISettingsUpdate } from '../../hooks/useAISettingsUpdate';
 import {
@@ -10,7 +10,7 @@ import {
 } from '../../store/aiSettings.actions';
 import { insertVariableAtCursor } from '../../utils/insertVariableAtCursor';
 import { Heading, Toggle } from '../common';
-import PromptVariables from '../common/PromptVariables ';
+import PromptVariables from '../common/PromptVariables';
 
 /**
  * GlobalPromptTemplate Component.
@@ -18,10 +18,11 @@ import PromptVariables from '../common/PromptVariables ';
  * Manages the sitewide system prompt used by all AI platforms.
  * Features cursor-aware variable insertion and draft/save management.
  *
- * @returns The rendered component.
+ * @return The rendered component.
  */
 export const GlobalPromptTemplate: React.FC = () => {
 	const dispatch = useDispatch();
+	const promptTextareaId = useId();
 	const textareaRef = useRef< HTMLTextAreaElement >( null );
 	const { aiSettings, persistSettings } = useAISettingsUpdate();
 	const { globalPrompt, useGlobalPrompt, platforms } = aiSettings;
@@ -77,7 +78,9 @@ export const GlobalPromptTemplate: React.FC = () => {
 	 * @param variable - The variable placeholder to insert (e.g., '{title}').
 	 */
 	const insertVariable = ( variable: string ): void => {
-		if ( ! textareaRef.current ) return;
+		if ( ! textareaRef.current ) {
+			return;
+		}
 
 		insertVariableAtCursor( {
 			textarea: textareaRef.current,
@@ -112,13 +115,17 @@ export const GlobalPromptTemplate: React.FC = () => {
 			{ useGlobalPrompt && (
 				<div className="mt-4 space-y-4 animate-in fade-in">
 					<div>
-						<label className="block text-sm font-medium text-gray-900 mb-2">
+						<label
+							htmlFor={ promptTextareaId }
+							className="block text-sm font-medium text-gray-900 mb-2"
+						>
 							{ __(
 								'Prompt for All Models',
 								'pointwise-summary'
 							) }
 						</label>
 						<textarea
+							id={ promptTextareaId }
 							ref={ textareaRef }
 							value={ globalPrompt }
 							onChange={ ( e ) =>
@@ -126,7 +133,7 @@ export const GlobalPromptTemplate: React.FC = () => {
 							}
 							rows={ 8 }
 							placeholder={ __(
-								'Enter the prompt that will be used for all AI platforms...',
+								'Enter the prompt that will be used for all AI platforms…',
 								'pointwise-summary'
 							) }
 							className="w-full px-4 py-3 border! border-gray-300! rounded-lg! text-sm focus:outline-none! focus:ring-2! focus:ring-indigo-500 focus:border-indigo-500 transition-all resize-none"

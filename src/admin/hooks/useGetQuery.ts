@@ -20,7 +20,7 @@ import { setSocialSharing } from '../store/socialSharing.actions';
  * from the WordPress REST API and populating the Redux store. It serves as the single
  * point of truth for data retrieval for the entire admin application.
  *
- * @returns Query state.
+ * @return Query state.
  * `isLoading`: True if any data is still being fetched.
  * `error`: Any error that occurred during the query.
  * `refetch`: Function to manually trigger a data refresh.
@@ -80,6 +80,7 @@ export function useGetQuery() {
 				dispatch( setSystemInfo( systemInfo ) );
 			}
 		} catch ( err ) {
+			// eslint-disable-next-line no-console -- surfaced intentionally for debugging initialization failures.
 			console.error( 'Failed to initialize app data:', err );
 			setError(
 				err instanceof Error

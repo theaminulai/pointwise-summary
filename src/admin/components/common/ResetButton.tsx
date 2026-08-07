@@ -22,7 +22,7 @@ export const ResetButton: React.FC< ResetButtonProps > = ( {
 			>
 				<Trash className="w-4 h-4" />
 				{ isLoading
-					? __( 'Resetting...', 'pointwise-summary' )
+					? __( 'Resetting…', 'pointwise-summary' )
 					: resetLabel }
 			</button>
 		</div>

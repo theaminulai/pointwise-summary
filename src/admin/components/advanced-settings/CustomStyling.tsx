@@ -2,7 +2,7 @@ import Editor from '@monaco-editor/react';
 import { __ } from '@wordpress/i18n';
 import { Save } from 'lucide-react';
 import type * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useAdvancedSettingsUpdate } from '../../hooks/useAdvancedSettingsUpdate';
 import type { RootState } from '../../store/types';
@@ -15,6 +15,7 @@ export const CustomStyling: React.FC = () => {
 		( state: RootState ) => state.advancedSettings.styling
 	);
 	const { isSaving, persistSettings } = useAdvancedSettingsUpdate();
+	const classInputId = useId();
 	const [ draftStyling, setDraftStyling ] = useState( styling );
 
 	useEffect( () => {
@@ -28,6 +29,7 @@ export const CustomStyling: React.FC = () => {
 
 	/**
 	 * Merges partial styling updates into local draft state.
+	 * @param changes
 	 */
 	const handleStylingChange = ( changes: Partial< typeof draftStyling > ) => {
 		setDraftStyling( ( prev ) => ( {
@@ -53,10 +55,14 @@ export const CustomStyling: React.FC = () => {
 
 			<div className="space-y-4">
 				<div>
-					<label className="block text-sm font-medium text-gray-900 mb-2">
+					<label
+						htmlFor={ classInputId }
+						className="block text-sm font-medium text-gray-900 mb-2"
+					>
 						{ __( 'Custom CSS Class', 'pointwise-summary' ) }
 					</label>
 					<input
+						id={ classInputId }
 						type="text"
 						value={ customCssClass }
 						onChange={ ( e ) =>
@@ -79,10 +85,19 @@ export const CustomStyling: React.FC = () => {
 				</div>
 
 				<div>
-					<label className="block text-sm font-medium text-gray-900 mb-2">
+					{ /* Monaco's <Editor> manages its own internal textarea, so
+					   this is a field caption rather than a <label for>. */ }
+					<p
+						id="pointwise-summary-custom-css-code-label"
+						className="block text-sm font-medium text-gray-900 mb-2"
+					>
 						{ __( 'Custom CSS Code', 'pointwise-summary' ) }
-					</label>
-					<div className="border border-gray-300 rounded-lg overflow-hidden focus-within:ring focus-within:ring-indigo-500 focus-within:border-indigo-500 transition-all">
+					</p>
+					<div
+						role="group"
+						aria-labelledby="pointwise-summary-custom-css-code-label"
+						className="border border-gray-300 rounded-lg overflow-hidden focus-within:ring focus-within:ring-indigo-500 focus-within:border-indigo-500 transition-all"
+					>
 						<Editor
 							height="400px"
 							defaultLanguage="css"
@@ -131,7 +146,7 @@ export const CustomStyling: React.FC = () => {
 						>
 							<Save className="w-4 h-4" />
 							{ isSaving
-								? __( 'Saving...', 'pointwise-summary' )
+								? __( 'Saving…', 'pointwise-summary' )
 								: __( 'Save Style', 'pointwise-summary' ) }
 						</button>
 					</div>

@@ -17,7 +17,7 @@ const toggleFab = ( wrapper ) => {
 		panel.hidden = false;
 
 		// Trigger animation by adding opened class after hidden is removed
-		requestAnimationFrame( () => {
+		window.requestAnimationFrame( () => {
 			wrapper.classList.add( 'is-open' );
 		} );
 	} else {
@@ -36,6 +36,7 @@ const toggleFab = ( wrapper ) => {
 
 /**
  * Close the FAB panel by removing open class and resetting state.
+ * @param {HTMLElement} wrapper The FAB wrapper element.
  */
 const closeFabPanel = ( wrapper ) => {
 	const button = wrapper.querySelector( '.pointwise-summary-fab-button' );

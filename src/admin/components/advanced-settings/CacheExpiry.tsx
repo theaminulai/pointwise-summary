@@ -1,7 +1,7 @@
 import { useDebounce } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
 import type * as React from 'react';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useId, useState } from 'react';
 import {
 	MAX_CACHE_EXPIRY_HOURS,
 	MIN_CACHE_EXPIRY_HOURS,
@@ -16,12 +16,17 @@ type CacheExpiryProps = {
 
 /**
  * Renders cache expiry input with debounce and clamped numeric normalization.
+ * @param root0
+ * @param root0.enabled
+ * @param root0.value
+ * @param root0.onChange
  */
 export const CacheExpiry: React.FC< CacheExpiryProps > = ( {
 	enabled,
 	value,
 	onChange,
 } ) => {
+	const inputId = useId();
 	const [ draft, setDraft ] = useState( String( value ) );
 
 	useEffect( () => {
@@ -48,6 +53,7 @@ export const CacheExpiry: React.FC< CacheExpiryProps > = ( {
 
 	/**
 	 * Updates draft input immediately and queues a debounced commit.
+	 * @param e
 	 */
 	const handleChange = ( e: React.ChangeEvent< HTMLInputElement > ) => {
 		const next = e.target.value;
@@ -61,10 +67,14 @@ export const CacheExpiry: React.FC< CacheExpiryProps > = ( {
 
 	return (
 		<div className="mt-3 ml-7">
-			<label className="block text-sm text-gray-700 mb-2">
+			<label
+				htmlFor={ inputId }
+				className="block text-sm text-gray-700 mb-2"
+			>
 				{ __( 'Cache Expiry (hours)', 'pointwise-summary' ) }
 			</label>
 			<input
+				id={ inputId }
 				type="number"
 				value={ draft }
 				onChange={ handleChange }

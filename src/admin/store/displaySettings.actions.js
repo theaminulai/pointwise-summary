@@ -11,8 +11,8 @@ export const SET_ACTIVE_TAB = 'SET_ACTIVE_TAB';
 /**
  * Updates the entire display settings state.
  *
- * @param settings - The new display settings object.
- * @returns Action object.
+ * @param {Object} settings - The new display settings object.
+ * @return {{type: string, payload: Object}} Action object.
  */
 export const setDisplaySettings = ( settings ) => ( {
 	type: SET_DISPLAY_SETTINGS,
@@ -22,10 +22,10 @@ export const setDisplaySettings = ( settings ) => ( {
 /**
  * Updates a single setting field within a specific group.
  *
- * @param group - The group key (e.g., 'style', 'mode').
- * @param field - The field key within that group.
- * @param value - The new value.
- * @returns Action object.
+ * @param {string} group - The group key (e.g., 'style', 'mode').
+ * @param {string} field - The field key within that group.
+ * @param {*}      value - The new value.
+ * @return {{type: string, payload: Object}} Action object.
  */
 export const setDisplaySettingField = ( group, field, value ) => ( {
 	type: SET_DISPLAY_SETTING_FIELD,
@@ -35,8 +35,8 @@ export const setDisplaySettingField = ( group, field, value ) => ( {
 /**
  * Sets the currently active navigation tab.
  *
- * @param tab - The tab identifier.
- * @returns Action object.
+ * @param {string} tab - The tab identifier.
+ * @return {{type: string, payload: string}} Action object.
  */
 export const setActiveTab = ( tab ) => ( {
 	type: SET_ACTIVE_TAB,

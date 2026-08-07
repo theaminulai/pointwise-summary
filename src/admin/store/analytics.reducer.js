@@ -835,11 +835,12 @@ const initialState = {
 const analyticsReducer = ( state = initialState, action ) => {
 	switch ( action.type ) {
 		case SET_ANALYTICS_RANGE: {
-			const nextRange = getRangeData( action.payload )
-				? action.payload
-				: action.payload === 'custom'
-				? 'custom'
-				: 'weekly';
+			let nextRange = 'weekly';
+			if ( getRangeData( action.payload ) ) {
+				nextRange = action.payload;
+			} else if ( action.payload === 'custom' ) {
+				nextRange = 'custom';
+			}
 			if ( nextRange === 'custom' ) {
 				const customData = buildCustomRangeData( state.customRange );
 				return {

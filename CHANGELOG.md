@@ -1,5 +1,6 @@
 # Changelog
-## x.y.z - 2026-06-22
+## x.y.z - 2026-08-07
+- Refresh branding and clarify AI workflow ([#45](https://github.com/theaminulai/pointwise-summary/pull/45)) @theaminulai
 - new: update ([#41](https://github.com/theaminulai/pointwise-summary/pull/41)) @theaminulai
 ### Added
 - Create Action Button to navigate Setting Page ([#35](https://github.com/theaminulai/pointwise-summary/pull/35)) @iqbal-web

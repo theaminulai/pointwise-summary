@@ -19,8 +19,14 @@ interface ActionsProps {
 /**
  * Renders reset and save actions used in settings screens.
  *
- * @param props Component props.
- * @returns Action button group.
+ * @param props            Component props.
+ * @param props.onReset
+ * @param props.onSave
+ * @param props.isDeleting
+ * @param props.isSaving
+ * @param props.resetLabel
+ * @param props.saveLabel
+ * @return Action button group.
  */
 export const ActionsButton: React.FC< ActionsProps > = ( {
 	onReset,
@@ -39,7 +45,7 @@ export const ActionsButton: React.FC< ActionsProps > = ( {
 			>
 				<Trash className="w-4 h-4" />
 				{ isDeleting
-					? __( 'Resetting...', 'pointwise-summary' )
+					? __( 'Resetting…', 'pointwise-summary' )
 					: resetLabel }
 			</button>
 
@@ -54,9 +60,7 @@ export const ActionsButton: React.FC< ActionsProps > = ( {
 				}` }
 			>
 				<Save className="w-4 h-4" />
-				{ isSaving
-					? __( 'Saving...', 'pointwise-summary' )
-					: saveLabel }
+				{ isSaving ? __( 'Saving…', 'pointwise-summary' ) : saveLabel }
 			</button>
 		</div>
 	);

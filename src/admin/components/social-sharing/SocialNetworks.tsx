@@ -82,6 +82,7 @@ export const SocialNetworks: React.FC = () => {
 				</h3>
 				<p className="text-sm text-gray-600 mt-1">
 					{ sprintf(
+						/* translators: %1$d is the number of enabled networks, %2$d is the total number of networks. */
 						__(
 							'%1$d of %2$d networks enabled',
 							'pointwise-summary'

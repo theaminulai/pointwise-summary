@@ -1,4 +1,5 @@
 import type * as React from 'react';
+import { useId } from 'react';
 
 /**
  * Props for the Toggle component.
@@ -15,8 +16,14 @@ interface ToggleProps {
 /**
  * Renders a switch-style toggle with optional label and description.
  *
- * @param props Component props.
- * @returns Toggle control.
+ * @param props             Component props.
+ * @param props.checked
+ * @param props.onChange
+ * @param props.label
+ * @param props.description
+ * @param props.disabled
+ * @param props.className
+ * @return Toggle control.
  */
 export const Toggle: React.FC< ToggleProps > = ( {
 	checked,
@@ -26,8 +33,10 @@ export const Toggle: React.FC< ToggleProps > = ( {
 	disabled = false,
 	className = '',
 } ) => {
+	const inputId = useId();
 	return (
 		<label
+			htmlFor={ inputId }
 			className={ `flex items-start justify-between gap-4 ${
 				disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
 			} ${ className }` }
@@ -48,6 +57,7 @@ export const Toggle: React.FC< ToggleProps > = ( {
 			) }
 			<div className="relative flex items-center">
 				<input
+					id={ inputId }
 					type="checkbox"
 					checked={ checked }
 					onChange={ ( e ) =>

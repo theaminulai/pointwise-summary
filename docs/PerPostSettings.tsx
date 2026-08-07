@@ -1,5 +1,5 @@
 import { Edit, Eye, Save, Search, X } from 'lucide-react';
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { Checkbox, Select, Title } from '../src/admin/components/common';
 
 const posts = [
@@ -36,6 +36,7 @@ const posts = [
 ];
 
 export function PerPostSettings() {
+	const customPromptId = useId();
 	const [ searchQuery, setSearchQuery ] = useState( '' );
 	const [ selectedPost, setSelectedPost ] = useState< number | null >( null );
 	const [ customPrompt, setCustomPrompt ] = useState( '' );
@@ -179,10 +180,14 @@ export function PerPostSettings() {
 						<div className="space-y-6">
 							{ /* Custom Prompt */ }
 							<div>
-								<label className="block text-sm font-medium text-gray-900 mb-2">
+								<label
+									htmlFor={ customPromptId }
+									className="block text-sm font-medium text-gray-900 mb-2"
+								>
 									Custom Prompt for This Post
 								</label>
 								<textarea
+									id={ customPromptId }
 									value={ customPrompt }
 									onChange={ ( e ) =>
 										setCustomPrompt( e.target.value )
@@ -263,9 +268,9 @@ export function PerPostSettings() {
 
 							{ /* AI Platform Override */ }
 							<div>
-								<label className="block text-sm font-medium text-gray-900 mb-3">
+								<p className="block text-sm font-medium text-gray-900 mb-3">
 									Enabled AI Platforms for This Post
-								</label>
+								</p>
 								<div className="grid grid-cols-2 md:grid-cols-4 gap-3">
 									<Checkbox
 										checked={ enabledAI.chatgpt }

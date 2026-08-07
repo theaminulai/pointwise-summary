@@ -16,7 +16,7 @@ Generate instant TL;DR summaries with ChatGPT, Claude, Gemini, Grok, and more.
  
 Modern readers scan before they commit. Give them a reason to stay.
  
-When a visitor clicks a summary button, Pointwise Summary sends your post content to the AI model of your choice and returns a concise, readable summary — whether that's a short TL;DR, a list of key points, or a detailed overview. You control the style, length, placement, and prompt.
+When a visitor clicks a summary button, Pointwise Summary builds a prompt from your post and opens it directly in the AI model of your choice — ChatGPT, Claude, Gemini, Grok, Perplexity, or Google AI — ready to generate a short TL;DR, a list of key points, or a detailed overview. You control the style, length, placement, and prompt. No API key or server-side account with this plugin is required — visitors use whatever access they already have to that AI provider's own site.
  
 = What is TL;DR and Why It Matters =
  
@@ -51,7 +51,7 @@ In the age of information overload, readers scan content before committing time.
 * **6 AI models** — ChatGPT, Claude, Gemini, Grok, Perplexity, and Google AI (coming soon: Chrome's built-in Gemini Nano for on-device summarization)
 * **Full customization** — Place buttons anywhere with complete design control
 * **Auto-insertion** — Automatically add buttons before or after the title or content
-* **Multiple display options** — Floating action button, shortcodes, or auto-insert
+* **Multiple display options** — Floating action button or auto-insert (shortcodes coming soon)
 * **Flexible placement** — Total control over where and how buttons appear
 * **Reader-friendly** — Give modern readers quick access to the content they need
 * **5 visual styles** — Default, brand colors, minimal, dark, and icons-only
@@ -76,7 +76,7 @@ In the age of information overload, readers scan content before committing time.
  
 **Google AI Model** — Direct Google AI integration that launches automatically with your prompt. Available in most countries with no extra configuration.
  
-**Coming soon: Chrome Built-in AI (Gemini Nano)** — On-device summarization with no API key required. Your data never leaves the browser, it works offline, and there are no usage costs or rate limits — ideal for privacy-conscious users.
+**Coming soon: Chrome Built-in AI (Gemini Nano)** — Fully on-device summarization, generated right in the button with no browser tab switch. Your data never leaves the browser, it works offline, and there are no usage costs or rate limits — ideal for privacy-conscious users.
  
 = Core Features =
  
@@ -87,8 +87,8 @@ In the age of information overload, readers scan content before committing time.
 * Custom prompts per AI model
 * Summary length control: short, medium, or detailed
 * Summary types: TL;DR, key points, or headlines
-* Automatic source citation
-* Multi-language support for 50+ languages
+* Source citations included automatically when using Perplexity
+* Custom button-label translations — override the button text per locale, for as many languages as you add
 * Per-post prompt overrides (coming soon)
  
 **Button Placement**
@@ -163,7 +163,7 @@ Readers can share your post or article to any of 7 supported networks with a sin
 * LinkedIn
 * Telegram
 * WhatsApp
-* Reddit
+* Raindrop.io
 * Email
  
 **How it works:**
@@ -200,13 +200,13 @@ When readers find your content useful, sharing is the natural next step. Having 
 = How It Works =
  
 1. Install and activate Pointwise Summary
-2. Go to **AI Summary (TL;DR) → AI Settings** and configure your preferred AI model and API key
+2. Go to **AI Summary (TL;DR) → AI Settings** to choose which AI models are enabled and customize their prompts
 3. Customize button text under **Advanced Settings** (e.g., "Summarize", "Get TL;DR", "Quick Summary")
 4. Choose a visual style under **Display Settings → Style**
 5. Set your placement under **Display Settings → Automatic Insertion** (before title, after title, before content, after content)
 6. Save changes and view your posts to see the summary buttons in action
- 
-When a reader clicks the button, the post content is sent to the selected AI model, which returns a clean summary displayed directly on the page — no page reload required.
+
+When a reader clicks the button, they're taken to a new tab on the selected AI model's own site with the post's content already filled in as a ready-to-run prompt — no copying and pasting, no API key, and no account with this plugin required.
  
 == External services ==
 
@@ -232,7 +232,7 @@ When a visitor clicks a social share button, the plugin opens that network's own
 * **LinkedIn** — https://www.linkedin.com — [Terms](https://www.linkedin.com/legal/user-agreement) — [Privacy Policy](https://www.linkedin.com/legal/privacy-policy)
 * **Telegram** — https://telegram.org — [Terms](https://telegram.org/tos) — [Privacy Policy](https://telegram.org/privacy)
 * **WhatsApp** — https://www.whatsapp.com — [Terms](https://www.whatsapp.com/legal/terms-of-service) — [Privacy Policy](https://www.whatsapp.com/legal/privacy-policy)
-* **Reddit** — https://www.reddit.com — [Terms](https://www.redditinc.com/policies/user-agreement) — [Privacy Policy](https://www.reddit.com/policies/privacy-policy)
+* **Raindrop.io** — https://raindrop.io — [Terms](https://raindrop.io/terms) — [Privacy Policy](https://raindrop.io/privacy)
 
 == Source Code ==
 
@@ -277,20 +277,20 @@ This plugin bundles the JavaScript libraries it depends on directly inside `/bui
 TL;DR stands for "Too Long; Didn't Read." It originated in internet forums and was officially added to the Oxford English Dictionary in 2013. Adding TL;DR buttons helps readers decide if your content is relevant to them, reducing bounce rates and improving user experience.
  
 = How does Pointwise Summary work? =
- 
-When a reader clicks a summary button, the plugin sends your post content to the selected AI model's API and returns a formatted summary — TL;DR, key points, or a detailed overview — displayed directly on the page. You can customize the prompt, length, and style for each model.
- 
+
+When a reader clicks a summary button, the plugin builds a prompt from your post's title, content, and URL and opens it directly on the selected AI model's own site in a new tab — ready to generate a TL;DR, key points, or a detailed overview. You can customize the prompt, length, and style for each model from AI Settings.
+
 = Does this plugin actually summarize content with AI? =
- 
-Yes. The plugin integrates with six AI models for real-time summarization. The upcoming Chrome Built-in AI (Gemini Nano) option will also support privacy-friendly on-device summarization — no API key or cloud processing required.
- 
+
+Yes. Clicking a button opens your post as a ready-made prompt on one of six AI platforms (ChatGPT, Claude, Gemini, Grok, Perplexity, or Google AI), so the AI model generates the summary — no copying and pasting required. The upcoming Chrome Built-in AI (Gemini Nano) option will generate the summary right in the button itself, fully on-device.
+
 = Do I need an API key to use this plugin? =
- 
-Most AI models require an API key, which you enter in the plugin's AI Settings screen. The upcoming Chrome Built-in AI (Gemini Nano) option will work entirely on-device with no API key required.
- 
-= Can I use this plugin without API keys? =
- 
-Yes — once the Chrome Built-in AI (Gemini Nano) integration is released, you will be able to summarize content on-device with no API keys, no costs, and no data leaving your browser. This is ideal for privacy-conscious users.
+
+No. None of the six AI models require an API key through this plugin — a summary button simply opens that provider's own site with your post pre-filled as a prompt, using whatever access (an existing account, or none at all) that site itself allows. The upcoming Chrome Built-in AI (Gemini Nano) option will also need no API key, since it runs entirely on-device.
+
+= Can I use this plugin without an account? =
+
+This plugin itself never asks for or transmits any account credentials or API key. Whether a reader needs to sign in to generate a summary depends entirely on the AI provider's own site and its current rules — that's between the reader and that provider, not something this plugin controls. Once released, the Chrome Built-in AI (Gemini Nano) option will need no account at all, since it runs entirely on-device.
  
 = Which AI model should I use? =
  
@@ -298,11 +298,11 @@ It depends on your content type. Claude and ChatGPT work well for detailed or te
  
 = What is the difference between this plugin and Grammarly or QuillBot? =
  
-Grammarly and QuillBot are external subscription tools. Pointwise Summary is a native WordPress plugin that offers six AI models, auto-insertion, a floating action button, and on-device summarization via Gemini Nano — features those tools do not offer within WordPress.
+Grammarly and QuillBot are external subscription tools. Pointwise Summary is a native WordPress plugin that offers six AI models, auto-insertion, and a floating action button — features those tools do not offer within WordPress. On-device summarization via Gemini Nano is planned for a future release.
  
 = How is this different from TLDR This or DeCopy.ai? =
  
-TLDR This and DeCopy.ai are web-based summarizers with usage limits and costs. Pointwise Summary integrates directly into your WordPress site, supports six AI models, works with shortcodes, and will support offline on-device summarization through Gemini Nano.
+TLDR This and DeCopy.ai are web-based summarizers with usage limits and costs. Pointwise Summary integrates directly into your WordPress site and supports six AI models, with shortcode placement and offline on-device summarization through Gemini Nano both planned for a future release.
  
 = Can I customize the button text and appearance? =
  
@@ -310,7 +310,7 @@ Yes, fully. You can set any button label ("Summarize", "Get TL;DR", "Quick Summa
  
 = Where can I place the summary buttons? =
  
-Buttons can be inserted automatically before or after the post title or content. You can also use enable the floating action button that stays visible as readers scroll. Shortcode support is coming in a future release.
+Buttons can be inserted automatically before or after the post title or content. You can also enable the floating action button that stays visible as readers scroll. Shortcode support is coming in a future release.
  
 = Will this plugin slow down my site? =
  
@@ -330,11 +330,11 @@ Yes. All buttons and layouts are fully responsive and adapt automatically to pho
  
 = Can I translate the button text? =
  
-Yes. All button text is fully customizable and supports WordPress translation functions. The plugin is translation-ready for multi-language websites, with summarization support for 50+ languages.
+Yes. All button text is fully customizable and supports WordPress translation functions. The plugin is translation-ready for multi-language websites — you can also set a different custom button label per locale from Advanced Settings, for as many languages as your site needs.
  
 = Does the plugin include social sharing? =
  
-Yes. Pointwise Summary has built-in social sharing with support for 7 networks: X / Twitter, Facebook, LinkedIn, Telegram, WhatsApp, Reddit, and Email. Share buttons appear alongside your AI summary buttons in the same row. You can enable or disable each network individually from Display Settings, and X / Twitter supports an optional @mention so shares can tag your account automatically.
+Yes. Pointwise Summary has built-in social sharing with support for 7 networks: X / Twitter, Facebook, LinkedIn, Telegram, WhatsApp, Raindrop.io, and Email. Share buttons appear alongside your AI summary buttons in the same row. You can enable or disable each network individually from Display Settings, and X / Twitter supports an optional @mention so shares can tag your account automatically.
  
 = What is the Floating Action Button? =
  
@@ -345,7 +345,7 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
  
 = Basic Setup =
  
-1. Go to **AI Summary (TL;DR) → AI Settings** to configure your AI model and API key
+1. Go to **AI Summary (TL;DR) → AI Settings** to choose your AI models and customize their prompts
 2. Go to **AI Summary (TL;DR) → Display Settings** to customize button appearance and placement
 3. Save changes and view your posts to see the summary buttons in action
  
@@ -372,13 +372,20 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
  
 == Changelog ==
 
+= 1.2.2 - 2026-08-07 =
+* Fixed: Updated readme descriptions to clarify AI processing and API key requirements.
+* Fixed: Corrected the multilingual support description to accurately reflect its functionality.
+* Fixed: Adjusted the "How it Works" section to clarify that the plugin does not store or receive AI responses.
+* Updated: Added a new logo to the admin sidebar & wordpress.org for improved branding consistency.
+* Updated: Added a new Prompt variable buttons component. 
+
 = 1.2.1 - 2026-08-02 =
 * Fixed: Monaco code editor (used for Custom CSS) now loads its assets from files bundled with the plugin instead of the jsdelivr CDN
 * Added: Documented all third-party AI and social sharing services in an "External services" readme section
 * Added: Public link to the plugin's full uncompiled source in the "Source Code" readme section
 * Fixed: Shortened the readme short description to fit the 150-character limit
 
-= 1.2.0 2026-06-22 =
+= 1.1.1 - 2026-06-22 =
 * Added: Custom Logo component for improved branding consistency
 * Enhanced: Admin sidebar UI updated with unified logo integration
 * Added: WordPress.org branding assets (banner and icons)

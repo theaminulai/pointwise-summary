@@ -44,7 +44,7 @@ export function useSocialSharingUpdate() {
 				setIsSaving( false );
 			}
 		},
-		[ socialSharing ]
+		[ socialSharing, dispatch ]
 	);
 
 	return {
