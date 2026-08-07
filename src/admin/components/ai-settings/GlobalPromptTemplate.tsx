@@ -10,7 +10,7 @@ import {
 } from '../../store/aiSettings.actions';
 import { insertVariableAtCursor } from '../../utils/insertVariableAtCursor';
 import { Heading, Toggle } from '../common';
-import PromptVariables from '../common/PromptVariables ';
+import PromptVariables from '../common/PromptVariables';
 
 /**
  * GlobalPromptTemplate Component.

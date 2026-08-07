@@ -85,7 +85,7 @@ const Sidebar: React.FC = () => {
 				<div className="p-4 border-b border-gray-200 hidden md:block!">
 					<div className="flex items-center gap-3">
 						{ /* <Sparkles className="w-8 h-8 text-indigo-500" /> */ }
-						<Logo className="w-10 h-10 text-indigo-500" />
+						{/* <Logo className="w-10 h-10 text-indigo-500" /> */}
 						<div>
 							<h1 className="text-xl font-bold! text-gray-900">
 								{ __(

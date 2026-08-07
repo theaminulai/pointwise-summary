@@ -14,7 +14,7 @@ import {
 import { insertVariableAtCursor } from '../../utils/insertVariableAtCursor';
 import { Heading, Toggle } from '../common';
 import { ChatGPT, Claude, Gemini, GoogleAI, Grok, Perplexity } from '../icons';
-import PromptVariables from '../common/PromptVariables ';
+import PromptVariables from '../common/PromptVariables';
 
 /**
  * AIPlatforms Component.
