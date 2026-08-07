@@ -37,6 +37,7 @@ package.json
 package-lock.json
 webpack.config.js
 postcss.config.js
+.npmpackagejsonlintrc.json
 tsconfig.json
 phpcs.xml
 update-version-and-changelog.js

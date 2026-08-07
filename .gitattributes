@@ -60,6 +60,7 @@ postcss.config.js export-ignore
 tsconfig.json export-ignore
 package-lock.json export-ignore
 package.json export-ignore
+.npmpackagejsonlintrc.json export-ignore
 webpack.config.js export-ignore
 update-version-and-changelog.js export-ignore
 screenshot.png export-ignore

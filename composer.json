@@ -74,6 +74,7 @@
 			"composer.lock",
 			"package.json",
 			"postcss.config.js",
+			".npmpackagejsonlintrc.json",
 			"tsconfig.json",
 			"package-lock.json",
 			"webpack.config.js",
