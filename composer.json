@@ -32,7 +32,10 @@
 		"allow-plugins": {
 			"dealerdirect/phpcodesniffer-composer-installer": true
 		},
-		"archive-format": "zip"
+		"archive-format": "zip",
+		"platform": {
+			"php": "7.4"
+		}
 	},
 	"exclude": [
 		"/node_modules",

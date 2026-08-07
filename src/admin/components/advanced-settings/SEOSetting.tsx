@@ -28,6 +28,8 @@ export const SEOSetting: React.FC = () => {
 
 	/**
 	 * Applies a single SEO setting update and persists the merged SEO object.
+	 * @param key
+	 * @param value
 	 */
 	const handleChange = < K extends keyof typeof seo >(
 		key: K,

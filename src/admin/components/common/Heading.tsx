@@ -15,8 +15,14 @@ type HeadingProps = {
 /**
  * Renders a section heading with icon, title, and optional description.
  *
- * @param props Component props.
- * @returns Heading block.
+ * @param props               Component props.
+ * @param props.icon
+ * @param props.title
+ * @param props.description
+ * @param props.className
+ * @param props.isBorderless
+ * @param props.isPaddingless
+ * @return Heading block.
  */
 const Heading: React.FC< HeadingProps > = ( {
 	icon: Icon,

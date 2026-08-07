@@ -1,4 +1,5 @@
 import type * as React from 'react';
+import { useId } from 'react';
 
 /**
  * Props for the Radio component.
@@ -14,8 +15,13 @@ interface RadioProps {
 /**
  * Renders a styled radio control with optional text content.
  *
- * @param props Component props.
- * @returns Radio control.
+ * @param props             Component props.
+ * @param props.checked
+ * @param props.onChange
+ * @param props.label
+ * @param props.description
+ * @param props.disabled
+ * @return Radio control.
  */
 export const Radio: React.FC< RadioProps > = ( {
 	checked,
@@ -24,14 +30,17 @@ export const Radio: React.FC< RadioProps > = ( {
 	description,
 	disabled = false,
 } ) => {
+	const inputId = useId();
 	return (
 		<label
+			htmlFor={ inputId }
 			className={ `flex items-start gap-3 ${
 				disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
 			}` }
 		>
 			<div className="relative flex items-center">
 				<input
+					id={ inputId }
 					type="radio"
 					checked={ checked }
 					onChange={ () => ! disabled && onChange() }

@@ -46,7 +46,7 @@ export function useAdvancedSettingsUpdate() {
 				setIsSaving( false );
 			}
 		},
-		[ advancedSettings ]
+		[ advancedSettings, dispatch ]
 	);
 
 	return {

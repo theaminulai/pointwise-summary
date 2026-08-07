@@ -1,5 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import type * as React from 'react';
+import { useId } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAdvancedSettingsUpdate } from '../../hooks/useAdvancedSettingsUpdate';
 import { setAdvancedExclusion } from '../../store/advancedSettings.actions';
@@ -9,6 +10,7 @@ import type { RootState } from '../../store/types';
  * Handles exclusion IDs that should not display summary buttons.
  */
 export const ExclusionSystem: React.FC = () => {
+	const inputId = useId();
 	const dispatch = useDispatch();
 	const { persistSettings } = useAdvancedSettingsUpdate();
 	const excludedIds = useSelector(
@@ -17,6 +19,7 @@ export const ExclusionSystem: React.FC = () => {
 
 	/**
 	 * Updates exclusion IDs and persists exclusion settings.
+	 * @param nextExcludedIds
 	 */
 	const handleExcludedIdsChange = ( nextExcludedIds: string ) => {
 		dispatch(
@@ -39,13 +42,17 @@ export const ExclusionSystem: React.FC = () => {
 
 			<div className="space-y-4">
 				<div>
-					<label className="block text-sm font-medium text-gray-900 mb-2">
+					<label
+						htmlFor={ inputId }
+						className="block text-sm font-medium text-gray-900 mb-2"
+					>
 						{ __(
 							'Exclude Specific Posts/Pages by ID',
 							'pointwise-summary'
 						) }
 					</label>
 					<input
+						id={ inputId }
 						type="text"
 						value={ excludedIds }
 						onChange={ ( e ) =>

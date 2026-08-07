@@ -56,7 +56,7 @@ const normalizeShortcut = ( shortcut ) => {
 };
 
 const isVisibleElement = ( element ) => {
-	if ( ! ( element instanceof HTMLElement ) ) {
+	if ( ! ( element instanceof window.HTMLElement ) ) {
 		return false;
 	}
 
@@ -87,7 +87,7 @@ const focusPrimarySummaryAction = () => {
 	}
 
 	const target = candidates[ 0 ];
-	if ( target instanceof HTMLElement ) {
+	if ( target instanceof window.HTMLElement ) {
 		target.focus( { preventScroll: false } );
 	}
 };

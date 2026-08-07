@@ -1,7 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import { Sparkles } from 'lucide-react';
 import type * as React from 'react';
-import type { ComponentType } from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import type { DisplayMode, IconDisplay, RootState } from '../../store/types';
@@ -20,7 +19,10 @@ import { getDefaultModelColor } from '../../utils/modelDefaultColors';
 import { ChatGPT, Claude, Gemini, GoogleAI, Grok, Perplexity } from '../icons';
 import getLocalizedAskAiText from '../../utils/getLocalizedAskAiText';
 
-const LOGO_MAP: Record< string, ComponentType< { className?: string } > > = {
+const LOGO_MAP: Record<
+	string,
+	React.ComponentType< { className?: string } >
+> = {
 	chatgpt: ChatGPT,
 	gemini: Gemini,
 	claude: Claude,
@@ -88,6 +90,13 @@ interface FloatingButtonProps {
 
 /**
  * Renders a single platform button with optional icon and/or label.
+ * @param root0
+ * @param root0.logoKey
+ * @param root0.name
+ * @param root0.iconDisplay
+ * @param root0.className
+ * @param root0.buttonStyle
+ * @param root0.modelColor
  */
 const PlatformButton: React.FC< PlatformButtonProps > = ( {
 	logoKey,
@@ -124,6 +133,9 @@ const PlatformButton: React.FC< PlatformButtonProps > = ( {
 
 /**
  * Renders the expandable list of enabled platforms (used in dropdown menus).
+ * @param root0
+ * @param root0.platforms
+ * @param root0.className
  */
 const PlatformList: React.FC< PlatformListProps > = ( {
 	platforms,
@@ -151,6 +163,13 @@ const PlatformList: React.FC< PlatformListProps > = ( {
 
 /**
  * Inline mode: renders one button per enabled platform (or a fallback "Ask AI" button).
+ * @param root0
+ * @param root0.platforms
+ * @param root0.iconDisplay
+ * @param root0.buttonStyle
+ * @param root0.baseButtonClasses
+ * @param root0.alignment
+ * @param root0.askAiText
  */
 const InlineButtonGroup: React.FC< InlineButtonGroupProps > = ( {
 	platforms,
@@ -201,6 +220,15 @@ const InlineButtonGroup: React.FC< InlineButtonGroupProps > = ( {
 /**
  * Floating / collapsed mode: renders a single "Ask AI" toggle button
  * with an expandable platform list.
+ * @param root0
+ * @param root0.platforms
+ * @param root0.iconDisplay
+ * @param root0.buttonStyle
+ * @param root0.baseButtonClasses
+ * @param root0.alignment
+ * @param root0.floating
+ * @param root0.floatingPosition
+ * @param root0.askAiText
  */
 const FloatingButton: React.FC< FloatingButtonProps > = ( {
 	platforms,
@@ -274,6 +302,15 @@ const FloatingButton: React.FC< FloatingButtonProps > = ( {
  *
  * Renders a live preview of the AI action button, routing to either
  * InlineButtonGroup or FloatingButton based on the current display mode.
+ * @param root0
+ * @param root0.style
+ * @param root0.shape
+ * @param root0.iconDisplay
+ * @param root0.displayMode
+ * @param root0.alignment
+ * @param root0.animated
+ * @param root0.floating
+ * @param root0.floatingPosition
  */
 export const PreviewButton: React.FC< PreviewButtonProps > = ( {
 	style,

@@ -3,7 +3,7 @@
 	--pointwise-summary-radius: 999px;
 	--pointwise-summary-border: #e5e7eb;
 	--pointwise-summary-text: #111827;
-	--pointwise-summary-bg: #ffffff;
+	--pointwise-summary-bg: #fff;
 	--pointwise-summary-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
 }
 
@@ -43,8 +43,12 @@
 }
 
 .pointwise-summary-animate .pointwise-summary-button {
-	transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease,
-		border-color 0.2s ease, color 0.2s ease;
+	transition:
+		transform 0.2s ease,
+ box-shadow 0.2s ease,
+ background-color 0.2s ease,
+		border-color 0.2s ease,
+ color 0.2s ease;
 }
 
 .pointwise-summary-animate .pointwise-summary-button:hover {
@@ -55,7 +59,7 @@
 .pointwise-summary-style-brand {
 	border-color: #4f46e5;
 	background: #4f46e5;
-	color: #ffffff;
+	color: #fff;
 }
 
 .pointwise-summary-style-brand:hover {
@@ -77,7 +81,7 @@
 .pointwise-summary-style-dark {
 	border-color: #111827;
 	background: #111827;
-	color: #ffffff;
+	color: #fff;
 }
 
 .pointwise-summary-style-dark:hover {
@@ -88,7 +92,7 @@
 .pointwise-summary-style-gradient {
 	border-color: #4f46e5;
 	background: linear-gradient(90deg, #4f46e5, #9333ea);
-	color: #ffffff;
+	color: #fff;
 }
 
 .pointwise-summary-style-gradient:hover {
@@ -97,7 +101,7 @@
 
 .pointwise-summary-style-outline {
 	border-color: #4f46e5;
-	background: #ffffff;
+	background: #fff;
 	color: #4f46e5;
 }
 
@@ -140,7 +144,7 @@
 .pointwise-summary-icon-fallback {
 	border-radius: 999px;
 	background: #111827;
-	color: #ffffff;
+	color: #fff;
 	font-size: 0.7rem;
 	font-weight: 700;
 }
@@ -195,22 +199,24 @@
 }
 
 .pointwise-summary-fab-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    // border: 1px solid var(--pointwise-summary-border);
-    // background: var(--pointwise-summary-bg);
-    // color: var(--pointwise-summary-text);
-    padding: 0.5rem 0.75rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    text-decoration: none;
-    cursor: pointer;
-    transition: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	// border: 1px solid var(--pointwise-summary-border);
+	// background: var(--pointwise-summary-bg);
+	// color: var(--pointwise-summary-text);
+	padding: 0.5rem 0.75rem;
+	font-size: 0.75rem;
+	font-weight: 500;
+	text-decoration: none;
+	cursor: pointer;
+	transition: none;
 }
+
 .pointwise-summary-icons-icons-only .pointwise-summary-fab-button {
-    padding: 0.5rem;
+	padding: 0.5rem;
 }
+
 .pointwise-summary-animate .pointwise-summary-fab-button {
 	transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
@@ -222,7 +228,7 @@
 
 .pointwise-summary-fab-panel {
 	position: absolute;
-	background: #ffffff;
+	background: #fff;
 	padding: 0.75rem;
 	border-radius: 0.75rem;
 	box-shadow: var(--pointwise-summary-shadow);
@@ -235,14 +241,17 @@
 	transition: opacity 0.3s ease, transform 0.3s ease;
 	transform-origin: center;
 }
-.pointwise-summary-fab-panel .pointwise-summary-container{
+
+.pointwise-summary-fab-panel .pointwise-summary-container {
 	width: max-content;
 	flex-direction: column;
 	max-width: 100%;
+
 	.pointwise-summary-button {
 		width: stretch;
 	}
 }
+
 /* Initial state: closed/hidden */
 .pointwise-summary-fab-collapsed .pointwise-summary-fab-panel {
 	opacity: 0;
@@ -296,88 +305,93 @@
 
 /* Default per-model colors when `style` is set to `default` */
 .pointwise-summary-style-default {
-	background-color: #11A27F;
-	border-color: #11A27F;
-	color: #ffffff;
+	background-color: #11a27f;
+	border-color: #11a27f;
+	color: #fff;
 }
 
 .pointwise-summary-style-default.pointwise-summary-platform-chatgpt {
-	background-color: #11A27F;
-	border-color: #11A27F;
-	color: #ffffff;
+	background-color: #11a27f;
+	border-color: #11a27f;
+	color: #fff;
 }
+
 .pointwise-summary-style-default.pointwise-summary-platform-gemini {
-	background-color: #8AB5FF;
-	border-color: #8AB5FF;
-	color: #ffffff;
+	background-color: #8ab5ff;
+	border-color: #8ab5ff;
+	color: #fff;
 }
+
 .pointwise-summary-style-default.pointwise-summary-platform-claude {
-	background-color: #D97757;
-	border-color: #D97757;
-	color: #ffffff;
+	background-color: #d97757;
+	border-color: #d97757;
+	color: #fff;
 }
+
 .pointwise-summary-style-default.pointwise-summary-platform-perplexity {
-	background-color: #23B8CD;
-	border-color: #23B8CD;
-	color: #ffffff;
+	background-color: #23b8cd;
+	border-color: #23b8cd;
+	color: #fff;
 }
+
 .pointwise-summary-style-default.pointwise-summary-platform-grok {
-	background-color: #000000;
-	border-color: #000000;
-	color: #ffffff;
+	background-color: #000;
+	border-color: #000;
+	color: #fff;
 }
+
 .pointwise-summary-style-default.pointwise-summary-platform-google-ai {
-	background-color: #FBBC03;
-	border-color: #FBBC03;
-	color: #ffffff;
+	background-color: #fbbc03;
+	border-color: #fbbc03;
+	color: #fff;
 }
 
 /* Default social colors when `style` is set to `default` */
 .pointwise-summary-style-default.pointwise-summary-network-twitter {
-	background-color: #000000;
-	border-color: #000000;
-	color: #ffffff;
+	background-color: #000;
+	border-color: #000;
+	color: #fff;
 }
 
 .pointwise-summary-style-default.pointwise-summary-network-facebook {
-	background-color: #0766FF;
-	border-color: #0766FF;
-	color: #ffffff;
+	background-color: #0766ff;
+	border-color: #0766ff;
+	color: #fff;
 }
 
 .pointwise-summary-style-default.pointwise-summary-network-linkedin {
-	background-color: #0866C2;
-	border-color: #0866C2;
-	color: #ffffff;
+	background-color: #0866c2;
+	border-color: #0866c2;
+	color: #fff;
 }
 
 .pointwise-summary-style-default.pointwise-summary-network-telegram {
-	background-color: #00A5F4;
-	border-color: #00A5F4;
-	color: #ffffff;
+	background-color: #00a5f4;
+	border-color: #00a5f4;
+	color: #fff;
 }
 
 .pointwise-summary-style-default.pointwise-summary-network-whatsapp {
-	background-color: #00C951;
-	border-color: #00C951;
-	color: #ffffff;
+	background-color: #00c951;
+	border-color: #00c951;
+	color: #fff;
 }
 
 .pointwise-summary-style-default.pointwise-summary-network-email {
-	background-color: #4A5565;
-	border-color: #4A5565;
-	color: #ffffff;
+	background-color: #4a5565;
+	border-color: #4a5565;
+	color: #fff;
 }
 
 .pointwise-summary-style-default.pointwise-summary-network-raindrop {
-	background-color: #625FFF;
-	border-color: #625FFF;
-	color: #ffffff;
+	background-color: #625fff;
+	border-color: #625fff;
+	color: #fff;
 }
 
 /* Ensure icon contrast for default colored buttons */
 .pointwise-summary-style-default .pointwise-summary-icon {
-	color: #ffffff;
+	color: #fff;
 }
 
 .pointwise-summary-icons-icons-only .pointwise-summary-button {
@@ -397,7 +411,7 @@
 	padding: 0.75rem;
 	width: max-content;
 	max-width: calc(100vw - 48px);
-	background: #ffffff;
+	background: #fff;
 	border-radius: 0.75rem;
 	box-shadow: var(--pointwise-summary-shadow);
 	overflow: hidden;
@@ -452,7 +466,7 @@
 	flex-wrap: wrap;
 	gap: 0.5rem;
 	padding: 0.75rem;
-	background: #ffffff;
+	background: #fff;
 	border-radius: 0.75rem;
 	box-shadow: var(--pointwise-summary-shadow);
 	max-width: max-content;
@@ -479,6 +493,7 @@
 }
 
 @media (max-width: 640px) {
+
 	.pointwise-summary-container {
 		gap: 0.4rem;
 	}

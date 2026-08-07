@@ -1,7 +1,6 @@
 import { __, sprintf } from '@wordpress/i18n';
 import { ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
 import type * as React from 'react';
-import type { ComponentType } from 'react';
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAISettingsUpdate } from '../../hooks/useAISettingsUpdate';
@@ -22,7 +21,7 @@ import PromptVariables from '../common/PromptVariables';
  * Manages individual AI models/providers.
  * Allows enabling/disabling specific platforms and overrides their prompts.
  *
- * @returns The rendered component.
+ * @return The rendered component.
  */
 export const AIPlatforms: React.FC = () => {
 	const dispatch = useDispatch();
@@ -61,7 +60,7 @@ export const AIPlatforms: React.FC = () => {
 	/**
 	 * Updates the custom prompt draft for a specific AI platform.
 	 *
-	 * @param id - The ID of the platform.
+	 * @param id     - The ID of the platform.
 	 * @param prompt - The new prompt text.
 	 */
 	const handleUpdatePlatformPrompt = ( id: string, prompt: string ): void => {
@@ -91,7 +90,10 @@ export const AIPlatforms: React.FC = () => {
 			enableAiSummary: value,
 		} );
 	};
-	const logoMap: Record< string, ComponentType< { className?: string } > > = {
+	const logoMap: Record<
+		string,
+		React.ComponentType< { className?: string } >
+	> = {
 		chatgpt: ChatGPT,
 		gemini: Gemini,
 		claude: Claude,
@@ -192,25 +194,30 @@ export const AIPlatforms: React.FC = () => {
 												rows={ 8 }
 												className="w-full px-3 py-2 border border-gray-300! rounded-lg! text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
 												placeholder={ __(
-													'Enter custom prompt for this AI platform...',
+													'Enter custom prompt for this AI platform…',
 													'pointwise-summary'
 												) }
 											/>
 											<div className="flex items-center justify-between mt-2">
 												<div>
 													<p className="text-xs text-gray-500 m-0! mb-1.5!">
-														{ sprintf(
-															aiSettings.useGlobalPrompt
-																? __(
+														{ aiSettings.useGlobalPrompt
+															? sprintf(
+																	/* translators: %1$s is replaced with the AI platform name (e.g. "ChatGPT"). */
+																	__(
 																		'Customizing this prompt will override the global prompt for %1$s. This prompt will be applied to all enabled AI platforms. Click to insert variables.',
 																		'pointwise-summary'
-																  )
-																: __(
+																	),
+																	platform.name
+															  )
+															: sprintf(
+																	/* translators: %1$s is replaced with the AI platform name (e.g. "ChatGPT"). */
+																	__(
 																		'This prompt will be used when generating summaries with %1$s. This prompt will be applied to all enabled AI platforms. Click to insert variables.',
 																		'pointwise-summary'
-																  ),
-															platform.name
-														) }
+																	),
+																	platform.name
+															  ) }
 													</p>
 													<PromptVariables
 														onInsert={ (
@@ -229,9 +236,13 @@ export const AIPlatforms: React.FC = () => {
 													} }
 													className="cursor-pointer px-4 py-2 rounded-lg text-sm font-medium text-white flex items-center gap-2 transition-colors bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed"
 												>
-													{ __(
-														`Save Prompt for ${ platform.name }`,
-														'pointwise-summary'
+													{ sprintf(
+														/* translators: %s is replaced with the AI platform name (e.g. "ChatGPT"). */
+														__(
+															'Save Prompt for %s',
+															'pointwise-summary'
+														),
+														platform.name
 													) }
 												</button>
 											</div>

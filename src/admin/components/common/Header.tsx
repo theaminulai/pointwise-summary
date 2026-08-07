@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { NotepadText, Menu } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { toggleMobileMenu } from '../../store/ui.actions';
@@ -7,7 +7,7 @@ import { toggleMobileMenu } from '../../store/ui.actions';
 /**
  * Renders the mobile header for the admin interface.
  *
- * @returns Header section with menu trigger and plugin status.
+ * @return Header section with menu trigger and plugin status.
  */
 const Header: React.FC = () => {
 	const dispatch = useDispatch();

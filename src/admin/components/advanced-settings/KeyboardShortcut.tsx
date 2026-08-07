@@ -1,7 +1,7 @@
 import { useDebounce } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
 import type * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 
 type KeyboardShortcutProps = {
 	enabled: boolean;
@@ -11,12 +11,17 @@ type KeyboardShortcutProps = {
 
 /**
  * Renders keyboard shortcut input with debounce and blur commit behavior.
+ * @param root0
+ * @param root0.enabled
+ * @param root0.value
+ * @param root0.onChange
  */
 export const KeyboardShortcut: React.FC< KeyboardShortcutProps > = ( {
 	enabled,
 	value,
 	onChange,
 } ) => {
+	const inputId = useId();
 	const [ draftValue, setDraftValue ] = useState( value );
 
 	useEffect( () => {
@@ -40,10 +45,14 @@ export const KeyboardShortcut: React.FC< KeyboardShortcutProps > = ( {
 
 	return (
 		<div className="mt-3 ml-7">
-			<label className="block text-sm text-gray-700 mb-2">
+			<label
+				htmlFor={ inputId }
+				className="block text-sm text-gray-700 mb-2"
+			>
 				{ __( 'Keyboard Shortcut', 'pointwise-summary' ) }
 			</label>
 			<input
+				id={ inputId }
 				type="text"
 				value={ draftValue }
 				onChange={ ( e ) => {

@@ -23,6 +23,8 @@ export const MultilingualSupport: React.FC = () => {
 
 	/**
 	 * Updates button text for a locale in local draft state.
+	 * @param field
+	 * @param value
 	 */
 	const handleChange = ( field: string, value: string ) => {
 		setDraftTranslations( ( prev ) =>
@@ -64,6 +66,7 @@ export const MultilingualSupport: React.FC = () => {
 
 	/**
 	 * Removes a language row from local draft state.
+	 * @param locale
 	 */
 	const handleRemoveLanguage = ( locale: string ) => {
 		setDraftTranslations( ( prev ) =>
@@ -161,7 +164,7 @@ export const MultilingualSupport: React.FC = () => {
 				>
 					<Save className="w-4 h-4" />
 					{ isSaving
-						? __( 'Saving...', 'pointwise-summary' )
+						? __( 'Saving…', 'pointwise-summary' )
 						: __( 'Save Languages', 'pointwise-summary' ) }
 				</button>
 			</div>

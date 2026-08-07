@@ -17,6 +17,11 @@ interface AppStateWrapperProps {
  * A top-level container that manages the global loading and error states
  * of the application. It ensures that the main UI is only rendered once
  * all critical data has been successfully fetched.
+ * @param root0
+ * @param root0.isLoading
+ * @param root0.error
+ * @param root0.children
+ * @param root0.onRetry
  */
 export const AppStateWrapper: React.FC< AppStateWrapperProps > = ( {
 	isLoading,
@@ -30,7 +35,7 @@ export const AppStateWrapper: React.FC< AppStateWrapperProps > = ( {
 			<div className="flex flex-col items-center justify-center min-h-[400px] w-full bg-white rounded-lg">
 				<div className="animate-spin rounded-full h-10 w-10 border-b-2 border-indigo-600"></div>
 				<span className="ml-3 mt-4 text-sm font-medium text-gray-600">
-					{ __( 'Initializing Application...', 'pointwise-summary' ) }
+					{ __( 'Initializing Application…', 'pointwise-summary' ) }
 				</span>
 			</div>
 		);

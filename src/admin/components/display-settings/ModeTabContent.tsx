@@ -1,5 +1,6 @@
 import { __, sprintf } from '@wordpress/i18n';
 import type * as React from 'react';
+import { useId } from 'react';
 import type { DisplayMode } from '../../store/types';
 import { Select, Toggle } from '../common';
 
@@ -16,8 +17,12 @@ interface ModeTabContentProps {
 /**
  * Component for managing display mode settings (floating, inline, etc.).
  *
- * @param props - Component properties.
- * @returns The rendered mode settings tab content.
+ * @param props                     - Component properties.
+ * @param props.displayMode
+ * @param props.enableScrollTrigger
+ * @param props.scrollTrigger
+ * @param props.onChange
+ * @return The rendered mode settings tab content.
  */
 export const ModeTabContent: React.FC< ModeTabContentProps > = ( {
 	displayMode,
@@ -25,6 +30,7 @@ export const ModeTabContent: React.FC< ModeTabContentProps > = ( {
 	scrollTrigger,
 	onChange,
 } ) => {
+	const scrollTriggerId = useId();
 	return (
 		<div className="space-y-6">
 			<Select
@@ -90,7 +96,10 @@ export const ModeTabContent: React.FC< ModeTabContentProps > = ( {
 					{ enableScrollTrigger && (
 						<div className="space-y-3 pl-4 border-l-2 border-indigo-100">
 							<div className="flex items-center justify-between">
-								<label className="text-sm text-gray-700">
+								<label
+									htmlFor={ scrollTriggerId }
+									className="text-sm text-gray-700"
+								>
 									{ sprintf(
 										/* translators: %s is replaced with scroll trigger percentage */
 										__(
@@ -105,6 +114,7 @@ export const ModeTabContent: React.FC< ModeTabContentProps > = ( {
 								</span>
 							</div>
 							<input
+								id={ scrollTriggerId }
 								type="range"
 								min="0"
 								max="100"

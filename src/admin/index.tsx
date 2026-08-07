@@ -18,6 +18,7 @@ const initAdminApp = () => {
 	);
 
 	if ( ! rootElement ) {
+		// eslint-disable-next-line no-console -- surfaced intentionally for debugging a missing mount point.
 		console.error(
 			'Root element not found. Make sure #pointwise-summary-admin-root exists in the DOM.'
 		);

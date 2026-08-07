@@ -1,5 +1,6 @@
 import { Check } from 'lucide-react';
 import type * as React from 'react';
+import { useId } from 'react';
 
 /**
  * Props for the Checkbox component.
@@ -15,8 +16,13 @@ interface CheckboxProps {
 /**
  * Renders a styled checkbox with optional label and description.
  *
- * @param props Component props.
- * @returns Checkbox control.
+ * @param props             Component props.
+ * @param props.checked
+ * @param props.onChange
+ * @param props.label
+ * @param props.description
+ * @param props.disabled
+ * @return Checkbox control.
  */
 export const Checkbox: React.FC< CheckboxProps > = ( {
 	checked,
@@ -25,14 +31,17 @@ export const Checkbox: React.FC< CheckboxProps > = ( {
 	description,
 	disabled = false,
 } ) => {
+	const inputId = useId();
 	return (
 		<label
+			htmlFor={ inputId }
 			className={ `flex items-start gap-3 ${
 				disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
 			}` }
 		>
 			<div className="relative flex items-center">
 				<input
+					id={ inputId }
 					type="checkbox"
 					checked={ checked }
 					onChange={ ( e ) =>

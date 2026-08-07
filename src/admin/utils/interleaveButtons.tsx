@@ -7,8 +7,8 @@ import type { ReactNode } from 'react';
  * the result will be [S1, A1, S2, A2, A3].
  *
  * @param {ReactNode[]} socialItems - Array of social button nodes.
- * @param {ReactNode[]} aiItems - Array of AI button nodes.
- * @returns {ReactNode[]} Mixed array with elements from `socialItems` and `aiItems` interleaved.
+ * @param {ReactNode[]} aiItems     - Array of AI button nodes.
+ * @return {ReactNode[]} Mixed array with elements from `socialItems` and `aiItems` interleaved.
  */
 const interleaveButtons = (
 	socialItems: ReactNode[],

@@ -24,8 +24,11 @@ type TabsProps = {
  * Renders a list of buttons that act as tabs, highlighting the current selection
  * and triggering an onChange event for navigation within settings groups.
  *
- * @param props - Component properties.
- * @returns The rendered tab navigation block.
+ * @param props           - Component properties.
+ * @param props.tabs
+ * @param props.activeTab
+ * @param props.onChange
+ * @return The rendered tab navigation block.
  */
 const Tabs: React.FC< TabsProps > = ( { tabs, activeTab, onChange } ) => {
 	return (

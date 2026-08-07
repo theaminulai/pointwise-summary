@@ -39,6 +39,7 @@
 	},
 	"dependencies": {
 		"@monaco-editor/react": "^4.7.0",
+		"@wordpress/icons": "^11.8.0",
 		"@tailwindcss/postcss": "^4.1.18",
 		"@types/prop-types": "^15.7.15",
 		"@types/wordpress__block-editor": "^15.0.0",

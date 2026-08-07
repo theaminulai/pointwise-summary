@@ -13,7 +13,6 @@ interface PromptVariablesProps {
  *
  * @param {Object}   props
  * @param {Function} props.onInsert Variable insert callback.
- *
  */
 const PromptVariables = ( { onInsert }: PromptVariablesProps ) => {
 	return (

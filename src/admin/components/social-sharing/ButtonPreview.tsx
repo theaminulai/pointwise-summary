@@ -10,7 +10,6 @@ import {
 	Twitter,
 } from 'lucide-react';
 import type * as React from 'react';
-import type { ComponentType, ReactNode } from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import type {
@@ -37,7 +36,10 @@ import {
 } from '../icons';
 import type { ButtonOrder } from './SocialSharing';
 
-const AI_ICON_MAP: Record< string, ComponentType< { className?: string } > > = {
+const AI_ICON_MAP: Record<
+	string,
+	React.ComponentType< { className?: string } >
+> = {
 	chatgpt: ChatGPT,
 	gemini: Gemini,
 	claude: Claude,
@@ -122,7 +124,7 @@ export const ButtonPreview: React.FC = () => {
 			  }
 			: undefined;
 
-	const renderAiModelButtons = ( items: AiPlatform[] ): ReactNode[] =>
+	const renderAiModelButtons = ( items: AiPlatform[] ): React.ReactNode[] =>
 		items.map( ( platform ) => {
 			const Icon = AI_ICON_MAP[ platform.logoKey ];
 			const classes = getPreviewButtonClasses();
@@ -161,7 +163,9 @@ export const ButtonPreview: React.FC = () => {
 		</button>
 	);
 
-	const renderNetworkButtons = ( items: SocialNetworkState[] ): ReactNode[] =>
+	const renderNetworkButtons = (
+		items: SocialNetworkState[]
+	): React.ReactNode[] =>
 		items.map( ( network ) => {
 			const Icon = networkIconMap[ network.iconKey ] || Sparkles;
 			const classes = getPreviewButtonClasses();
@@ -184,18 +188,19 @@ export const ButtonPreview: React.FC = () => {
 		displayMode === 'inline' || displayMode === 'both';
 	const shouldShowCollapseButton = displayMode === 'collapse';
 
-	const aiElements: ReactNode[] = shouldShowModelButtons
-		? renderAiModelButtons( enabledAiPlatforms )
-		: shouldShowCollapseButton
-		? [
-				askAiButton,
-				...( isAiExpanded
-					? renderAiModelButtons( enabledAiPlatforms )
-					: [] ),
-		  ]
-		: [];
+	let aiElements: React.ReactNode[] = [];
+	if ( shouldShowModelButtons ) {
+		aiElements = renderAiModelButtons( enabledAiPlatforms );
+	} else if ( shouldShowCollapseButton ) {
+		aiElements = [
+			askAiButton,
+			...( isAiExpanded
+				? renderAiModelButtons( enabledAiPlatforms )
+				: [] ),
+		];
+	}
 
-	let previewContent: ReactNode[] = [];
+	let previewContent: React.ReactNode[] = [];
 	const socialButtons = renderNetworkButtons( enabledNetworks );
 
 	if ( aiElements.length === 0 ) {

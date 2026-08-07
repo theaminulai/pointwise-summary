@@ -24,7 +24,7 @@ export type ButtonAlignment = 'left' | 'center' | 'right';
 /**
  * Get CSS classes for floating button position
  * @param {FloatingPosition} position - Position of the floating button
- * @returns {string} CSS classes for positioning
+ * @return {string} CSS classes for positioning
  */
 export function getFloatingPositionClass( position: FloatingPosition ): string {
 	return clsx( {
@@ -38,7 +38,7 @@ export function getFloatingPositionClass( position: FloatingPosition ): string {
 /**
  * Get CSS classes for the expanded floating model menu position.
  * @param {FloatingPosition | undefined} position - Floating trigger position.
- * @returns {string} CSS classes for dropdown anchoring.
+ * @return {string} CSS classes for dropdown anchoring.
  */
 export function getFloatingMenuPositionClasses(
 	position?: FloatingPosition
@@ -67,7 +67,7 @@ export function collapsedPositionClass(
 /**
  * Get CSS classes for button style
  * @param {ButtonStyle} style - Style of the button
- * @returns {string} CSS classes for button styling
+ * @return {string} CSS classes for button styling
  */
 export function getStyleClasses( style: ButtonStyle ): string {
 	return clsx( {
@@ -84,7 +84,7 @@ export function getStyleClasses( style: ButtonStyle ): string {
 /**
  * Get CSS classes for button shape
  * @param {ButtonShape} shape - Shape of the button
- * @returns {string} CSS classes for button shape
+ * @return {string} CSS classes for button shape
  */
 export function getShapeClasses( shape: ButtonShape ): string {
 	return clsx( {
@@ -97,7 +97,7 @@ export function getShapeClasses( shape: ButtonShape ): string {
 /**
  * Get CSS classes for button alignment
  * @param {ButtonAlignment} alignment - Alignment of the button
- * @returns {string} CSS classes for button alignment
+ * @return {string} CSS classes for button alignment
  */
 export function getAlignmentClasses( alignment: ButtonAlignment ): string {
 	return clsx( {

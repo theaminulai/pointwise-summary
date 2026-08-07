@@ -22,8 +22,15 @@ interface SelectProps {
 /**
  * Renders a radio-based select list with labels and descriptions.
  *
- * @param props Component props.
- * @returns Select fieldset.
+ * @param props           Component props.
+ * @param props.value
+ * @param props.onChange
+ * @param props.options
+ * @param props.label
+ * @param props.disabled
+ * @param props.className
+ * @param props.name
+ * @return Select fieldset.
  */
 export const Select: React.FC< SelectProps > = ( {
 	value,

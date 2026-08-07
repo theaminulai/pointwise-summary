@@ -30,8 +30,15 @@ interface StyleTabContentProps {
 /**
  * Component for customizing the visual appearance (style, shape, animation) of buttons.
  *
- * @param props - Component properties.
- * @returns The rendered style settings tab content.
+ * @param props                  - Component properties.
+ * @param props.buttonStyle
+ * @param props.buttonShape
+ * @param props.iconDisplay
+ * @param props.enableAnimations
+ * @param props.floatingStyle
+ * @param props.displayMode
+ * @param props.onChange
+ * @return The rendered style settings tab content.
  */
 export const StyleTabContent: React.FC< StyleTabContentProps > = ( {
 	buttonStyle,
@@ -46,9 +53,9 @@ export const StyleTabContent: React.FC< StyleTabContentProps > = ( {
 	return (
 		<div className="space-y-6">
 			<div className="space-y-4">
-				<label className="font-medium text-gray-900">
+				<p className="font-medium text-gray-900">
 					{ __( 'Button Style', 'pointwise-summary' ) }
-				</label>
+				</p>
 				<div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
 					{ [
 						{
@@ -117,9 +124,9 @@ export const StyleTabContent: React.FC< StyleTabContentProps > = ( {
 			</div>
 
 			<div className="space-y-4">
-				<label className="font-medium text-gray-900">
+				<p className="font-medium text-gray-900">
 					{ __( 'Button Shape', 'pointwise-summary' ) }
-				</label>
+				</p>
 				<div className="flex gap-3">
 					{ [
 						{
