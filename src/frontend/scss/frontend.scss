@@ -42,13 +42,21 @@
 	transition: none;
 }
 
+.pointwise-summary-icons-icons-only .pointwise-summary-button {
+	padding: 0.5rem;
+}
+
+.pointwise-summary-collapse-panel .pointwise-summary-button {
+	justify-content: flex-start;
+}
+
 .pointwise-summary-animate .pointwise-summary-button {
 	transition:
 		transform 0.2s ease,
- box-shadow 0.2s ease,
- background-color 0.2s ease,
+		box-shadow 0.2s ease,
+		background-color 0.2s ease,
 		border-color 0.2s ease,
- color 0.2s ease;
+		color 0.2s ease;
 }
 
 .pointwise-summary-animate .pointwise-summary-button:hover {
@@ -394,10 +402,6 @@
 	color: #fff;
 }
 
-.pointwise-summary-icons-icons-only .pointwise-summary-button {
-	padding: 0.5rem;
-}
-
 .pointwise-summary-collapse-panel {
 	position: absolute;
 	top: calc(100% + 0.5rem);
@@ -453,10 +457,6 @@
 	opacity: 1;
 	max-height: 1200px;
 	transform: translate(var(--pointwise-summary-collapse-translate-x, 0), 0);
-}
-
-.pointwise-summary-collapse-panel .pointwise-summary-button {
-	justify-content: flex-start;
 }
 
 /* Flat floating style: show all buttons without toggle */
