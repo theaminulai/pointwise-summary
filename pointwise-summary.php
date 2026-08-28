@@ -15,9 +15,15 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
-define( 'POINTWISE_SUMMARY_VERSION', '1.2.2' );
+define( 'POINTWISE_SUMMARY_VERSION', '1.2.3' );
 define( 'POINTWISE_SUMMARY_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'POINTWISE_SUMMARY_DEV', WP_DEBUG );
+
+// PSR-4 autoloader for the `PointwiseSummary\` namespace. Registered ahead of the
+// PSR-4 class migration (see dev-docs/RELEASE_PLAN.md) — nothing is namespaced
+// yet, so this has no effect on current behavior.
+require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/autoload.php';
+pointwise_summary_register_autoloader();
 
 // Include REST API endpoints
 require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/plugin.php';
