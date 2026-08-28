@@ -2,7 +2,7 @@
 Contributors:      theaminuldev, iqbal1hossain
 Tags:              ai, summarize, tldr, summary, content-summary
 Requires at least: 6.1
-Tested up to:      7.0
+Tested up to:      7.1
 Requires PHP:      7.4
 Stable tag: 1.2.2
 License:           GPL-3.0-or-later
@@ -371,6 +371,11 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
  
  
 == Changelog ==
+
+= 1.2.3 - 2026-08-28 =
+* Added: `composer.json` PSR-4 autoload mapping (`PointwiseSummary\` to `includes/`) ahead of an upcoming class-by-class migration.
+* Added: A hand-written PSR-4 autoloader (`includes/autoload.php`), registered in the plugin bootstrap; currently inert since no classes are namespaced yet.
+* Added: Internal PSR-4 restructuring/release plan, tracked in the plugin's public source repository (see "Source Code" below).
 
 = 1.2.2 - 2026-08-07 =
 * Fixed: Updated readme descriptions to clarify AI processing and API key requirements.

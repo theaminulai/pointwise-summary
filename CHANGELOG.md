@@ -1,5 +1,6 @@
 # Changelog
-## x.y.z - 2026-08-07
+## x.y.z - 2026-08-28
+- Add PSR-4 scaffolding and release plan ([#48](https://github.com/theaminulai/pointwise-summary/pull/48)) @theaminulai
 - Refresh branding and clarify AI workflow ([#45](https://github.com/theaminulai/pointwise-summary/pull/45)) @theaminulai
 - new: update ([#41](https://github.com/theaminulai/pointwise-summary/pull/41)) @theaminulai
 ### Added
