@@ -372,12 +372,6 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
  
 == Changelog ==
 
-= 1.2.3 =
-* Merge pull request #49 from theaminulai/development
-* Add PR #48 reference to changelog
-* Merge pull request #48 from theaminulai/Add-PSR-4-scaffolding-and-release-plan
-* Add PSR-4 scaffolding and release plan
-
 = 1.2.3 - 2026-08-28 =
 * Added: `composer.json` PSR-4 autoload mapping (`PointwiseSummary\` to `includes/`) ahead of an upcoming class-by-class migration.
 * Added: A hand-written PSR-4 autoloader (`includes/autoload.php`), registered in the plugin bootstrap; currently inert since no classes are namespaced yet.
