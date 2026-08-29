@@ -1,5 +1,6 @@
 # Changelog
-## x.y.z - 2026-08-28
+## x.y.z - 2026-08-29
+- Changed: Internal refactor of the 6 settings REST API classes onto PSR-4  ([#51](https://github.com/theaminulai/pointwise-summary/pull/51)) @theaminulai
 - Add PSR-4 scaffolding and release plan ([#48](https://github.com/theaminulai/pointwise-summary/pull/48)) @theaminulai
 - Refresh branding and clarify AI workflow ([#45](https://github.com/theaminulai/pointwise-summary/pull/45)) @theaminulai
 - new: update ([#41](https://github.com/theaminulai/pointwise-summary/pull/41)) @theaminulai
