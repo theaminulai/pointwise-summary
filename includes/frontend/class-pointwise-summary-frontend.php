@@ -18,7 +18,7 @@ class Pointwise_Summary_Frontend {
 	 * @return array
 	 */
 	public function get_ai_settings() {
-		$instance    = Pointwise_Summary_AI_Settings_API::get_instance();
+		$instance    = \PointwiseSummary\Api\AiSettings::get_instance();
 		$ai_settings = $instance->get_ai_settings_option();
 		return $ai_settings;
 	}
@@ -29,7 +29,7 @@ class Pointwise_Summary_Frontend {
 	 * @return array
 	 */
 	public function get_display_settings() {
-		$instance         = Pointwise_Summary_Display_Settings_API::get_instance();
+		$instance         = \PointwiseSummary\Api\DisplaySettings::get_instance();
 		$display_settings = $instance->get_display_settings_option();
 		return $display_settings;
 	}
@@ -40,7 +40,7 @@ class Pointwise_Summary_Frontend {
 	 * @return array
 	 */
 	public function get_social_settings() {
-		$instance        = Pointwise_Summary_Social_Sharing_API::get_instance();
+		$instance        = \PointwiseSummary\Api\SocialSharing::get_instance();
 		$social_settings = $instance->get_social_sharing_settings_option();
 		return $social_settings;
 	}
@@ -51,7 +51,7 @@ class Pointwise_Summary_Frontend {
 	 * @return array
 	 */
 	public function get_advanced_settings() {
-		$instance          = Pointwise_Summary_Advanced_Settings_API::get_instance();
+		$instance          = \PointwiseSummary\Api\AdvancedSettings::get_instance();
 		$advanced_settings = $instance->get_advanced_settings_option();
 		return $advanced_settings;
 	}

@@ -5,20 +5,17 @@
  * @package PointwiseSummary
  */
 
+namespace PointwiseSummary\Api;
+
+use PointwiseSummary\Helpers\SingletonTrait;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Pointwise_Summary_Shortcode_API {
+class Shortcodes extends Controller {
 
-	use Pointwise_Summary_Singleton;
-
-	/**
-	 * Setup hooks.
-	 */
-	protected function __setup() {
-		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
-	}
+	use SingletonTrait;
 
 	/**
 	 * Register routes.
@@ -36,18 +33,9 @@ class Pointwise_Summary_Shortcode_API {
 	}
 
 	/**
-	 * Permission callback.
-	 *
-	 * @return bool
-	 */
-	public function can_manage_options() {
-		return current_user_can( 'manage_options' );
-	}
-
-	/**
 	 * REST Callback: return helpful shortcode examples.
 	 *
-	 * @return WP_REST_Response
+	 * @return \WP_REST_Response
 	 */
 	public function get_shortcode_examples() {
 		$examples = array(
@@ -85,7 +73,7 @@ class Pointwise_Summary_Shortcode_API {
 			),
 		);
 
-		return new WP_REST_Response(
+		return new \WP_REST_Response(
 			array(
 				'success' => true,
 				'data'    => $examples,

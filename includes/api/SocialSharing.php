@@ -5,25 +5,22 @@
  * @package PointwiseSummary
  */
 
+namespace PointwiseSummary\Api;
+
+use PointwiseSummary\Helpers\SingletonTrait;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Pointwise_Summary_Social_Sharing_API {
+class SocialSharing extends Controller {
 
-	use Pointwise_Summary_Singleton;
+	use SingletonTrait;
 
 	/**
 	 * Option name.
 	 */
 	const OPTION_NAME = 'pointwise_summary_social_sharing_settings';
-
-	/**
-	 * Setup hooks.
-	 */
-	protected function __setup() {
-		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
-	}
 
 	/**
 	 * Register routes.
@@ -55,15 +52,6 @@ class Pointwise_Summary_Social_Sharing_API {
 				'permission_callback' => array( $this, 'can_manage_options' ),
 			)
 		);
-	}
-
-	/**
-	 * Permission callback.
-	 *
-	 * @return bool
-	 */
-	public function can_manage_options() {
-		return current_user_can( 'manage_options' );
 	}
 
 	/**
@@ -230,10 +218,10 @@ class Pointwise_Summary_Social_Sharing_API {
 	/**
 	 * REST Callback: Get social sharing settings.
 	 *
-	 * @return WP_REST_Response
+	 * @return \WP_REST_Response
 	 */
 	public function get_social_sharing_settings() {
-		return new WP_REST_Response(
+		return new \WP_REST_Response(
 			array(
 				'success' => true,
 				'data'    => $this->get_social_sharing_settings_option(),
@@ -245,8 +233,8 @@ class Pointwise_Summary_Social_Sharing_API {
 	/**
 	 * REST Callback: Update social sharing settings.
 	 *
-	 * @param WP_REST_Request $request Request object.
-	 * @return WP_REST_Response
+	 * @param \WP_REST_Request $request Request object.
+	 * @return \WP_REST_Response
 	 */
 	public function update_social_sharing_settings( $request ) {
 		$params    = $request->get_json_params();
@@ -254,7 +242,7 @@ class Pointwise_Summary_Social_Sharing_API {
 
 		update_option( self::OPTION_NAME, $sanitized, false );
 
-		return new WP_REST_Response(
+		return new \WP_REST_Response(
 			array(
 				'success' => true,
 				'message' => __( 'Social sharing settings updated successfully', 'pointwise-summary' ),
@@ -267,13 +255,13 @@ class Pointwise_Summary_Social_Sharing_API {
 	/**
 	 * REST Callback: Reset social sharing settings.
 	 *
-	 * @return WP_REST_Response
+	 * @return \WP_REST_Response
 	 */
 	public function reset_social_sharing_settings() {
 		$defaults = $this->get_default_social_sharing_settings();
 		update_option( self::OPTION_NAME, $defaults, false );
 
-		return new WP_REST_Response(
+		return new \WP_REST_Response(
 			array(
 				'success' => true,
 				'message' => __( 'Social sharing settings reset to defaults', 'pointwise-summary' ),
