@@ -9,13 +9,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Still used by the classes below that aren't migrated to PSR-4 yet (see dev-docs/RELEASE_PLAN.md).
 require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/helpers/trait-pointwise-summary-singleton.php';
-require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/api/class-pointwise-summary-ai-settings-api.php';
-require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/api/class-pointwise-summary-advanced-settings-api.php';
-require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/api/class-pointwise-summary-display-settings-api.php';
-require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/api/class-pointwise-summary-social-sharing-api.php';
-require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/api/class-pointwise-summary-shortcode-api.php';
-require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/api/class-pointwise-summary-system-info-api.php';
+
+// The 6 REST API resource classes now live under includes/Api/ as PSR-4 classes
+// (PointwiseSummary\Api\*) and are loaded automatically by the autoloader
+// registered in pointwise-summary.php — no require_once needed here anymore.
 
 // Include Admin UI helpers
 require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/class-pointwise-summary-admin-menu.php';
@@ -38,13 +37,13 @@ Pointwise_Summary_Admin_Menu::get_instance();
 Pointwise_Summary_Assets::get_instance();
 Pointwise_Summary_Blocks::get_instance();
 
-// API endpoints
-Pointwise_Summary_AI_Settings_API::get_instance();
-Pointwise_Summary_Advanced_Settings_API::get_instance();
-Pointwise_Summary_Display_Settings_API::get_instance();
-Pointwise_Summary_Social_Sharing_API::get_instance();
-Pointwise_Summary_Shortcode_API::get_instance();
-Pointwise_Summary_System_Info_API::get_instance();
+// API endpoints (PSR-4, PointwiseSummary\Api\*)
+\PointwiseSummary\Api\AiSettings::get_instance();
+\PointwiseSummary\Api\AdvancedSettings::get_instance();
+\PointwiseSummary\Api\DisplaySettings::get_instance();
+\PointwiseSummary\Api\SocialSharing::get_instance();
+\PointwiseSummary\Api\Shortcodes::get_instance();
+\PointwiseSummary\Api\SystemInfo::get_instance();
 
 // Frontend helpers
 Pointwise_Summary_Frontend::get_instance();
