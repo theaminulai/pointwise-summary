@@ -151,10 +151,16 @@ require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/frontend/class-pointwise-s
 
 // 5. Initialize all singletons
 Pointwise_Summary_Admin_Menu::get_instance();
-Pointwise_Summary_AI_Settings_API::get_instance();
+\PointwiseSummary\Api\AiSettings::get_instance(); // PSR-4, autoloaded — see includes/Api/
 Pointwise_Summary_Buttons::get_instance();
 // ... etc
 ```
+
+> As of the PSR-4 migration tracked in `dev-docs/RELEASE_PLAN.md`, the 6 REST API
+> classes below live under `includes/Api/` as namespaced `PointwiseSummary\Api\*`
+> classes (e.g. `PointwiseSummary\Api\AiSettings`), not as globally-named
+> `Pointwise_Summary_*_API` classes. The rest of this document still describes
+> the pre-migration structure for the classes that haven't moved yet.
 
 ### Singleton Pattern
 

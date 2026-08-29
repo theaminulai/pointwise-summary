@@ -372,6 +372,11 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
  
 == Changelog ==
 
+= 1.2.4 - 2026-08-29 =
+* Changed: Internal refactor of the 6 settings REST API classes onto PSR-4 (`PointwiseSummary\Api\*`); REST behavior and endpoints are unchanged.
+* Added: Shared `Api\Controller` base class removing duplicated route-registration/permission-check code across those 6 classes.
+* Updated: `dev-docs/RELEASE_PLAN.md` migration plan for the remaining PSR-4 releases.
+
 = 1.2.3 - 2026-08-28 =
 * Added: `composer.json` PSR-4 autoload mapping (`PointwiseSummary\` to `includes/`) ahead of an upcoming class-by-class migration.
 * Added: A hand-written PSR-4 autoloader (`includes/autoload.php`), registered in the plugin bootstrap; currently inert since no classes are namespaced yet.
@@ -382,10 +387,10 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
 * Fixed: Corrected the multilingual support description to accurately reflect its functionality.
 * Fixed: Adjusted the "How it Works" section to clarify that the plugin does not store or receive AI responses.
 * Updated: Added a new logo to the admin sidebar & wordpress.org for improved branding consistency.
-* Updated: Added a new Prompt variable buttons component. 
+* Updated: Added a new Prompt variable buttons component.
 
 = 1.2.1 - 2026-08-02 =
-* Fixed: Monaco code editor (used for Custom CSS) now loads its assets from files bundled with the plugin instead of the jsdelivr CDN
+* Fixed: Monaco code editor (used for Custom CSS) now loads its assets from files bundled with the plugin.
 * Added: Documented all third-party AI and social sharing services in an "External services" readme section
 * Added: Public link to the plugin's full uncompiled source in the "Source Code" readme section
 * Fixed: Shortened the readme short description to fit the 150-character limit
