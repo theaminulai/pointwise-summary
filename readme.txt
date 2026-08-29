@@ -372,12 +372,6 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
  
 == Changelog ==
 
-= 1.2.4 =
-* Merge pull request #52 from theaminulai/development
-* Add PR #51 reference to changelog
-* Merge pull request #51 from theaminulai/Add-PSR-4-scaffolding-and-release-plan
-* Changed: Internal refactor of the 6 settings REST API classes onto PSR-4
-
 = 1.2.4 - 2026-08-29 =
 * Changed: Internal refactor of the 6 settings REST API classes onto PSR-4 (`PointwiseSummary\Api\*`); REST behavior and endpoints are unchanged.
 * Added: Shared `Api\Controller` base class removing duplicated route-registration/permission-check code across those 6 classes.
