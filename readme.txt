@@ -4,7 +4,7 @@ Tags:              ai, summarize, tldr, summary, content-summary
 Requires at least: 6.1
 Tested up to:      7.1
 Requires PHP:      7.4
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 License:           GPL-3.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -371,6 +371,12 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
  
  
 == Changelog ==
+
+= 1.2.5 =
+* Merge pull request #55 from theaminulai/development
+* Add PR #54 reference to changelog
+* Merge pull request #54 from theaminulai/Migrate-frontend-helpers-to-PSR-4-classes
+* Migrate frontend helpers to PSR-4 classes
 
 = 1.2.5 - 2026-08-29 =
 * Changed: Internal refactor of 4 more frontend classes onto PSR-4 — button rendering, AI prompt building, icon rendering, and SEO/noindex detection (`PointwiseSummary\Frontend\*`); output and behavior are unchanged.
