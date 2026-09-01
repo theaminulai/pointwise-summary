@@ -5,11 +5,13 @@
  * @package PointwiseSummary
  */
 
+namespace PointwiseSummary\Frontend;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Pointwise_Summary_Prompt {
+class PromptBuilder {
 	/**
 	 * Builds the final AI prompt for a given post.
 	 *

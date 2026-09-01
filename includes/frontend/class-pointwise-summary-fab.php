@@ -40,7 +40,7 @@ class Pointwise_Summary_FAB {
 			return;
 		}
 
-		$buttons = Pointwise_Summary_Buttons::get_instance()->render_buttons( $post_id, 'floating' );
+		$buttons = \PointwiseSummary\Frontend\ButtonRenderer::get_instance()->render_buttons( $post_id, 'floating' );
 		if ( empty( $buttons ) ) {
 			return;
 		}
@@ -106,8 +106,8 @@ class Pointwise_Summary_FAB {
 			'pointwise-summary-shape-' . sanitize_html_class( $button_shape ),
 		);
 
-		$toggle_icon  = Pointwise_Summary_Buttons::get_instance()->render_icon( 'ask-ai', $icon_display );
-		$toggle_label = Pointwise_Summary_Buttons::get_instance()->render_label( $toggle_button_text, $icon_display );
+		$toggle_icon  = \PointwiseSummary\Frontend\ButtonRenderer::get_instance()->render_icon( 'ask-ai', $icon_display );
+		$toggle_label = \PointwiseSummary\Frontend\ButtonRenderer::get_instance()->render_label( $toggle_button_text, $icon_display );
 		?>
 		<div
 			class="<?php echo esc_attr( implode( ' ', $wrapper_classes ) ); ?>"

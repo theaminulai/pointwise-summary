@@ -15,7 +15,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
-define( 'POINTWISE_SUMMARY_VERSION', '1.2.3' );
+define( 'POINTWISE_SUMMARY_VERSION', '1.2.5' );
 define( 'POINTWISE_SUMMARY_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'POINTWISE_SUMMARY_DEV', WP_DEBUG );
 
