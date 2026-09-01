@@ -5,11 +5,13 @@
  * @package PointwiseSummary
  */
 
+namespace PointwiseSummary\Frontend;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Pointwise_Summary_SEO {
+class SeoIntegration {
 
 	/**
 	 * Detect active SEO plugin.
@@ -78,7 +80,7 @@ class Pointwise_Summary_SEO {
 
 		if ( function_exists( 'aioseo' ) && method_exists( aioseo(), 'helpers' ) ) {
 			if ( class_exists( 'AIOSEO\Plugin\Models\Post' ) ) {
-				$aioseo_post = AIOSEO\Plugin\Models\Post::getPost( $post_id );
+				$aioseo_post = \AIOSEO\Plugin\Models\Post::getPost( $post_id );
 				if ( $aioseo_post && isset( $aioseo_post->robots_noindex ) ) {
 					return (bool) $aioseo_post->robots_noindex;
 				}

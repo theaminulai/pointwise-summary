@@ -5,13 +5,17 @@
  * @package PointwiseSummary
  */
 
+namespace PointwiseSummary\Frontend;
+
+use PointwiseSummary\Helpers\SingletonTrait;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Pointwise_Summary_Icons {
+class IconLibrary {
 
-	use Pointwise_Summary_Singleton;
+	use SingletonTrait;
 
 	/**
 	 * Render an icon for a model or social network.

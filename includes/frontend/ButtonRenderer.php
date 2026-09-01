@@ -5,12 +5,16 @@
  * @package PointwiseSummary
  */
 
+namespace PointwiseSummary\Frontend;
+
+use PointwiseSummary\Helpers\SingletonTrait;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Pointwise_Summary_Buttons {
-	use Pointwise_Summary_Singleton;
+class ButtonRenderer {
+	use SingletonTrait;
 
 	/**
 	 * Render combined AI + social buttons.
@@ -20,7 +24,7 @@ class Pointwise_Summary_Buttons {
 	 * @return string
 	 */
 	public function render_buttons( $post_id, $context = 'inline' ) {
-		$frontend           = Pointwise_Summary_Frontend::get_instance();
+		$frontend           = \Pointwise_Summary_Frontend::get_instance();
 		$ai_settings        = $frontend->get_ai_settings();
 		$social_settings    = $frontend->get_social_settings();
 		$display_settings   = $frontend->get_display_settings();
@@ -89,7 +93,7 @@ class Pointwise_Summary_Buttons {
 	 * @return array
 	 */
 	private function build_ai_buttons( $post_id, $ai_settings, $display_settings, $advanced_settings, $context = 'inline', $display_mode = 'inline' ) {
-		$frontend          = Pointwise_Summary_Frontend::get_instance();
+		$frontend          = \Pointwise_Summary_Frontend::get_instance();
 		$enabled_platforms = $frontend->get_enabled_ai_platforms( $ai_settings );
 		if ( empty( $enabled_platforms ) || empty( $ai_settings['enableAiSummary'] ) ) {
 			return array();
@@ -116,7 +120,7 @@ class Pointwise_Summary_Buttons {
 				continue;
 			}
 
-			$prompt = Pointwise_Summary_Prompt::build_prompt( $prompt_template, $post_id, $ai_settings );
+			$prompt = PromptBuilder::build_prompt( $prompt_template, $post_id, $ai_settings );
 			$url    = $this->get_ai_url( $platform_id, $prompt );
 			if ( empty( $url ) ) {
 				continue;
@@ -234,7 +238,7 @@ class Pointwise_Summary_Buttons {
 	 * @return array
 	 */
 	private function build_social_buttons( $post_id, $social_settings, $display_settings, $advanced_settings ) {
-		$frontend         = Pointwise_Summary_Frontend::get_instance();
+		$frontend         = \Pointwise_Summary_Frontend::get_instance();
 		$enabled_networks = $frontend->get_enabled_social_networks( $social_settings );
 		if ( empty( $enabled_networks ) || empty( $social_settings['enableSocialSharing'] ) ) {
 			return array();
@@ -312,7 +316,7 @@ class Pointwise_Summary_Buttons {
 			return '';
 		}
 
-		return Pointwise_Summary_Icons::get_instance()->render_icon( $id );
+		return IconLibrary::get_instance()->render_icon( $id );
 	}
 
 	/**
@@ -456,15 +460,15 @@ class Pointwise_Summary_Buttons {
 	 */
 	private function get_cache_key( $post_id, $context, $ai_settings, $social_settings, $display_settings, $advanced_settings ) {
 		$payload = array(
-			'version'    => defined( 'POINTWISE_SUMMARY_VERSION' ) ? POINTWISE_SUMMARY_VERSION : '0',
-			'post_id'    => absint( $post_id ),
-			'context'    => sanitize_key( (string) $context ),
-			'blog_id'    => get_current_blog_id(),
-			'locale'     => determine_locale(),
-			'ai'         => $ai_settings,
-			'social'     => $social_settings,
-			'display'    => $display_settings,
-			'advanced'   => $advanced_settings,
+			'version'  => defined( 'POINTWISE_SUMMARY_VERSION' ) ? POINTWISE_SUMMARY_VERSION : '0',
+			'post_id'  => absint( $post_id ),
+			'context'  => sanitize_key( (string) $context ),
+			'blog_id'  => get_current_blog_id(),
+			'locale'   => determine_locale(),
+			'ai'       => $ai_settings,
+			'social'   => $social_settings,
+			'display'  => $display_settings,
+			'advanced' => $advanced_settings,
 		);
 
 		$encoded = wp_json_encode( $payload );

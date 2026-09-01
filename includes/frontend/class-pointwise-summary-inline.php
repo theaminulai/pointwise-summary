@@ -162,6 +162,6 @@ class Pointwise_Summary_Inline {
 			return '';
 		}
 
-		return Pointwise_Summary_Buttons::get_instance()->render_buttons( $post_id, 'inline' );
+		return \PointwiseSummary\Frontend\ButtonRenderer::get_instance()->render_buttons( $post_id, 'inline' );
 	}
 }

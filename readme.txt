@@ -372,6 +372,12 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
  
 == Changelog ==
 
+= 1.2.5 - 2026-08-29 =
+* Changed: Internal refactor of 4 more frontend classes onto PSR-4 — button rendering, AI prompt building, icon rendering, and SEO/noindex detection (`PointwiseSummary\Frontend\*`); output and behavior are unchanged.
+* Changed: The 4 old frontend class files (buttons, prompt, icons, seo) are now deprecated stubs, kept only as placeholders — safe to remove.
+* Fixed: A namespace-resolution bug introduced in the migrated SEO integration class that would have broken All in One SEO noindex detection the first time that code path ran.
+* Fixed: 6 stray references to the old global class names (in the plugin bootstrap and 3 not-yet-migrated frontend files) updated to the new PSR-4 class names so nothing fatals.
+
 = 1.2.4 - 2026-08-29 =
 * Changed: Internal refactor of the 6 settings REST API classes onto PSR-4 (`PointwiseSummary\Api\*`); REST behavior and endpoints are unchanged.
 * Added: Shared `Api\Controller` base class removing duplicated route-registration/permission-check code across those 6 classes.
@@ -390,7 +396,7 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
 * Updated: Added a new Prompt variable buttons component.
 
 = 1.2.1 - 2026-08-02 =
-* Fixed: Monaco code editor (used for Custom CSS) now loads its assets from files bundled with the plugin.
+* Fixed: Monaco code editor (used for Custom CSS) now loads its assets from files bundled with the plugin instead of the jsdelivr CDN
 * Added: Documented all third-party AI and social sharing services in an "External services" readme section
 * Added: Public link to the plugin's full uncompiled source in the "Source Code" readme section
 * Fixed: Shortened the readme short description to fit the 150-character limit
