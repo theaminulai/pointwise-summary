@@ -253,6 +253,6 @@ class Pointwise_Summary_Frontend {
 			return false;
 		}
 
-		return Pointwise_Summary_SEO::is_post_noindex( $post_id, $advanced['seo'] );
+		return \PointwiseSummary\Frontend\SeoIntegration::is_post_noindex( $post_id, $advanced['seo'] );
 	}
 }

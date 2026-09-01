@@ -22,11 +22,10 @@ require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/class-pointwise-summary-as
 require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/class-pointwise-summary-blocks.php';
 
 // Include Frontend helpers
-require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/frontend/class-pointwise-summary-seo.php';
-require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/frontend/class-pointwise-summary-icons.php';
+// SeoIntegration, IconLibrary, PromptBuilder and ButtonRenderer now live under
+// includes/Frontend/ as PSR-4 classes (PointwiseSummary\Frontend\*), autoloaded —
+// no require_once needed for those 4 anymore (see dev-docs/RELEASE_PLAN.md).
 require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/frontend/class-pointwise-summary-frontend.php';
-require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/frontend/class-pointwise-summary-prompt.php';
-require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/frontend/class-pointwise-summary-buttons.php';
 require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/frontend/class-pointwise-summary-inline.php';
 require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/frontend/class-pointwise-summary-fab.php';
 require_once POINTWISE_SUMMARY_PLUGIN_DIR . 'includes/frontend/class-pointwise-summary-frontend-assets.php';
@@ -47,7 +46,7 @@ Pointwise_Summary_Blocks::get_instance();
 
 // Frontend helpers
 Pointwise_Summary_Frontend::get_instance();
-Pointwise_Summary_Buttons::get_instance();
+\PointwiseSummary\Frontend\ButtonRenderer::get_instance();
 Pointwise_Summary_Inline::get_instance();
 Pointwise_Summary_FAB::get_instance();
 Pointwise_Summary_Frontend_Assets::get_instance();
