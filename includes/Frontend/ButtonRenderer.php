@@ -24,7 +24,7 @@ class ButtonRenderer {
 	 * @return string
 	 */
 	public function render_buttons( $post_id, $context = 'inline' ) {
-		$frontend           = \Pointwise_Summary_Frontend::get_instance();
+		$frontend           = RenderContext::get_instance();
 		$ai_settings        = $frontend->get_ai_settings();
 		$social_settings    = $frontend->get_social_settings();
 		$display_settings   = $frontend->get_display_settings();
@@ -93,7 +93,7 @@ class ButtonRenderer {
 	 * @return array
 	 */
 	private function build_ai_buttons( $post_id, $ai_settings, $display_settings, $advanced_settings, $context = 'inline', $display_mode = 'inline' ) {
-		$frontend          = \Pointwise_Summary_Frontend::get_instance();
+		$frontend          = RenderContext::get_instance();
 		$enabled_platforms = $frontend->get_enabled_ai_platforms( $ai_settings );
 		if ( empty( $enabled_platforms ) || empty( $ai_settings['enableAiSummary'] ) ) {
 			return array();
@@ -238,7 +238,7 @@ class ButtonRenderer {
 	 * @return array
 	 */
 	private function build_social_buttons( $post_id, $social_settings, $display_settings, $advanced_settings ) {
-		$frontend         = \Pointwise_Summary_Frontend::get_instance();
+		$frontend         = RenderContext::get_instance();
 		$enabled_networks = $frontend->get_enabled_social_networks( $social_settings );
 		if ( empty( $enabled_networks ) || empty( $social_settings['enableSocialSharing'] ) ) {
 			return array();

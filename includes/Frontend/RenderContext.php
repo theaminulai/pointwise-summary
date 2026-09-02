@@ -5,12 +5,16 @@
  * @package PointwiseSummary
  */
 
+namespace PointwiseSummary\Frontend;
+
+use PointwiseSummary\Helpers\SingletonTrait;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Pointwise_Summary_Frontend {
-	use Pointwise_Summary_Singleton;
+class RenderContext {
+	use SingletonTrait;
 
 	/**
 	 * Get AI settings.
@@ -253,6 +257,6 @@ class Pointwise_Summary_Frontend {
 			return false;
 		}
 
-		return \PointwiseSummary\Frontend\SeoIntegration::is_post_noindex( $post_id, $advanced['seo'] );
+		return SeoIntegration::is_post_noindex( $post_id, $advanced['seo'] );
 	}
 }
