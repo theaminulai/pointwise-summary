@@ -372,12 +372,6 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
  
 == Changelog ==
 
-= 1.2.6 =
-* Merge pull request #58 from theaminulai/development
-* Add PR #57 reference to changelog
-* Merge pull request #57 from theaminulai/Migrate-frontend-orchestration-to-PSR-4
-* Migrate frontend orchestration to PSR-4
-
 = 1.2.6 - 2026-08-29 =
 * Changed: Internal refactor of 4 more frontend classes onto PSR-4 — the render-context gateway, inline content injection, the floating action button, and frontend script/style loading; output and behavior are unchanged.
 * Found (not yet fully fixed): A case-sensitivity risk in the ongoing internal restructuring. Three folders (`includes/api`, `includes/frontend`, `includes/helpers`) still need a manual case-only rename to `Api`/`Frontend`/`Helpers` before this can safely run on case-sensitive hosting (most WordPress.org hosts) — see `dev-docs/RELEASE_PLAN.md` for the exact steps. Namespaces in the code are correct PSR-4 StudlyCase; only the on-disk folder names still need the rename.
