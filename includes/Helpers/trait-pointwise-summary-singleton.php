@@ -2,22 +2,14 @@
 /**
  * Singleton trait to provide a consistent singleton pattern across the plugin.
  *
- * PSR-4 namespaced counterpart of the original global
- * `Pointwise_Summary_Singleton` trait (includes/helpers/trait-pointwise-summary-singleton.php).
- * That trait stays in place until every class still using it has been migrated
- * (tracked in dev-docs/RELEASE_PLAN.md); this copy is for newly migrated,
- * namespaced classes only.
- *
  * @package PointwiseSummary
  */
-
-namespace PointwiseSummary\Helpers;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-trait SingletonTrait {
+trait Pointwise_Summary_Singleton {
 
 	/**
 	 * Single instance of the class.
@@ -49,11 +41,6 @@ trait SingletonTrait {
 			$this->__setup();
 		}
 	}
-
-	/**
-	 * Prevent cloning of the instance.
-	 */
-	protected function __clone() {}
 
 	/**
 	 * Prevent unserializing of the instance.

@@ -5,12 +5,16 @@
  * @package PointwiseSummary
  */
 
+namespace PointwiseSummary\Frontend;
+
+use PointwiseSummary\Helpers\SingletonTrait;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Pointwise_Summary_Inline {
-	use Pointwise_Summary_Singleton;
+class ContentInjector {
+	use SingletonTrait;
 
 	/**
 	 * Track processed post IDs to prevent infinite loops in title filters.
@@ -127,7 +131,7 @@ class Pointwise_Summary_Inline {
 	 * @return bool
 	 */
 	private function should_inject( $position ) {
-		$frontend = Pointwise_Summary_Frontend::get_instance();
+		$frontend = RenderContext::get_instance();
 		if ( ! $frontend->should_render() ) {
 			return false;
 		}
@@ -162,6 +166,6 @@ class Pointwise_Summary_Inline {
 			return '';
 		}
 
-		return \PointwiseSummary\Frontend\ButtonRenderer::get_instance()->render_buttons( $post_id, 'inline' );
+		return ButtonRenderer::get_instance()->render_buttons( $post_id, 'inline' );
 	}
 }

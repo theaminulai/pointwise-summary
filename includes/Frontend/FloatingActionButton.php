@@ -5,12 +5,16 @@
  * @package PointwiseSummary
  */
 
+namespace PointwiseSummary\Frontend;
+
+use PointwiseSummary\Helpers\SingletonTrait;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Pointwise_Summary_FAB {
-	use Pointwise_Summary_Singleton;
+class FloatingActionButton {
+	use SingletonTrait;
 
 	/**
 	 * Setup hooks.
@@ -23,7 +27,7 @@ class Pointwise_Summary_FAB {
 	 * Render floating action button.
 	 */
 	public function render_fab() {
-		$frontend = Pointwise_Summary_Frontend::get_instance();
+		$frontend = RenderContext::get_instance();
 		if ( ! $frontend->should_render() ) {
 			return;
 		}
@@ -40,7 +44,7 @@ class Pointwise_Summary_FAB {
 			return;
 		}
 
-		$buttons = \PointwiseSummary\Frontend\ButtonRenderer::get_instance()->render_buttons( $post_id, 'floating' );
+		$buttons = ButtonRenderer::get_instance()->render_buttons( $post_id, 'floating' );
 		if ( empty( $buttons ) ) {
 			return;
 		}
@@ -106,8 +110,8 @@ class Pointwise_Summary_FAB {
 			'pointwise-summary-shape-' . sanitize_html_class( $button_shape ),
 		);
 
-		$toggle_icon  = \PointwiseSummary\Frontend\ButtonRenderer::get_instance()->render_icon( 'ask-ai', $icon_display );
-		$toggle_label = \PointwiseSummary\Frontend\ButtonRenderer::get_instance()->render_label( $toggle_button_text, $icon_display );
+		$toggle_icon  = ButtonRenderer::get_instance()->render_icon( 'ask-ai', $icon_display );
+		$toggle_label = ButtonRenderer::get_instance()->render_label( $toggle_button_text, $icon_display );
 		?>
 		<div
 			class="<?php echo esc_attr( implode( ' ', $wrapper_classes ) ); ?>"

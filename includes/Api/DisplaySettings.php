@@ -127,7 +127,7 @@ class DisplaySettings extends Controller {
 
 	/**
 	 * Get persisted display settings.
-	 *
+	 * @since 1.2.6
 	 * @return array
 	 */
 	public function get_display_settings_option() {

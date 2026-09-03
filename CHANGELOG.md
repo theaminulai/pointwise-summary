@@ -1,5 +1,6 @@
 # Changelog
-## x.y.z - 2026-09-01
+## x.y.z - 2026-09-03
+- Migrate frontend orchestration to PSR-4 ([#57](https://github.com/theaminulai/pointwise-summary/pull/57)) @theaminulai
 - Migrate frontend helpers to PSR-4 classes ([#54](https://github.com/theaminulai/pointwise-summary/pull/54)) @theaminulai
 - Changed: Internal refactor of the 6 settings REST API classes onto PSR-4  ([#51](https://github.com/theaminulai/pointwise-summary/pull/51)) @theaminulai
 - Add PSR-4 scaffolding and release plan ([#48](https://github.com/theaminulai/pointwise-summary/pull/48)) @theaminulai
