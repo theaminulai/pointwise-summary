@@ -5,12 +5,16 @@
  * @package PointwiseSummary
  */
 
+namespace PointwiseSummary\Frontend;
+
+use PointwiseSummary\Helpers\SingletonTrait;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Pointwise_Summary_Frontend_Assets {
-	use Pointwise_Summary_Singleton;
+class Assets {
+	use SingletonTrait;
 
 	/**
 	 * Setup hooks.
@@ -23,7 +27,7 @@ class Pointwise_Summary_Frontend_Assets {
 	 * Enqueue frontend assets.
 	 */
 	public function enqueue_assets() {
-		$frontend = Pointwise_Summary_Frontend::get_instance();
+		$frontend = RenderContext::get_instance();
 		if ( ! $frontend->should_render() ) {
 			return;
 		}

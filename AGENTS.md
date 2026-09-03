@@ -13,8 +13,8 @@
 ## Project-Specific Facts
 
 - The plugin bootstrap is in [includes/plugin.php](includes/plugin.php).
-- REST API controllers live in [includes/api/](includes/api/).
-- Server-side rendering helpers live in [includes/frontend/](includes/frontend/).
+- REST API controllers live in [includes/Api/](includes/Api/) as PSR-4 `PointwiseSummary\Api\*` classes.
+- Server-side rendering helpers live in [includes/Frontend/](includes/Frontend/) as PSR-4 `PointwiseSummary\Frontend\*` classes.
 - The admin app lives under [src/admin/](src/admin/).
 - The help system uses Redux state in [src/admin/store/](src/admin/store/).
 - The shortcode examples and system info data come from the REST API, not hardcoded UI state.

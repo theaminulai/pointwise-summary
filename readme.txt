@@ -372,6 +372,12 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
  
 == Changelog ==
 
+= 1.2.6 - 2026-08-29 =
+* Changed: Internal refactor of 4 more frontend classes onto PSR-4 — the render-context gateway, inline content injection, the floating action button, and frontend script/style loading; output and behavior are unchanged.
+* Found (not yet fully fixed): A case-sensitivity risk in the ongoing internal restructuring. Three folders (`includes/api`, `includes/frontend`, `includes/helpers`) still need a manual case-only rename to `Api`/`Frontend`/`Helpers` before this can safely run on case-sensitive hosting (most WordPress.org hosts) — see `dev-docs/RELEASE_PLAN.md` for the exact steps. Namespaces in the code are correct PSR-4 StudlyCase; only the on-disk folder names still need the rename.
+* Changed: The 4 old frontend class files (frontend, inline, fab, frontend-assets) are now deprecated stubs, kept only as placeholders — safe to remove.
+* Fixed: All 6 REST API and 8 frontend PSR-4 classes reviewed and confirmed to use consistent, correct StudlyCase namespaces end to end.
+
 = 1.2.5 - 2026-08-29 =
 * Changed: Internal refactor of 4 more frontend classes onto PSR-4 — button rendering, AI prompt building, icon rendering, and SEO/noindex detection (`PointwiseSummary\Frontend\*`); output and behavior are unchanged.
 * Changed: The 4 old frontend class files (buttons, prompt, icons, seo) are now deprecated stubs, kept only as placeholders — safe to remove.
