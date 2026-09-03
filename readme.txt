@@ -4,7 +4,7 @@ Tags:              ai, summarize, tldr, summary, content-summary
 Requires at least: 6.1
 Tested up to:      7.1
 Requires PHP:      7.4
-Stable tag: 1.2.5
+Stable tag: 1.2.6
 License:           GPL-3.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -371,6 +371,12 @@ The Floating Action Button (FAB) is a persistent button fixed to a corner of the
  
  
 == Changelog ==
+
+= 1.2.6 =
+* Merge pull request #58 from theaminulai/development
+* Add PR #57 reference to changelog
+* Merge pull request #57 from theaminulai/Migrate-frontend-orchestration-to-PSR-4
+* Migrate frontend orchestration to PSR-4
 
 = 1.2.6 - 2026-08-29 =
 * Changed: Internal refactor of 4 more frontend classes onto PSR-4 — the render-context gateway, inline content injection, the floating action button, and frontend script/style loading; output and behavior are unchanged.
